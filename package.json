@@ -2,7 +2,14 @@
   "name": "@kampus-gratis/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "kg:serve": "yarn nx serve kg",
+    "kg:build": "yarn nx build kg",
+    "kg:lint": "yarn nx lint kg",
+    "kg-admin:serve": "yarn nx serve kg-admin",
+    "kg-admin:build": "yarn nx build kg-admin",
+    "kg-admin:lint": "yarn nx lint kg-admin"
+  },
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.16",
