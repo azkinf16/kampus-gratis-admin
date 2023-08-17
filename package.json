@@ -30,6 +30,7 @@
     "react-hook-form": "^7.45.4",
     "react-icons": "^4.10.1",
     "recoil": "^0.7.7",
+    "swiper": "^10.1.0",
     "tslib": "^2.3.0",
     "zod": "^3.22.1"
   },

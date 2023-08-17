@@ -1,6 +1,15 @@
-import { FC, ReactElement, useEffect, useState } from 'react';
+import { FC, ReactElement, useEffect, useState, useRef, Fragment } from 'react';
 import Image from 'next/image';
 import { TAuthLayoutProps } from './types';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const slides = [
   {
@@ -27,37 +36,46 @@ const SliderLayout: FC = () => {
   const [slider, setSlider] = useState(0);
 
   return (
-    <div className="hidden lg:flex flex-col justify-center items-center w-1/2 h-full">
-      <figure className="h-[340px]">
-        <Image
-          src={slides[slider].src}
-          width={354}
-          height={354}
-          loading="eager"
-          priority
-          alt="Auth"
-          className="transition-all max-w-[300px]s"
-        />
-      </figure>
-      <section className="min-h-[120px] w-full px-14 text-center">
-        <div className="text-[#171717] text-[27px] font-[700]">
-          {slides[slider].title}
-        </div>
-        <p className="text-[#737373] text-[16px] font-[500]">
-          {slides[slider].description}
-        </p>
-      </section>
-      <div className="flex justify-center gap-3 mt-6">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setSlider(index)}
-            className={`${
-              slider === index ? 'w-12 bg-primary-500' : ' w-3 '
-            } h-3  transition-all rounded-full bg-neutral-300`}
-          />
+    <div className="flex justify-center items-center w-1/2 h-full">
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination]}
+        className="flex justify-center gap-3 mt-6 items-center min-h-fit"
+      >
+        {slides.map((item, i) => (
+          <SwiperSlide key={i} className="flex justify-center">
+            <figure className="flex justify-center h-[300px]">
+              <Image
+                src={item.src}
+                width={300}
+                height={300}
+                loading="eager"
+                priority
+                alt="Auth"
+                className="transition-all max-w-[300px]s"
+              />
+            </figure>
+            <section className="min-h-[120px] w-full px-14 text-center mb-4">
+              <div className="text-[#171717] text-[22px]  font-[700]">
+                {item.title}
+              </div>
+              <div className="w-full flex justify-center">
+                <p className="text-[#737373] text-[13px] font-[500] max-w-[350px]">
+                  {item.description}
+                </p>
+              </div>
+            </section>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 };
@@ -80,7 +98,7 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
         h === 'full' ? 'h-full' : 'h-screen'
       }`}
     >
-      <section className="flex items-center bg-white w-full h-full rounded-lg shadow-lg">
+      <section className="flex items-center bg-white max-w-7xl w-full h-full rounded-lg shadow-lg">
         <SliderLayout />
         <div className="flex-col md:gap-y-[57px] gap-y-6 items-center justify-center p-6 flex h-full w-full lg:w-1/2">
           <div
