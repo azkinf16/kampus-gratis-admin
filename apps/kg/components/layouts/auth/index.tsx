@@ -1,4 +1,12 @@
-import { FC, ReactElement, useEffect, useState, useRef, Fragment } from 'react';
+import {
+  FC,
+  ReactElement,
+  useEffect,
+  useState,
+  useRef,
+  Fragment,
+  Suspense,
+} from 'react';
 import Image from 'next/image';
 import { TAuthLayoutProps } from './types';
 // Import Swiper React components
@@ -36,7 +44,14 @@ const SliderLayout: FC = () => {
   const [slider, setSlider] = useState(0);
 
   return (
-    <div className="flex justify-center items-center w-1/2 h-full">
+    <div className="flex justify-center items-center w-1/2 h-screen relative">
+      <Image
+        src={'/images/logo_nav.svg'}
+        width={120}
+        height={120}
+        alt="Logo"
+        className="absolute top-10 left-12"
+      />
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -87,18 +102,18 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
   h = 'screen',
   error,
 }): ReactElement => {
-  const [getError, setError] = useState('');
+  // const [getError, setError] = useState('');
 
-  useEffect(() => {
-    setError(error as string);
-  }, [error]);
+  // useEffect(() => {
+  //   // setError(error as string);
+  // }, [error]);
   return (
     <section
-      className={`w-full bg-neutral-100 flex justify-center items-center lg:py-10 lg:px-14 md:p-8 sm:p-6 p-4 ${
-        h === 'full' ? 'h-full' : 'h-screen'
+      className={`w-full bg-neutral-100 flex justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 p-4 ${
+        h === 'full' ? 'h-full items-stretch' : 'h-screen items-center'
       }`}
     >
-      <section className="flex items-center bg-white max-w-7xl w-full h-full rounded-lg shadow-lg">
+      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg">
         <SliderLayout />
         <div className="flex-col md:gap-y-[57px] gap-y-6 items-center justify-center p-6 flex h-full w-full lg:w-1/2">
           <div
@@ -113,14 +128,14 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
             </p>
           </div>
           <div className="flex flex-col w-full items-start pb-[37px] justify-start">
-            {getError && (
-              <span className="bg-error-100 mb-4 text-error-600 w-full font-[700] text-1xl p-4 rounded-lg border-2 border-error-500 flex justify-between">
+            {/* {getError && (
+              <div className="bg-error-100 mb-4 text-error-600 w-full font-[700] text-1xl p-4 rounded-lg border-2 border-error-500 flex justify-between">
                 <strong>{error}</strong>
                 <span onClick={() => setError('')} className="text-right">
                   x
                 </span>
-              </span>
-            )}
+              </div>
+            )} */}
             {children}
           </div>
         </div>
