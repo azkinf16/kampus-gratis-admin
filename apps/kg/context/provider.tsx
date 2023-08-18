@@ -1,15 +1,18 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
-import {LoadingSpinner} from '@kampus-gratis/components/atoms'
+import { LoadingSpinner } from '@kampus-gratis/components/atoms';
+import { SessionProvider } from 'next-auth/react';
 const queryClient = new QueryClient();
 
 function Provider({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-      <Suspense fallback={<LoadingSpinner/>}>{children}</Suspense>
-      </RecoilRoot>
+      <SessionProvider>
+        <RecoilRoot>
+          <Suspense fallback={<LoadingSpinner />}>{children}</Suspense>
+        </RecoilRoot>
+      </SessionProvider>
     </QueryClientProvider>
   );
 }
