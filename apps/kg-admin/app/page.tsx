@@ -1,4 +1,4 @@
-import Login from './auth/login';
+import Login from '../modules/auth/login';
 
 export default async function Index() {
   return <Login />;
