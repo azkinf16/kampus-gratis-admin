@@ -3,9 +3,10 @@ import { getSession } from 'next-auth/react';
 
 type Session = {
   user?: {
-    token?: {
-      access_token?: string;
-    };
+    id: string;
+    name: string;
+    email: string;
+    token: string;
   };
 };
 
@@ -19,7 +20,7 @@ api.interceptors.request.use(
   async (config) => {
     const session: Session = (await getSession()) as Session;
 
-    const token = session?.user?.token?.access_token as string;
+    const token = session?.user?.token as string;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

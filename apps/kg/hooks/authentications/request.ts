@@ -1,4 +1,8 @@
 import {
+  TLoginByGooglePayload,
+  TLoginByGoogleResponse,
+  TLoginPayload,
+  TLoginResponse,
   TOTPPayload,
   TOTPRequestPayload,
   TRegisterPayload,
@@ -27,5 +31,22 @@ export const otpEmailRequest = async (
   payload: TOTPRequestPayload
 ): Promise<TMetaItem> => {
   const { data } = await api.post(EMAIL_VERIFICATION_REQUEST, payload);
+  return data;
+};
+
+export const loginRequest = async (
+  payload?: TLoginPayload
+): Promise<TLoginResponse> => {
+  const { data } = await api.post<TLoginResponse>('/auth/login', payload);
+  return data;
+};
+
+export const loginByGoogleRequest = async (
+  payload: TLoginByGooglePayload
+): Promise<TLoginByGoogleResponse> => {
+  const { data } = await api.post<TLoginByGoogleResponse>(
+    '/auth/login/google/callback',
+    payload
+  );
   return data;
 };
