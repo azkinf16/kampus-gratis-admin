@@ -1,0 +1,10 @@
+export const DISCUSSION = '/discussion';
+export const DISCUSSION_FORUM = '/discussion/forum';
+export const DISCUSSION_COMMENT = '/discussion/comment';
+export const DISCUSSION_REPLY = '/discussion/reply';
+export const DISCUSSION_LIKE = '/discussion/like';
+export const DISCUSSION_LIKE_COMMENT = '/discussion/like/comment';
+export const DISCUSSION_LIKE_REPLY = '/discussion/like/reply';
+export const DISCUSSION_FORUM_REPORT = '/discussion/forum/report';
+export const DISCUSSION_COMMENT_REPORT = '/discussion/comment/report';
+export const DISCUSSION_REPLY_REPORT = '/discussion/reply/report';

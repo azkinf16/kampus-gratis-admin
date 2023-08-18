@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply bg-white;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.carousel {
+  position: relative;
+}
+
+.content-carousel .carousel .control-dots {
+  position: absolute;
+  top: 0px;
+  width: fit-content;
+  right: 0;
+  margin-top: 10px;
+  display: flex;
+  gap: 3px;
+}
+
+.swiper-pagination-bullet {
+  @apply w-3 h-3 bg-neutral-400 rounded-full !important;
+}
+
+.swiper-pagination-bullet-active {
+  @apply w-12 bg-primary-500 h-3  transition-all rounded-full !important;
+}
+
+.swiper-pagination {
+  @apply bottom-0 !important;
+}

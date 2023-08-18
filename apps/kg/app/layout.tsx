@@ -1,3 +1,5 @@
+'use client';
+
 import Provider from '../context/provider';
 import './global.css';
 
