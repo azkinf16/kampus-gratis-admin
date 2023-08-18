@@ -8,7 +8,7 @@ import {
   Suspense,
 } from 'react';
 import Image from 'next/image';
-import { TAuthLayoutProps } from './types';
+// import { TAuthLayoutProps } from './types';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -18,6 +18,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { TAuthLayoutProps } from '../../../types';
 
 const slides = [
   {
@@ -102,11 +103,8 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
   h = 'screen',
   error,
 }): ReactElement => {
-  // const [getError, setError] = useState('');
+  const [getError, setError] = useState(error);
 
-  // useEffect(() => {
-  //   // setError(error as string);
-  // }, [error]);
   return (
     <section
       className={`w-full bg-neutral-100 flex justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 p-4 ${
@@ -128,14 +126,14 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
             </p>
           </div>
           <div className="flex flex-col w-full items-start pb-[37px] justify-start">
-            {/* {getError && (
+            {getError && (
               <div className="bg-error-100 mb-4 text-error-600 w-full font-[700] text-1xl p-4 rounded-lg border-2 border-error-500 flex justify-between">
                 <strong>{error}</strong>
                 <span onClick={() => setError('')} className="text-right">
                   x
                 </span>
               </div>
-            )} */}
+            )}
             {children}
           </div>
         </div>

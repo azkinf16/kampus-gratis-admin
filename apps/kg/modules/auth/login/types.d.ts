@@ -1,4 +1,4 @@
-import { TMetaResponseSingle } from '@mknows-frontend-services/utils';
+import { TMetaResponseSingle } from '@kampus-gratis/utils';
 import type { User } from 'next-auth';
 
 export type TLoginPayload = {

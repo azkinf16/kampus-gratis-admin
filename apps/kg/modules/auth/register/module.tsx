@@ -5,24 +5,26 @@ import {
   LoadingSpinner,
   TextField,
 } from '@kampus-gratis/components/atoms';
-import { useRegister } from '../../../hooks';
+import { useOtpRequest, usePopupOtp, useRegister } from '../../../hooks';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { FC, Suspense, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useForm } from 'react-hook-form';
 import { lazily } from 'react-lazily';
 import { z } from 'zod';
 import { validationSchema } from '../../../config';
+import { OtpModule } from '../otp';
+import { signIn } from 'next-auth/react';
 
 const { AuthLayout } = lazily(() => import('../../../components'));
 
 type ValidationSchema = z.infer<typeof validationSchema>;
 
 export const RegisterModule: FC = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [error, setError] = useState<string | null>('');
+  const { setPopupOtp } = usePopupOtp();
   const {
     control,
     watch,
@@ -39,10 +41,22 @@ export const RegisterModule: FC = () => {
     },
   });
 
+  const { mutate: request } = useOtpRequest();
+  const { mutate, isLoading } = useRegister();
+
   const onSubmit = handleSubmit((data) => {
     mutate(data, {
       onSuccess: () => {
-        console.log(data);
+        request(
+          {
+            email: data.email,
+          },
+          {
+            onSuccess: () => {
+              setPopupOtp(true);
+            },
+          }
+        );
       },
       onError: (e) => {
         console.log(e.response?.data.message);
@@ -50,13 +64,19 @@ export const RegisterModule: FC = () => {
       },
     });
   });
-  const { mutate, isLoading } = useRegister();
+
+  const onGoogleLogin = async () => {
+    await signIn('google', {
+      redirect: false,
+    });
+  };
+
   return (
-    <ErrorBoundary fallback={<div>{error}</div>}>
+    <ErrorBoundary fallback={<>{error}</>}>
       <Suspense fallback={<LoadingSpinner />}>
         <AuthLayout
           h="full"
-          error={'error'}
+          error={error as string}
           title="Daftar Akun"
           description="Silahkan isi data berikut untuk melakukan pendaftaran"
         >
@@ -120,7 +140,7 @@ export const RegisterModule: FC = () => {
               <DashedText text="Atau" />
 
               <Button
-                onClick={() => ''}
+                onClick={onGoogleLogin}
                 type="button"
                 className="w-auto h-auto text-[18px] text-black p-3 rounded-lg border-2 border-neutral-300 appearance-none bg-white font-[700] flex items-center justify-center gap-x-4"
               >
@@ -141,6 +161,7 @@ export const RegisterModule: FC = () => {
             </div>
           </form>
         </AuthLayout>
+        <OtpModule email={watch('email')} />
       </Suspense>
     </ErrorBoundary>
   );
