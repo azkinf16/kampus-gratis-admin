@@ -1,10 +1,10 @@
-import LandingPage from './modules/landing-page/module';
-import styles from './page.module.css';
+import LandingPage from './landing-page/page';
 
 export default async function Index() {
 
   return (
     <>
+    
    <LandingPage/>
     </>
   );
