@@ -4,7 +4,7 @@ import React from 'react';
 export default function DashboardPage() {
   return (
     <BaseLayout>
-      <div className="absolute top-[20%]">Ini Isi</div>
+      <div className="">Ini Isi</div>
     </BaseLayout>
   );
 }
