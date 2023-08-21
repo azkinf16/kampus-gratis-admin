@@ -6,3 +6,4 @@ const LoginPages: NextPage = () => {
 };
 
 export default LoginPages;
+

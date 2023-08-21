@@ -106,8 +106,11 @@ module.exports = {
           400: '#C5C8Ca',
         },
         blue: {
-          base: '#34364A',
+          base: '#106FA4',
           100: '#67A5C8',
+        },
+        orange: {
+          base: '#FAB317',
         },
       },
     },
