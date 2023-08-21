@@ -1,7 +1,7 @@
 'use client';
 
 import { getServerSession } from 'next-auth';
-import Provider from '../context/provider';
+import Provider from './context/provider';
 import './global.css';
 import { authOptions } from './api/auth/[...nextauth]/route';
 

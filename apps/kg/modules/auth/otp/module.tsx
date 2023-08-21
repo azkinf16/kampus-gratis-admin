@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 import { useOtpRequest, useOtpVerify, usePopupOtp } from '../../../hooks';
 import { TOTPProps } from '../../../types';

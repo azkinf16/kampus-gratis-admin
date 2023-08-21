@@ -1,5 +1,3 @@
-'use client';
-
 import { LoginModule } from '../../../modules';
 import { NextPage } from 'next';
 

@@ -1,4 +1,5 @@
 import {
+  TForgotPasswordPayload,
   TLoginByGooglePayload,
   TLoginByGoogleResponse,
   TLoginPayload,
@@ -46,6 +47,16 @@ export const loginByGoogleRequest = async (
 ): Promise<TLoginByGoogleResponse> => {
   const { data } = await api.post<TLoginByGoogleResponse>(
     '/auth/login/google/callback',
+    payload
+  );
+  return data;
+};
+
+export const forgotPasswordRequest = async (
+  payload: TForgotPasswordPayload
+): Promise<TMetaItem> => {
+  const { data } = await api.post<TMetaItem>(
+    '/reset-password/request',
     payload
   );
   return data;

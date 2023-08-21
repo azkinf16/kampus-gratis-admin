@@ -13,10 +13,10 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
-      id: 'login',
+      id: 'Sign in',
       type: 'credentials',
       credentials: {
-        email: { label: 'Email', type: 'text' },
+        email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials): Promise<TLoginData> {
@@ -49,7 +49,6 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async signIn({ user, account }) {
-      console.log(account);
       if (account?.provider === 'google' && account) {
         try {
           const { data } = await loginByGoogleRequest({

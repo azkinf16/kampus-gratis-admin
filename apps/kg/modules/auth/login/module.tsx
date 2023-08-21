@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Button,
   Checkbox,
@@ -5,39 +7,35 @@ import {
   LoadingSpinner,
   TextField,
 } from '@kampus-gratis/components/atoms';
-// import { AuthLayout } from '../../../components';
 import { FC, Suspense, useState } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { lazily } from 'react-lazily';
 import { ErrorBoundary } from 'react-error-boundary';
+import { validationSchemaLogin } from '../../../config';
+import { usePopupForgotPass } from '../../../hooks';
 
 const { AuthLayout } = lazily(() => import('../../../components'));
 
-const validationSchema = z.object({
-  email: z.string().min(1, { message: 'Email harus diisi' }).email({
-    message: 'Email harus valid',
-  }),
-  password: z.string().min(1, { message: 'Password harus diisi' }),
-  remember: z.boolean().optional(),
-});
-
-type ValidationSchema = z.infer<typeof validationSchema>;
+type ValidationSchema = z.infer<typeof validationSchemaLogin>;
 
 export const LoginModule: FC = () => {
   const router = useRouter();
-  const onSubmit = () => '';
+  const [loading, setLoading] = useState(false);
+  const { setPopupStatus } = usePopupForgotPass();
+  const [getError, setError] = useState<string | undefined | null>(undefined);
+
   const {
     control,
     formState: { isValid, errors },
     handleSubmit,
   } = useForm<ValidationSchema>({
-    resolver: zodResolver(validationSchema),
+    resolver: zodResolver(validationSchemaLogin),
     mode: 'all',
     defaultValues: {
       email: '',
@@ -46,7 +44,24 @@ export const LoginModule: FC = () => {
     },
   });
 
-  const [loading, setLoading] = useState(false);
+  const onSubmit = handleSubmit(async (data) => {
+    setLoading(true);
+    try {
+      const response = await signIn('login', {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+      if (response?.ok) {
+        router.push('/dashboard');
+      } else {
+        setError(response?.error);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
+  });
 
   const onGoogleLogin = async () => {
     const res = await signIn('google', {
@@ -58,11 +73,11 @@ export const LoginModule: FC = () => {
   };
 
   return (
-    <ErrorBoundary fallback={<div>Error</div>}>
+    <ErrorBoundary fallback={<>{getError}</>}>
       <Suspense fallback={<LoadingSpinner />}>
         <AuthLayout
           h="screen"
-          error={'Error'}
+          error={getError as string}
           title="Masuk"
           description="Silahkan masuk menggunakan email dan kata sandi yang terdaftar"
         >
@@ -101,7 +116,7 @@ export const LoginModule: FC = () => {
               />
               <div
                 className="text-primary-base cursor-pointer"
-                onClick={() => ''}
+                onClick={() => setPopupStatus(true)}
               >
                 Lupa Kata Sandi?
               </div>
