@@ -3,7 +3,7 @@ import React from 'react';
 
 const GlimpseSection = () => {
   return (
-    <section className="bg-blue-base w-full mt-20 text-white px-12 lg:flex py-5 lg:py-10">
+    <section className="bg-blue-base w-full mt-20 text-white px-8 lg:flex py-5 lg:py-10">
       <div className="w-full lg:w-1/2 py-5 lg:py-20">
         <h1 className="text-4xl font-bold">
           Sekilas Info <span className="text-orange-base ">Kampus Gratis</span>

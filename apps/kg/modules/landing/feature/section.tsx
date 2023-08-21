@@ -35,7 +35,7 @@ const FeatureSection:FC = () => {
   ];
   return (
     <section className="flex z-10 p-6 w-full items-center md:h-[140px] justify-between mt-10">
-    <div className="md:flex grid grid-cols-2 gap-6 md:gap-x-12 items-center justify-center w-full">
+    <div className="md:flex grid grid-cols-2 gap-6 md:gap-x-8 items-center justify-center w-full">
       {_feature.map((feat) => (
        <div className="w-[165px] h-[165px] px-5 py-4 bg-neutral-50 rounded-lg shadow flex-col justify-center items-start gap-3 inline-flex" key={feat.id}>
   <img  src={feat.icon}  className="w-[55px] h-[55px] ">
