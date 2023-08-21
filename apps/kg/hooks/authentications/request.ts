@@ -11,10 +11,12 @@ import {
 import {
   EMAIL_VERIFICATION_REQUEST,
   EMAIL_VERIFICATION_VERIFY,
+  LOGIN,
   REGISTER,
   TMetaItem,
 } from '@kampus-gratis/utils';
 import { api } from '../../config';
+import axios from 'axios';
 
 export const registerRequest = async (
   payload: TRegisterPayload
@@ -38,7 +40,7 @@ export const otpEmailRequest = async (
 export const loginRequest = async (
   payload?: TLoginPayload
 ): Promise<TLoginResponse> => {
-  const { data } = await api.post<TLoginResponse>('/auth/login', payload);
+  const { data } = await axios.post<TLoginResponse>(LOGIN, payload);
   return data;
 };
 

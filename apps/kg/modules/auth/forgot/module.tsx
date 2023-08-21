@@ -1,3 +1,5 @@
+'use client';
+
 import { usePopupForgotPass } from '../../../hooks';
 import { validationSchemaForgot } from '../../../config';
 import { FC } from 'react';

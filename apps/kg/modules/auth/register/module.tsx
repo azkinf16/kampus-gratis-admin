@@ -28,8 +28,6 @@ export const RegisterModule: FC = () => {
   const [error, setError] = useState<string | null>('');
   const { setPopupOtp, getPopupOtp } = usePopupOtp();
 
-  console.log(getPopupOtp);
-
   const {
     control,
     watch,

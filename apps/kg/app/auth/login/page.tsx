@@ -1,4 +1,4 @@
-import { LoginModule } from '../../../modules';
+import { LoginModule } from '../../../modules/auth/login/module';
 import { NextPage } from 'next';
 
 const LoginPages: NextPage = () => {

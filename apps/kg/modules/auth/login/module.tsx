@@ -19,6 +19,7 @@ import { lazily } from 'react-lazily';
 import { ErrorBoundary } from 'react-error-boundary';
 import { validationSchemaLogin } from '../../../config';
 import { usePopupForgotPass } from '../../../hooks';
+import { ForgotModule } from '../forgot';
 
 const { AuthLayout } = lazily(() => import('../../../components'));
 
@@ -44,14 +45,14 @@ export const LoginModule: FC = () => {
     },
   });
 
-  const onSubmit = handleSubmit(async (data) => {
-    setLoading(true);
+  const onSubmit = handleSubmit(async (data, e) => {
     try {
       const response = await signIn('login', {
         email: data.email,
         password: data.password,
         redirect: false,
       });
+
       if (response?.ok) {
         router.push('/dashboard');
       } else {
@@ -155,6 +156,7 @@ export const LoginModule: FC = () => {
             </div>
           </form>
         </AuthLayout>
+        <ForgotModule />
       </Suspense>
     </ErrorBoundary>
   );

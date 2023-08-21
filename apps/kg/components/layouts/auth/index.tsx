@@ -45,7 +45,7 @@ const SliderLayout: FC = () => {
   const [slider, setSlider] = useState(0);
 
   return (
-    <div className="flex justify-center items-center w-1/2 h-screen relative">
+    <div className="sm:flex hidden justify-center items-center lg:w-1/2 lg:h-screen relative w-full">
       <Image
         src={'/images/logo_nav.svg'}
         width={120}
@@ -107,13 +107,20 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
 
   return (
     <section
-      className={`w-full bg-neutral-100 flex justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 p-4 ${
-        h === 'full' ? 'h-full items-stretch' : 'h-screen items-center'
+      className={`w-full bg-neutral-100 flex-row justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 ${
+        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen items-center'
       }`}
     >
-      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg">
+      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg flex-col  lg:flex-row">
         <SliderLayout />
         <div className="flex-col md:gap-y-[57px] gap-y-6 items-center justify-center p-6 flex h-full w-full lg:w-1/2">
+          <Image
+            src={'/images/logo_nav.svg'}
+            width={120}
+            height={120}
+            alt="Logo"
+            className="sm:hidden absolute top-2 left-6"
+          />
           <div
             className="flex flex-col
            w-full justify-center pt-[47px] items-center md:items-start md:justify-start gap-y-1"
@@ -125,7 +132,7 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
               {description}
             </p>
           </div>
-          <div className="flex flex-col w-full items-start pb-[37px] justify-start">
+          <div className="flex flex-col w-full items-start pb-[37px] justify-start relative">
             {getError && (
               <div className="bg-error-100 mb-4 text-error-600 w-full font-[700] text-1xl p-4 rounded-lg border-2 border-error-500 flex justify-between">
                 <strong>{error}</strong>
