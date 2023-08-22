@@ -19,3 +19,7 @@ export type TCard = {
   amount: number;
   title: string;
 };
+
+export type TJadwalMK = {
+  containerStyle: string;
+};

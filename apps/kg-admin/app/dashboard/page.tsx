@@ -1,9 +1,10 @@
 'use client';
 
 import { Card } from '@/components/card/Card';
-import { Jadwalmk } from '@/components/jadwal-mk/Jadwalmk';
+import { JadwalMkFlex } from '@/components/jadwal-mk-flex/Jadwalmk-flex';
 import Matakuliah from '@/components/mk/Matakuliah';
 import BaseLayout from '@/modules/base/BaseLayout';
+import Link from 'next/link';
 import React from 'react';
 
 export default function DashboardPage() {
@@ -18,7 +19,9 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex justify-end my-6 font-bold">
-            <u className="text-sm">Lihat Semua</u>
+            <Link href="/dashboard/analitik">
+              <p className="text-sm underline">Lihat Semua</p>
+            </Link>
           </div>
 
           <div className="mt-10 mb-12">
@@ -30,7 +33,9 @@ export default function DashboardPage() {
               </div>
 
               <div className="flex justify-end pt-6 pb-10 pr-12 font-bold">
-                <u className="text-sm">Lihat Semua</u>
+                <Link href="/dashboard/matakuliah">
+                  <p className="text-sm underline">Lihat Semua</p>
+                </Link>
               </div>
             </div>
           </div>
@@ -38,15 +43,18 @@ export default function DashboardPage() {
           <h1 className="font-bold text-lg mb-3">Jadwal Mata Kuliah</h1>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className="flex justify-between py-14 px-24 flex-wrap gap-12">
-              <Jadwalmk />
-              <Jadwalmk />
-              <Jadwalmk />
-              <Jadwalmk />
-              <Jadwalmk />
-              <Jadwalmk />
+              <JadwalMkFlex />
+              <JadwalMkFlex />
+              <JadwalMkFlex />
+              <JadwalMkFlex />
+              <JadwalMkFlex />
+              <JadwalMkFlex />
             </div>
+
             <div className="flex justify-end pt-6 pb-10 pr-12 font-bold">
-              <u className="text-sm">Lihat Semua</u>
+              <Link href="/dashboard/jadwal-acara-kampus">
+                <p className="text-sm underline">Lihat Semua</p>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,15 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-export const Jadwalmk = () => {
+export const JadwalMkFlex = () => {
   return (
     <div className="flex justify-between">
-      <Image
-        src="/assets/pic-jmk.png"
-        alt="pic-jmk" //altnya belum di fix
-        width={200}
-        height={200}
-      />
+      <Image src="/assets/pic-jmk.png" alt="pic-jmk" width={200} height={200} />
       <div className="flex items-center ml-7">
         <div className="flex flex-col gap-3">
           <h1 className="font-bold text-lg">Webinar Cyber Security</h1>

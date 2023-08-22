@@ -12,7 +12,7 @@ export const Card = ({ amount, title }: TCard) => {
           width={100}
           height={100}
         />
-        <p className="font-bold text-lg">{title}</p>
+        <p className="font-bold text-sm">{title}</p>
       </div>
       <div className="px-32 py-6 bg-primary rounded-b-lg">
         <p className="text-center font-semibold text-white text-3xl">
