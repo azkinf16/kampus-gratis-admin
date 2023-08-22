@@ -40,7 +40,7 @@ export const otpEmailRequest = async (
 export const loginRequest = async (
   payload?: TLoginPayload
 ): Promise<TLoginResponse> => {
-  const { data } = await axios.post<TLoginResponse>(LOGIN, payload);
+  const { data } = await api.post<TLoginResponse>(LOGIN, payload);
   return data;
 };
 

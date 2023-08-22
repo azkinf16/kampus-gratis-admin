@@ -1,9 +1,9 @@
 'use client';
 
-import { getServerSession } from 'next-auth';
-import Provider from './context/provider';
+// import { getServerSession } from 'next-auth';
+import Provider from '../context/provider';
 import './global.css';
-import { authOptions } from './api/auth/[...nextauth]/route';
+// import { authOptions } from './api/auth/[...nextauth]/route';
 
 export const metadata = {
   title: 'Welcome to kg',
@@ -15,7 +15,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body>
