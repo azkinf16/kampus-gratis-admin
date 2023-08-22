@@ -16,7 +16,7 @@ export const ChoiceFacultyCard: FC<TChoiceFacultyCardProps> = (props): ReactElem
       />
       <div className="flex flex-col p-[17px]">
         <div className="flex flex-col gap-y-6">
-          <div className="w-1/2 px-2 py-1 text-center rounded-md bg-blue-base text-white ">{props.tag}</div>
+          <div className="w-1/3 text-xs px-2 py-1 text-center rounded-md bg-blue-base text-white ">{props.tag}</div>
           <h1 className="text-black font-semibold text-[20px]">{props.title}</h1>
         </div>
       </div>
