@@ -18,7 +18,9 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/components/*": ["./components/*"]
+      "@/components/*": ["./components/*"],
+      "@/modules/*": ["./modules/*"],
+      "@/types": ["./types"]
     },
     "types": ["jest", "node"]
   },

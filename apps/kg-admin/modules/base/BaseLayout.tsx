@@ -1,5 +1,5 @@
-import { TBaseLayout } from '../../types';
-import Sidebar from '../../components/sidebar/Sidebar';
+import { TBaseLayout } from '@/types';
+import Sidebar from '@/components/sidebar/Sidebar';
 import React from 'react';
 import { IconDashboard } from '@/components/icons/ic-dashboard';
 import { IconPengajuan } from '@/components/icons/ic-pengajuan';
@@ -12,6 +12,7 @@ import { IconKalender } from '@/components/icons/ic-kalender';
 import { IconSekilasIlmu } from '@/components/icons/ic-sekilas-ilmu';
 import { IconAcaraKampus } from '@/components/icons/ic-acara-kampus';
 import { IconSalurKerja } from '@/components/icons/ic-salur-kerja';
+import { IconAvatar } from '@/components/icons/ic-avatar';
 
 const BaseLayout = ({ children }: TBaseLayout) => {
   const DataSidebar = [
@@ -73,9 +74,15 @@ const BaseLayout = ({ children }: TBaseLayout) => {
   ];
   return (
     <Sidebar dataSidebar={DataSidebar}>
-      {/* belum lengkap */}
-      <div className="flex justify-end mr-4">Welcome</div>
-      <section className="absolute top-[20%]">{children}</section>
+      <div className="flex justify-end">
+        <div className="flex flex-col justify-start font-medium">
+          <p>Welcome,</p>
+          <p>Admin 01</p>
+        </div>
+
+        <IconAvatar />
+      </div>
+      <section>{children}</section>
     </Sidebar>
   );
 };

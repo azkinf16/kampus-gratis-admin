@@ -14,3 +14,8 @@ export type TSidebarProp = {
 export type TBaseLayout = {
   children: ReactNode;
 };
+
+export type TCard = {
+  amount: number;
+  title: string;
+};
