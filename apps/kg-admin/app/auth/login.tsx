@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { z } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
 
 type Inputs = {
   email: string;

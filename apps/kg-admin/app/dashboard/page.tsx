@@ -10,7 +10,7 @@ export default function DashboardPage() {
   return (
     <BaseLayout>
       <div className="absolute top-[15%] ml-10">
-        <div className="w-[1350px] mt-5 mb-16 mr-6">
+        <div className="w-[1180px] mt-5 mb-16 mr-6">
           <div className="flex justify-between">
             <Card amount={2500} title="Pendaftar" />
             <Card amount={1000} title="Mahasiswa" />
@@ -18,7 +18,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex justify-end my-6 font-bold">
-            <u>Lihat Semua</u>
+            <u className="text-sm">Lihat Semua</u>
           </div>
 
           <div className="mt-10 mb-12">
@@ -30,7 +30,7 @@ export default function DashboardPage() {
               </div>
 
               <div className="flex justify-end pt-6 pb-10 pr-12 font-bold">
-                <u>Lihat Semua</u>
+                <u className="text-sm">Lihat Semua</u>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function DashboardPage() {
               <Jadwalmk />
             </div>
             <div className="flex justify-end pt-6 pb-10 pr-12 font-bold">
-              <u>Lihat Semua</u>
+              <u className="text-sm">Lihat Semua</u>
             </div>
           </div>
         </div>
