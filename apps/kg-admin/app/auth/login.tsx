@@ -1,11 +1,42 @@
-import React from 'react';
-import Image from 'next/image';
+'use client';
 
-const login = () => {
+import Image from 'next/image';
+import { z } from 'zod';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
+
+type Inputs = {
+  email: string;
+  password: string;
+};
+
+const Login = () => {
+  const userInfoSchema = z.object({
+    email: z.string().email({ message: 'Email is Requiered' }),
+    password: z.string().min(3, { message: 'Password is required' }),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<Inputs>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    resolver: zodResolver(userInfoSchema),
+  });
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div
-        className="flex flex-col md:flex-row   rounded-md p-8 "
+        className="flex flex-col md:flex-row sm:mx-8 mx-5  rounded-md p-8 "
         style={{ backgroundColor: '#e9f6fd', width: '1080px' }}
       >
         <div className="p-4 relative flex justify-center md:w-1/2 ">
@@ -31,7 +62,7 @@ const login = () => {
           <h3 className="text-[13px] font-semibold mb-4 text-center">
             Silahkan masuk menggunakan email dan kata sandi yang terdaftar
           </h3>
-          <form className="">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -42,10 +73,12 @@ const login = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
                 className="mt-1 p-2 w-full border rounded-md"
                 placeholder="Email"
+                disabled={isSubmitting}
+                {...register('email')}
               />
+              {errors.email?.message && <p>{errors.email?.message}</p>}
             </div>
             <div className="mb-4">
               <label
@@ -57,10 +90,12 @@ const login = () => {
               <input
                 type="password"
                 id="password"
-                name="password"
                 className="mt-1 p-2 w-full border rounded-md"
                 placeholder="Password"
+                disabled={isSubmitting}
+                {...register('password')}
               />
+              {errors.password?.message && <p>{errors.password?.message}</p>}
             </div>
             <div className="flex justify-end pb-2 text-blue-900">
               <a href="">
@@ -69,6 +104,7 @@ const login = () => {
             </div>
             <button
               type="submit"
+              disabled={isSubmitting}
               style={{ backgroundColor: '#0B568D' }}
               className="text-white p-2 rounded-md hover:bg-blue-600 w-full"
             >
@@ -81,4 +117,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
