@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Suspense } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { RecoilEnv, RecoilRoot } from 'recoil';
