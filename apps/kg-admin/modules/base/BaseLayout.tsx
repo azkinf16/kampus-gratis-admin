@@ -74,7 +74,6 @@ const BaseLayout = ({ children }: TBaseLayout) => {
   ];
   return (
     <Sidebar dataSidebar={DataSidebar}>
-      {/* belum lengkap */}
       <div className="flex justify-end">
         <div className="flex flex-col justify-start font-medium">
           <p>Welcome,</p>

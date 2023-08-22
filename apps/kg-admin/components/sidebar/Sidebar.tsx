@@ -1,3 +1,5 @@
+'use client';
+
 import { TSidebarProp } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,7 +7,7 @@ import React from 'react';
 
 const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
   const normalLink =
-    'group flex gap-[6px] rounded-md cursor-pointer p-[8px] items-center text-neutral-600 hover:bg-[#106FA4] hover:text-white';
+    'group flex gap-[6px] rounded-md cursor-pointer p-[8px] items-center text-neutral-600 hover:bg-primary hover:text-white';
   return (
     <div className="flex justify-normal w-full">
       <aside
@@ -16,7 +18,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
         <div className="h-screen px-3 py-4  text-black bg-white">
           <div>
             <Image
-              src="./assets/ic-logo.svg"
+              src="/assets/ic-logo.svg"
               alt="logo"
               className="m-6"
               width={100}
