@@ -10,7 +10,7 @@ export default function DashboardPage() {
   return (
     <BaseLayout>
       <div className="absolute top-[15%] ml-10">
-        <div className="w-[1180px] mt-5 mb-16 mr-6">
+        <div className="w-[1165px] mt-5 mb-16">
           <div className="flex justify-between">
             <Card amount={2500} title="Pendaftar" />
             <Card amount={1000} title="Mahasiswa" />
