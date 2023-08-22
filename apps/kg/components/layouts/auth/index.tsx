@@ -1,14 +1,6 @@
-import {
-  FC,
-  ReactElement,
-  useEffect,
-  useState,
-  useRef,
-  Fragment,
-  Suspense,
-} from 'react';
+import { FC, ReactElement, useState } from 'react';
 import Image from 'next/image';
-// import { TAuthLayoutProps } from './types';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -16,8 +8,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import './index.module.css';
 
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { TAuthLayoutProps } from '../../../types';
 
 const slides = [
@@ -42,10 +35,8 @@ const slides = [
 ];
 
 const SliderLayout: FC = () => {
-  const [slider, setSlider] = useState(0);
-
   return (
-    <div className="sm:flex hidden justify-center items-center lg:w-1/2 lg:h-screen relative w-full">
+    <div className="sm:flex hidden justify-center items-center lg:w-1/2  relative w-full">
       <Image
         src={'/images/logo_nav.svg'}
         width={120}
@@ -108,10 +99,10 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
   return (
     <section
       className={`w-full bg-neutral-100 flex-row justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 ${
-        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen items-center'
+        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen'
       }`}
     >
-      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg flex-col  lg:flex-row">
+      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg flex-col  lg:flex-row mx-auto">
         <SliderLayout />
         <div className="flex-col md:gap-y-[57px] gap-y-6 items-center justify-center p-6 flex h-full w-full lg:w-1/2">
           <Image

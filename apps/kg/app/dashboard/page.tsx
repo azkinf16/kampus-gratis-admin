@@ -1,9 +1,10 @@
 'use client';
 
+import { DashboardModule } from '../../modules';
 import { NextPage } from 'next';
 
 const DashboardPage: NextPage = () => {
-  return <div>Dashboard Pagee</div>;
+  return <DashboardModule />;
 };
 
 export default DashboardPage;
