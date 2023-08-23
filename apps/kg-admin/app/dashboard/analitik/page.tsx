@@ -8,10 +8,10 @@ import React from 'react';
 const AnalitikPage = () => {
   return (
     <BaseLayout>
-      <div className="absolute top-[15%] ml-10">
-        <div className="w-[1165px] mt-5 mb-16">
+      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+        <div className="w-max-full mt-5 mb-16 pr-10">
           <h1 className="text-center font-bold mb-7 ">Analitik</h1>
-          <div className="grid grid-cols-3 justify-between gap-9">
+          <div className="grid grid-cols-3 justify-between gap-10">
             <Card amount={2500} title="Pendaftar" logo={<IconUser />} />
             <Card amount={1000} title="Mahasiswa" logo={<IconMultiUser />} />
             <Card amount={50} title="Mata Kuliah" logo={<IconBoard />} />

@@ -12,7 +12,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
     <div className="flex justify-normal w-full">
       <aside
         id="separator-sidebar"
-        className="absolute lg:relative top-0 left-0 z-50 lg:sm:translate-x-0 w-80 h-full transition-transform text-black bg-white"
+        className="fixed lg:relative top-0 left-0 z-50 lg:sm:translate-x-0 w-[250px] h-full transition-transform text-black bg-white"
         aria-label="Sidebar"
       >
         <div className="h-screen px-3 py-4  text-black bg-white">
@@ -31,7 +31,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
                 <div key={i} className="my-[12px]">
                   <Link className={normalLink} href={x.path}>
                     <span className="p-1">{x.icon}</span>
-                    <span>{x.title}</span>
+                    <span className="text-md">{x.title}</span>
                   </Link>
                 </div>
               );
@@ -39,7 +39,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
           </div>
         </div>
       </aside>
-      <div className="bg-white shadow-lg w-full h-[72px]">
+      <div className="bg-white shadow-lg w-[calc(100%-250px)] h-[72px]">
         <div className="pr-5 pt-3">{children}</div>
       </div>
     </div>

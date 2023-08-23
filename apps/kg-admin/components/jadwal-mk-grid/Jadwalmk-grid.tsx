@@ -8,8 +8,8 @@ export const JadwalMkGrid = () => {
         <Image
           src="/assets/pic-jmk.png"
           alt="pic-jmk"
-          width={300}
-          height={300}
+          width={280}
+          height={280}
         />
       </div>
       <div className="flex flex-col items-center justify-center">

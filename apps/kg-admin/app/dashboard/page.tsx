@@ -13,9 +13,9 @@ import React from 'react';
 export default function DashboardPage() {
   return (
     <BaseLayout>
-      <div className="absolute top-[15%] ml-10">
-        <div className="w-[1165px] mt-5 mb-16">
-          <div className="flex justify-between">
+      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+        <div className="max-w-full mt-5 mb-16 pr-10">
+          <div className="flex justify-between gap-10">
             <Card amount={2500} title="Pendaftar" logo={<IconUser />} />
             <Card amount={1000} title="Mahasiswa" logo={<IconMultiUser />} />
             <Card amount={50} title="Mata Kuliah" logo={<IconBoard />} />
@@ -30,7 +30,7 @@ export default function DashboardPage() {
           <div className="mt-10 mb-12">
             <h1 className="font-bold text-lg mb-3">Mata Kuliah</h1>
             <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <div className="flex justify-between py-10 px-14">
+              <div className="flex justify-between py-10 px-14 gap-10">
                 <Matakuliah />
                 <Matakuliah />
               </div>
@@ -45,7 +45,7 @@ export default function DashboardPage() {
 
           <h1 className="font-bold text-lg mb-3">Jadwal Mata Kuliah</h1>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-            <div className="flex justify-between py-14 px-24 flex-wrap gap-12">
+            <div className="grid grid-cols-2 py-14 px-20 gap-12">
               <JadwalMkFlex />
               <JadwalMkFlex />
               <JadwalMkFlex />
