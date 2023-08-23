@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import './index.module.css';
+import './index.css';
 
 import { Autoplay, Pagination } from 'swiper/modules';
 import { TAuthLayoutProps } from '../../../types';
