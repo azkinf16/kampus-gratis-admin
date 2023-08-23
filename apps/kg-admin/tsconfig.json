@@ -16,9 +16,23 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./",
+    "paths": {
+      "@/components/*": ["./components/*"],
+      "@/modules/*": ["./modules/*"],
+      "@/types": ["./types"]
+    },
     "types": ["jest", "node"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "../../apps/kg-admin/.next/types/**/*.ts",
+    "../../dist/apps/kg-admin/.next/types/**/*.ts",
+    "next-env.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "jest.config.ts",
