@@ -4,6 +4,7 @@ export type TChoiceArticleCardProps = {
   title: string;
   date?: string;
   tag: string;
+  bg: string;
   views?: string;
   src: string | StaticImageData;
 };

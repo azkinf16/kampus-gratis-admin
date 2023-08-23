@@ -57,10 +57,10 @@ const PartnerSection = () => {
         spaceBetween={30}
         centeredSlides={ screenWidth === 2 ? true : false}
         autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
+          delay: 500,
+          disableOnInteraction: true,
         }}
-       
+        rewind={true}
         modules={[Autoplay]}
         className="flex justify-center gap-3 mt-6 items-center min-h-fit"
       >
@@ -80,92 +80,7 @@ const PartnerSection = () => {
           ))}
 
       </Swiper>
-    {/* {screenWidth === 'sm' && <Swiper
-      slidesPerView={2}
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-        }}
-       
-        modules={[Autoplay]}
-        className="flex justify-center gap-3 mt-6 items-center min-h-fit"
-      >
-          {_partner_logo.map((logo, key) => (
-            <SwiperSlide className="" key={key}>
-            <Image
-              key={key}
-              src={logo}
-              width={106}
-              height={105}
-              alt="Partner Logo"
-              loading="lazy"
-              priority={false}
-              quality={90}
-            />
-            </SwiperSlide>
-          ))}
 
-      </Swiper>}
-
-      {screenWidth === 'md' && <Swiper
-      slidesPerView={3}
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-        }}
-       
-        modules={[Autoplay]}
-        className="flex justify-center gap-3 mt-6 items-center min-h-fit"
-      >
-          {_partner_logo.map((logo, key) => (
-            <SwiperSlide className="" key={key}>
-            <Image
-              key={key}
-              src={logo}
-              width={106}
-              height={105}
-              alt="Partner Logo"
-              loading="lazy"
-              priority={false}
-              quality={90}
-            />
-            </SwiperSlide>
-          ))}
-
-      </Swiper>}
-
-      {screenWidth === 'lg' && <Swiper
-      slidesPerView={5}
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-        }}
-       
-        modules={[Autoplay]}
-        className="flex justify-center gap-3 mt-6 items-center min-h-fit"
-      >
-          {_partner_logo.map((logo, key) => (
-            <SwiperSlide className="" key={key}>
-            <Image
-              key={key}
-              src={logo}
-              width={106}
-              height={105}
-              alt="Partner Logo"
-              loading="lazy"
-              priority={false}
-              quality={90}
-            />
-            </SwiperSlide>
-          ))}
-
-      </Swiper>} */}
      
       
     </div>

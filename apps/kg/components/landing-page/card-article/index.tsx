@@ -1,6 +1,7 @@
 import { FC, ReactElement } from "react";
 import Image from "next/image";
 import { TChoiceArticleCardProps } from "./types";
+import { Button } from "@kampus-gratis/components/atoms";
 
 export const ChoiceArticleCard: FC<TChoiceArticleCardProps> = (props): ReactElement => {
   return (
@@ -12,12 +13,12 @@ export const ChoiceArticleCard: FC<TChoiceArticleCardProps> = (props): ReactElem
         height={208}
         loading={"lazy"}
         priority={false}
-        className="w-auto h-auto"
+        className="w-auto h-auto p-4"
       />
-      <div className="flex flex-col p-[10px]">
+      <div className="flex flex-col p-[10px] px-4">
         <div className="flex flex-col justify-between gap-y-6">
-          <div className="flex justify-between w-full">
-            <p className="text[12px] bg-primary-100 p-1 w-auto rounded-md"># {props.tag}</p>
+          <div className="flex justify-between w-full ">
+            <p className={`text[12px] bg-[${props.bg}] font-semibold px-3  w-auto rounded-md`}>#{props.tag}</p>
             <p className="flex text-[12px] text-neutral-500 justify-center items-center">
               {props.date}
             </p>
@@ -27,9 +28,9 @@ export const ChoiceArticleCard: FC<TChoiceArticleCardProps> = (props): ReactElem
           </div>
         </div>
       </div>
-      <div className="flex justify-between px-4 py-2">
+      <div className="flex justify-between px-4 pt-4 pb-6">
         <p className="flex text-[12px] text-neutral-500 justify-end items-end">172 views</p>
-        <Image
+        <Button type="button" className="bg-gray-100 p-2 rounded-md"> <Image
          src="icons/article-save.svg"
          alt={"card-landing"}
          width={30}
@@ -37,7 +38,7 @@ export const ChoiceArticleCard: FC<TChoiceArticleCardProps> = (props): ReactElem
          loading={"lazy"}
          priority={false}
          className="w-auto h-auto"
-        />
+        /></Button>
       </div>
     </section>
   );
