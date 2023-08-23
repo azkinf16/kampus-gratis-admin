@@ -112,6 +112,9 @@ module.exports = {
         orange: {
           base: '#FAB317',
         },
+        red: {
+          base: '#ED3768',
+        },
       },
     },
   },
