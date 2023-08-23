@@ -5,7 +5,7 @@ npx create-nx-workspace@latest --preset=next.
 
 Adding Next.js to an existing Nx workspace
 yarn add --dev @nx/next
-
+w
 Creating Applications
 nx g @nx/next:app admin-kampus-gratis
 

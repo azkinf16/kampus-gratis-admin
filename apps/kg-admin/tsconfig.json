@@ -16,6 +16,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./",
+    "paths": {
+      "@/components/*": ["./components/*"],
+      "@/modules/*": ["./modules/*"],
+      "@/types": ["./types"]
+    },
     "types": ["jest", "node"]
   },
   "include": [
