@@ -18,4 +18,9 @@ export type TBaseLayout = {
 export type TCard = {
   amount: number;
   title: string;
+  logo: React.ReactElement;
+};
+
+export type TJadwalMK = {
+  containerStyle: string;
 };
