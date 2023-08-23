@@ -1,3 +1,5 @@
+'use client';
+
 import { TFilteredCalendar } from '../../types';
 import { selector } from 'recoil';
 import { dashboardDataState } from '../atoms/dashboard';

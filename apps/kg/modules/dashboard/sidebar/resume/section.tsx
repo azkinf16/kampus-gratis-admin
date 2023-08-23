@@ -9,6 +9,7 @@ export const ResumeSection: FC = () => {
   const { getDashboardData } = useDashboardData();
 
   const profile = getDashboardData?.profile;
+  //   console.log(getDashboardData);
 
   const ItemAmounts = [
     profile?.finished_subjects,
@@ -26,7 +27,7 @@ export const ResumeSection: FC = () => {
         <h2 className="text-white text-sm font-semibold my-2">
           {profile?.role === 'STUDENT' ? profile?.major : '-'}
         </h2>
-        <p className="flex flex-col text-sm mb-2">
+        <div className="flex flex-col text-sm mb-2">
           <div className="flex mb-1">
             <span className="text-white/75">Kamu mengambil</span>
             <span className="text-white border-b-2 border-white/70 decoration-white/70 mx-1">
@@ -35,7 +36,7 @@ export const ResumeSection: FC = () => {
             </span>
           </div>
           <span className="text-white/75">Pada semester ini</span>
-        </p>
+        </div>
         <div className="absolute -bottom-[216px]  grid grid-cols-2 gap-2 lg:gap-4">
           {resumeItems.map(({ src, title }, index) => {
             return (

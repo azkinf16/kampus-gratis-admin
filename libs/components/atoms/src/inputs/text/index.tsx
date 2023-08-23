@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, ReactElement, useState } from 'react';
 import { FieldValues, useController } from 'react-hook-form';
 import { TTextFieldProps } from './types';

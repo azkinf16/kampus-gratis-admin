@@ -1,3 +1,5 @@
+'use client';
+
 import { TDashboardItem, TProgress } from '../../types';
 import { atom } from 'recoil';
 

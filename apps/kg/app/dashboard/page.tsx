@@ -1,5 +1,3 @@
-'use client';
-
 import { DashboardModule } from '../../modules';
 import { NextPage } from 'next';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { dashboardDataState } from '../../recoil';
 import { TDashboardResponse, TuseDashboardData } from '../../types';
