@@ -1,6 +1,9 @@
 'use client';
 
 import { Card } from '@/components/card/Card';
+import { IconBoard } from '@/components/icons/ic-board';
+import { IconMultiUser } from '@/components/icons/ic-multiuser';
+import { IconUser } from '@/components/icons/ic-user';
 import { JadwalMkFlex } from '@/components/jadwal-mk-flex/Jadwalmk-flex';
 import Matakuliah from '@/components/mk/Matakuliah';
 import BaseLayout from '@/modules/base/BaseLayout';
@@ -13,9 +16,9 @@ export default function DashboardPage() {
       <div className="absolute top-[15%] ml-10">
         <div className="w-[1165px] mt-5 mb-16">
           <div className="flex justify-between">
-            <Card amount={2500} title="Pendaftar" />
-            <Card amount={1000} title="Mahasiswa" />
-            <Card amount={50} title="Mata Kuliah" />
+            <Card amount={2500} title="Pendaftar" logo={<IconUser />} />
+            <Card amount={1000} title="Mahasiswa" logo={<IconMultiUser />} />
+            <Card amount={50} title="Mata Kuliah" logo={<IconBoard />} />
           </div>
 
           <div className="flex justify-end my-6 font-bold">

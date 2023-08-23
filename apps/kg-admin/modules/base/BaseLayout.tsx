@@ -77,7 +77,7 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       <div className="flex justify-end">
         <div className="flex flex-col justify-start font-medium">
           <p>Welcome,</p>
-          <p>Admin 01</p>
+          <p className="text-sm">Admin 01</p>
         </div>
 
         <IconAvatar />
