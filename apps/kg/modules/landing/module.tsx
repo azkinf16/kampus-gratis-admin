@@ -9,6 +9,7 @@ import PartnerSection from './partner/section'
 import ArticleSection from './article/section'
 import { TestimonySection } from './testimony'
 import BannerSection from './banner/section'
+import InvitationSection from './invitation/section'
 
 
 export const LandingPageModules: FC = () => {
@@ -24,6 +25,7 @@ export const LandingPageModules: FC = () => {
     <FacultySection/>
     <TestimonySection/>
     <ArticleSection/>
+    <InvitationSection/>
     </>
   )
 }
