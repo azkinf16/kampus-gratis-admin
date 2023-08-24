@@ -1,7 +1,10 @@
 import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { loginByGoogleRequest, loginRequest } from '../../../../hooks';
+import {
+  loginByGoogleRequest,
+  loginRequest,
+} from '../../../../hooks/authentications/request';
 import { TLoginData } from '../../../../types';
 export const authOptions: NextAuthOptions = {
   pages: {

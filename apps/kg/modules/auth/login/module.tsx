@@ -18,7 +18,7 @@ import { signIn } from 'next-auth/react';
 import { lazily } from 'react-lazily';
 import { ErrorBoundary } from 'react-error-boundary';
 import { validationSchemaLogin } from '../../../config';
-import { usePopupForgotPass } from '../../../hooks';
+import { usePopupForgotPass } from '../../../hooks/authentications/hook';
 import { ForgotModule } from '../forgot';
 
 const { AuthLayout } = lazily(() => import('../../../components'));
