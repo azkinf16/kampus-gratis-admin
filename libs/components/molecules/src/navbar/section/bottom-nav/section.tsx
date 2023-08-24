@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { FC, ReactElement } from "react";
-import { TBottomNavProps } from "./types";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { FC, ReactElement } from 'react';
+import { TBottomNavProps } from './types';
+import { useRouter } from 'next/navigation';
 
 export const BottomNav: FC<TBottomNavProps> = ({
   bottomNavItemStyle,
@@ -16,7 +16,9 @@ export const BottomNav: FC<TBottomNavProps> = ({
             href={item.link}
             key={index}
             className={`${
-              router.pathname === item.link ? bottomNavItemStyle : "hover:text-version3-500 "
+              router.pathname === item.link
+                ? bottomNavItemStyle
+                : 'hover:text-version3-500 '
             }  px-4 py-2.5 text-sm transition-all ease-in-out duration-300`}
           >
             <p>{item.name}</p>

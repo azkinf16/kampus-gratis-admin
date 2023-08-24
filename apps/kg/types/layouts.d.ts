@@ -15,3 +15,9 @@ export type TAuthLayoutProps = {
 export type TAuthCarouselProps = {
   carouselDotColor?: string;
 };
+
+export type TBaseLayoutProps = {
+  children: ReactNode;
+  title?: string;
+  addSearch?: boolean;
+};

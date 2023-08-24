@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, ReactElement } from 'react';
 import NextImage from 'next/image';
 import { TNavbarProps } from '../../types';
@@ -11,7 +13,7 @@ import {
   NavbarNotification,
   NavbarUserMenu,
 } from './dropdown-menu';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { SearchInput } from '@kampus-gratis/components/atoms';
 import { useRecoilState } from 'recoil';
 import { navSearchKeyword } from './store';
@@ -47,7 +49,13 @@ export const TopNav: FC<TNavbarProps> = ({
             priority
           />
         </Link>
-        {session && props?.bottomNavRules?.includes(router.pathname) && (
+        {/* {session && props?.bottomNavRules?.includes(router.pathname) && (
+          <NavMenuDropDown
+            bottomNavItems={props.bottomNavItems}
+            bottomNavItemStyle={props.bottomNavItemStyle}
+          />
+        )} */}
+        {session && (
           <NavMenuDropDown
             bottomNavItems={props.bottomNavItems}
             bottomNavItemStyle={props.bottomNavItemStyle}
