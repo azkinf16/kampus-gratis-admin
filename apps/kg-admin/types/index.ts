@@ -39,6 +39,7 @@ export interface TButton {
   title: string;
   buttonStyle: string;
   plus: string;
+  onClick: () => void;
 }
 
 export interface TSearchbar {
@@ -46,5 +47,10 @@ export interface TSearchbar {
 }
 
 export interface TTable {
+  children: ReactNode;
+}
+
+export interface TModal {
+  isVisible: boolean;
   children: ReactNode;
 }

@@ -7,7 +7,10 @@ import Button from '@/components/button/Button';
 import Searchbar from '@/components/searchbar/Searchbar';
 import axios from 'axios';
 import { UserData } from '@/types';
+import Modal from '@/components/modal/Modal';
+import Image from 'next/image';
 export default function PengajuanPage() {
+  const [showModal, setShowModal] = useState(false);
   const [users, setUsers] = useState<UserData[]>([
     {
       id: 0,
@@ -42,9 +45,22 @@ export default function PengajuanPage() {
                 plus="&#43;"
                 title="Buat KRS Mahasiswa"
                 buttonStyle="flex items-center justify-center bg-primary w-[200px] rounded text-white"
+                onClick={() => setShowModal(true)}
               />
               <Searchbar placeholder="Cari Mahasiswa" />
             </div>
+            <Modal isVisible={showModal}>
+              <div className="flex flex-col justify-center items-center gap-5">
+                <Image src="/assets/ic-avatar.svg" alt='img' width={100} height={100}/>
+                <h1 className='font-semibold'>Konfirmasi</h1>
+                <p className='font-light'>Apakah anda ingin menghapus Lowongan Pekerjaan ini?</p>
+                <div className='w-full flex flex-between gap-5'>
+                  <Button title='Ya, Hapus' plus='' buttonStyle='flex items-center justify-center border-2 bg-transparent border-primary w-full h-[40px] rounded text-primary' onClick={() => setShowModal(false)}/>
+                  <Button title='Tidak, Terimakasih' plus='' buttonStyle='flex items-center justify-center bg-primary w-full h-[40px] rounded text-white' onClick={() => setShowModal(false)}/>
+                </div>
+
+              </div>
+            </Modal>
           </div>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3">
             <Table>

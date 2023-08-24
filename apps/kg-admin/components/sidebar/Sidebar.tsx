@@ -12,7 +12,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
     <div className="flex justify-normal w-full">
       <aside
         id="separator-sidebar"
-        className="fixed lg:relative top-0 left-0 z-50 lg:sm:translate-x-0 w-[250px] h-full transition-transform text-black bg-white"
+        className="fixed lg:relative top-0 left-0 z-50 lg:sm:translate-x-0 w-[250px] h-full transition-transform text-black"
         aria-label="Sidebar"
       >
         <div className="h-screen px-3 py-4  text-black bg-white">

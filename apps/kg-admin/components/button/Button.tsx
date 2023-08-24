@@ -1,9 +1,9 @@
 import { TButton } from '@/types';
 import React from 'react';
 
-const Button = ({ title, buttonStyle, plus }: TButton) => {
+const Button = ({ title, buttonStyle, plus, onClick }: TButton) => {
   return (
-    <button className={buttonStyle}>
+    <button className={buttonStyle} onClick={onClick}>
       <span className="mr-1 text-xl font-medium">{plus}</span>
       {title}
     </button>
