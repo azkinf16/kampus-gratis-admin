@@ -31,8 +31,8 @@ export default function PengajuanPage() {
   }, []);
   return (
     <BaseLayout>
-      <div className="absolute top-[15%] ml-10">
-        <div className="w-[1165px] mt-5 mb-16">
+      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+        <div className="w-max-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
             <p className="flex justify-center place-items-center font-semibold">
               Program Studi Akuntansi
