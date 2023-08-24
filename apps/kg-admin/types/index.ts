@@ -33,9 +33,13 @@ export interface UserData {
 export interface TButton {
   title: string;
   buttonStyle: string;
-  plus: string
+  plus: string;
 }
 
 export interface TSearchbar {
   placeholder: string;
+}
+
+export interface TTable {
+  children: ReactNode;
 }

@@ -1,31 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-// import { users } from './data';
-import axios from 'axios';
-import { UserData } from '@/types';
 
-const Table = () => {
-  const [users, setUsers] = useState<UserData[]>([
-    {
-      id: 0,
-      name: { firstname: '', lastname: '' },
-      email: '',
-      username: '',
-    },
-  ]);
-  const GetData = async () => {
-    try {
-      const response = await axios.get('https://fakestoreapi.com/users');
+import React from 'react';
+import { TTable } from '@/types';
 
-      setUsers(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    GetData();
-  }, []);
+const Table = ({ children }: TTable) => {
   return (
     <div className="rounded-lg">
       <div className="p-4">
@@ -38,16 +16,8 @@ const Table = () => {
             <th>KRS</th>
             <th>Action</th>
           </tr>
-          {users.map((user: UserData) => (
-            <tr key={user.id} className="bg-white">
-              <td>{user.id}</td>
-              <td>{user.name?.firstname}</td>
-              <td>{user.name?.lastname}</td>
-              <td>{user.email}</td>
-              <td>{user.email}</td>
-              <td>{user.email}</td>
-            </tr>
-          ))}
+
+          {children}
         </table>
       </div>
     </div>
@@ -55,6 +25,3 @@ const Table = () => {
 };
 
 export default Table;
-// function setItems(drinks: any) {
-//   throw new Error('Function not implemented.');
-// }
