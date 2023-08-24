@@ -24,3 +24,21 @@ export type TCard = {
 export type TJadwalMK = {
   containerStyle: string;
 };
+interface Username {
+  firstname: string;
+  lastname: string;
+}
+export interface UserData {
+  id?: number;
+  name?: Username;
+  email?: string;
+  username?: string;
+}
+
+export interface TButton {
+  title: string;
+}
+
+export interface TSearchbar {
+  placeholder: string;
+}

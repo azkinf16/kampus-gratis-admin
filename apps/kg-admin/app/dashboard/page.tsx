@@ -1,5 +1,3 @@
-'use client';
-
 import { Card } from '@/components/card/Card';
 import { IconBoard } from '@/components/icons/ic-board';
 import { IconMultiUser } from '@/components/icons/ic-multiuser';
