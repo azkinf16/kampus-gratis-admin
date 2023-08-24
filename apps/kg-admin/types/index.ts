@@ -37,6 +37,8 @@ export interface UserData {
 
 export interface TButton {
   title: string;
+  buttonStyle: string;
+  plus: string
 }
 
 export interface TSearchbar {

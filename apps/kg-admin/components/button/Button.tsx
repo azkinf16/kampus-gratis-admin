@@ -1,9 +1,12 @@
 import { TButton } from '@/types';
 import React from 'react';
 
-const Button = ({ title }: TButton) => {
+const Button = ({ title, buttonStyle, plus }: TButton) => {
   return (
-    <button className="bg-primary w-[200px] rounded text-white">{title}</button>
+    <button className={buttonStyle}>
+      <span className="mr-1 text-xl font-medium">{plus}</span>
+      {title}
+    </button>
   );
 };
 
