@@ -21,7 +21,7 @@ import { validationSchemaLogin } from '../../../config';
 import { usePopupForgotPass } from '../../../hooks/authentications/hook';
 import { ForgotModule } from '../forgot';
 
-const { AuthLayout } = lazily(() => import('../../../components'));
+const { AuthLayout } = lazily(() => import('../../../components/layouts/auth'));
 
 type ValidationSchema = z.infer<typeof validationSchemaLogin>;
 

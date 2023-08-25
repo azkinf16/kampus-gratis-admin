@@ -15,7 +15,7 @@ import {
   REGISTER,
   TMetaItem,
 } from '@kampus-gratis/utils';
-import { api } from '../../config';
+import { api } from '../../config/api/apiConfig';
 import { signOut } from 'next-auth/react';
 
 export const registerRequest = async (

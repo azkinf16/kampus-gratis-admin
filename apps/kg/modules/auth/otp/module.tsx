@@ -6,7 +6,7 @@ import {
   useOtpVerify,
   usePopupOtp,
 } from '../../../hooks/authentications/hook';
-import { TOTPProps } from '../../../types';
+import { TOTPProps } from '../../../types/authentications';
 import { FC, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { PopupModal } from '@kampus-gratis/components/molecules';

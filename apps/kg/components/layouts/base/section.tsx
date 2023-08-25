@@ -1,6 +1,6 @@
 'use client';
 
-// import { logoutRequest } from "../../../auth/logout/api";
+import { logoutRequest } from '../../../hooks/authentications/request';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FC, Fragment, ReactElement } from 'react';
@@ -9,7 +9,6 @@ import { FcDocument } from 'react-icons/fc';
 import { MdDashboard, MdLogout } from 'react-icons/md';
 
 import { TBaseLayoutProps } from './types';
-import Head from 'next/head';
 import { DiscussionRoomIcon } from './assets/icons/ic-disccussion-room';
 import { CareerPlanIcon } from './assets/icons/ic-career-plan';
 import { ConsultationIcon } from './assets/icons/ic-consultation';
@@ -64,15 +63,15 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
       icon: <FcDocument size={20} className="text-success-base" />,
       onClick: () => router.push('/administrasi'),
     },
-    // {
-    //   name: "Logout",
-    //   icon: <MdLogout size={20} className="text-error-base" />,
-    //   onClick: async () => {
-    //     await logoutRequest({
-    //       refresh_token: data?.user?.token?.refresh_token as string,
-    //     });
-    //   },
-    // },
+    {
+      name: 'Logout',
+      icon: <MdLogout size={20} className="text-error-base" />,
+      onClick: async () => {
+        await logoutRequest({
+          refresh_token: data?.user?.token?.refresh_token as string,
+        });
+      },
+    },
   ];
 
   const _bottom_nav_items = [

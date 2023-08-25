@@ -9,6 +9,7 @@ import { TLoginData } from '../../../../types';
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/login',
+    signOut: '/auth/logout',
   },
   session: {
     maxAge: 2 * 60 * 60,

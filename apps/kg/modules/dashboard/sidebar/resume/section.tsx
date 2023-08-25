@@ -3,25 +3,10 @@
 import Image from 'next/image';
 import { useDashboardData } from '../../../../hooks/dashboard/hook';
 import { FC } from 'react';
-import { resumeItems } from '../../../../utils';
-import { api } from '../../../../config/api/apiConfig';
-import { useQuery } from '@tanstack/react-query';
-
-const getDashboard = async () => {
-  const res = await api.get('/dashboard');
-
-  console.log(res);
-
-  return res.data;
-};
+import { resumeItems } from '../../../../utils/constantDashboard';
 
 export const ResumeSection: FC = () => {
   const { getDashboardData } = useDashboardData();
-
-  // console.log(getDashboardData);
-  const { data } = useQuery(['dashboard'], getDashboard);
-
-  // console.log(data);
 
   const profile = getDashboardData?.profile;
   //   console.log(getDashboardData);
