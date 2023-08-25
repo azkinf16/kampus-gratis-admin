@@ -2,17 +2,18 @@ import { FC, Fragment, ReactElement } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { TBottomNavProps } from '../../bottom-nav';
 import { MdOutlineNavigateNext } from 'react-icons/md';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export const NavMenuDropDown: FC<TBottomNavProps> = ({
   bottomNavItems,
   bottomNavItemStyle,
 }): ReactElement => {
-  const router = useRouter();
+  // const router = useRouter();
+  const pathname = usePathname();
 
-  const currentPage = bottomNavItems.filter((item) => {
-    return router.pathname.includes(item.link);
+  const currentPage = bottomNavItems?.filter((item) => {
+    return pathname.includes(item.link);
   });
 
   return (
@@ -38,7 +39,7 @@ export const NavMenuDropDown: FC<TBottomNavProps> = ({
                 <Link href={item.link}>
                   <span
                     className={`block py-3 px-3  mx-2 text-neutral-600 ${
-                      router.pathname === item.link
+                      pathname === item.link
                         ? bottomNavItemStyle
                         : 'hover:text-version3-500'
                     }`}
