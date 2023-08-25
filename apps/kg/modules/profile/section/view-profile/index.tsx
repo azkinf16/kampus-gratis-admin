@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useProfile, useProfileComplete } from '../../../../hooks/profile/hook';
 import { FC, ReactElement } from 'react';
 import { AiTwotoneCopy, AiTwotoneLike } from 'react-icons/ai';
@@ -7,6 +8,7 @@ import {
   BsDot,
   BsFillChatLeftFill,
 } from 'react-icons/bs';
+import Avatar from 'react-avatar';
 // import { useProfile } from "../profile-edit/hooks";
 
 export const ViewProfileModule: FC = (): ReactElement => {
@@ -22,7 +24,23 @@ export const ViewProfileModule: FC = (): ReactElement => {
       {/* Hero Section */}
       <section className="relative w-full">
         <figure className="w-full min-h-[260px] bg-neutral-200 rounded-md shadow-sm"></figure>
-        <figure className="w-[120px] h-[120px] rounded-full bg-neutral-300 border-4 border-neutral-50 absolute -bottom-12 left-0"></figure>
+        <figure className="w-[120px] h-[120px] rounded-full bg-neutral-300 border-4 border-neutral-50 absolute -bottom-12 left-0">
+          {completeData?.data?.avatar !== null ? (
+            <Image
+              src={completeData?.data?.avatar}
+              width={120}
+              height={120}
+              alt="Profile"
+            />
+          ) : (
+            <Avatar
+              name={userData?.full_name}
+              color="#F26800"
+              className="min-w-[120px] min-h-[120px]"
+              round
+            />
+          )}
+        </figure>
       </section>
       {/* Profile Info */}
       <section className="w-full pl-2 mt-16 capitalize">
