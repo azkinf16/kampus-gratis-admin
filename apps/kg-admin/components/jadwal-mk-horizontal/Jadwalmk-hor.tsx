@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-export const JadwalMkFlex = () => {
+export const JadwalMkHor = () => {
   return (
     <div className="flex justify-evenly">
       <Image src="/assets/pic-jmk.png" alt="pic-jmk" width={200} height={200} />

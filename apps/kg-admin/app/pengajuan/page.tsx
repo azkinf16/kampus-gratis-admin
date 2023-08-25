@@ -51,19 +51,43 @@ export default function PengajuanPage() {
             </div>
             <Modal isVisible={showModal}>
               <div className="flex flex-col justify-center items-center gap-5">
-                <Image src="/assets/ic-avatar.svg" alt='img' width={100} height={100}/>
-                <h1 className='font-semibold'>Konfirmasi</h1>
-                <p className='font-light'>Apakah anda ingin menghapus Lowongan Pekerjaan ini?</p>
-                <div className='w-full flex flex-between gap-5'>
-                  <Button title='Ya, Hapus' plus='' buttonStyle='flex items-center justify-center border-2 bg-transparent border-primary w-full h-[40px] rounded text-primary' onClick={() => setShowModal(false)}/>
-                  <Button title='Tidak, Terimakasih' plus='' buttonStyle='flex items-center justify-center bg-primary w-full h-[40px] rounded text-white' onClick={() => setShowModal(false)}/>
+                <Image
+                  src="/assets/ic-avatar.svg"
+                  alt="img"
+                  width={100}
+                  height={100}
+                />
+                <h1 className="font-semibold">Konfirmasi</h1>
+                <p className="font-light">
+                  Apakah anda ingin menghapus Lowongan Pekerjaan ini?
+                </p>
+                <div className="w-full flex flex-between gap-5">
+                  <Button
+                    title="Ya, Hapus"
+                    plus=""
+                    buttonStyle="flex items-center justify-center border-2 bg-transparent border-primary w-full h-[40px] rounded text-primary"
+                    onClick={() => setShowModal(false)}
+                  />
+                  <Button
+                    title="Tidak, Terimakasih"
+                    plus=""
+                    buttonStyle="flex items-center justify-center bg-primary w-full h-[40px] rounded text-white"
+                    onClick={() => setShowModal(false)}
+                  />
                 </div>
-
               </div>
             </Modal>
           </div>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3">
             <Table>
+              <tr>
+                <th>No</th>
+                <th>Nama Mahasiswa</th>
+                <th>NIM</th>
+                <th>Status KRS</th>
+                <th>KRS</th>
+                <th>Action</th>
+              </tr>
               {users.map((user: UserData) => (
                 <tr key={user.id} className="bg-white">
                   <td>{user.id}</td>

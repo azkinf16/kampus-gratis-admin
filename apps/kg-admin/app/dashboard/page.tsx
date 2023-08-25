@@ -2,7 +2,7 @@ import { Card } from '@/components/card/Card';
 import { IconBoard } from '@/components/icons/ic-board';
 import { IconMultiUser } from '@/components/icons/ic-multiuser';
 import { IconUser } from '@/components/icons/ic-user';
-import { JadwalMkFlex } from '@/components/jadwal-mk-flex/Jadwalmk-flex';
+import { JadwalMkHor } from '@/components/jadwal-mk-horizontal/Jadwalmk-hor';
 import Matakuliah from '@/components/mk/Matakuliah';
 import BaseLayout from '@/modules/base/BaseLayout';
 import Link from 'next/link';
@@ -44,12 +44,12 @@ export default function DashboardPage() {
           <h1 className="font-bold text-lg mb-3">Jadwal Mata Kuliah</h1>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className="grid grid-cols-2 py-14 px-20 gap-12">
-              <JadwalMkFlex />
-              <JadwalMkFlex />
-              <JadwalMkFlex />
-              <JadwalMkFlex />
-              <JadwalMkFlex />
-              <JadwalMkFlex />
+              <JadwalMkHor />
+              <JadwalMkHor />
+              <JadwalMkHor />
+              <JadwalMkHor />
+              <JadwalMkHor />
+              <JadwalMkHor />
             </div>
 
             <div className="flex justify-end pt-6 pb-10 pr-12 font-bold">

@@ -1,4 +1,4 @@
-import { JadwalMkGrid } from '@/components/jadwal-mk-grid/Jadwalmk-grid';
+import { JadwalMkVert } from '@/components/jadwal-mk-vertical/Jadwalmk-ver';
 import BaseLayout from '@/modules/base/BaseLayout';
 import React from 'react';
 
@@ -11,25 +11,25 @@ const EventKampusPage = () => {
           <h2 className="font-semibold my-9">Selasa, 28 Februari 2023</h2>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className="grid grid-cols-3 gap-5 px-14 py-10">
-              <JadwalMkGrid />
-              <JadwalMkGrid />
-              <JadwalMkGrid />
+              <JadwalMkVert />
+              <JadwalMkVert />
+              <JadwalMkVert />
             </div>
           </div>
           <h2 className="font-semibold my-9">Selasa, 28 Februari 2023</h2>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className="grid grid-cols-3 gap-5 flex-wrap px-14 py-10">
-              <JadwalMkGrid />
-              <JadwalMkGrid />
-              <JadwalMkGrid />
+              <JadwalMkVert />
+              <JadwalMkVert />
+              <JadwalMkVert />
             </div>
           </div>
           <h2 className="font-semibold my-9">Selasa, 28 Februari 2023</h2>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className="grid grid-cols-3 gap-5 flex-wrap px-14 py-10">
-              <JadwalMkGrid />
-              <JadwalMkGrid />
-              <JadwalMkGrid />
+              <JadwalMkVert />
+              <JadwalMkVert />
+              <JadwalMkVert />
             </div>
           </div>
         </div>

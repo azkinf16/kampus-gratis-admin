@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-export const JadwalMkGrid = () => {
+export const JadwalMkVert = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-center">
