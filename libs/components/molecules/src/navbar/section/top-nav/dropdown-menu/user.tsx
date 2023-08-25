@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { TNavbarUserProps } from './typed';
+import Avatar from 'react-avatar';
 import Image from 'next/image';
 
 export const NavbarUserMenu: FC<TNavbarUserProps> = ({
@@ -11,13 +12,22 @@ export const NavbarUserMenu: FC<TNavbarUserProps> = ({
     <Menu as="div" className="hidden lg:inline-block h-9 w-9 z-50">
       <Menu.Button>
         <div className="bg-neutral-100  flex items-center justify-center  overflow-hidden rounded-md h-9 w-9 cursor-pointer group">
-          <Image
-            src={userData.avatar}
-            alt={'user avatar'}
-            width={36}
-            height={36}
-            className="bg-white h-9 w-9  flex text-neutral-600 items-center justify-center font-[700]"
-          />
+          {userData?.avatar ? (
+            <Image
+              src={userData.avatar}
+              alt={'user avatar'}
+              width={36}
+              height={36}
+              className="bg-white h-9 w-9  flex text-neutral-600 items-center justify-center font-[700]"
+            />
+          ) : (
+            <Avatar
+              name={userData?.full_name}
+              color="#F26800"
+              className=" w-[36px] rounded-md h-[36px]"
+              size="36"
+            />
+          )}
         </div>
       </Menu.Button>
 
@@ -33,15 +43,24 @@ export const NavbarUserMenu: FC<TNavbarUserProps> = ({
           className="absolute top-2 right-0 w-30 origin-top-right  overflow-hidden rounded-md bg-neutral-100  shadow-lg"
         >
           <div className="w-[300px] px-4 py-4 flex items-center gap-3 border-b-2 border-neutral-200">
-            <figure className="h-9 w-9 bg-neutral-200 overflow-hidden">
-              <Image
-                src={userData.avatar}
-                alt={'user avatar'}
-                width={36}
-                height={36}
-                className="bg-white w-full  flex text-neutral-600 items-center justify-center font-[700]"
+            {userData?.avatar ? (
+              <figure className="h-9 w-9 bg-neutral-200 overflow-hidden">
+                <Image
+                  src={userData.avatar}
+                  alt={'user avatar'}
+                  width={36}
+                  height={36}
+                  className="bg-white w-full  flex text-neutral-600 items-center justify-center font-[700]"
+                />
+              </figure>
+            ) : (
+              <Avatar
+                name={userData?.full_name}
+                color="#F26800"
+                className=" w-[36px] rounded-md h-[36px]"
+                size="36"
               />
-            </figure>
+            )}
 
             <section>
               <h1 className="text-sm text-neutral-900 dark:text-neubg-neutral-100">

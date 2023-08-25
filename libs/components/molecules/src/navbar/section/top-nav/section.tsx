@@ -13,7 +13,7 @@ import {
   NavbarNotification,
   NavbarUserMenu,
 } from './dropdown-menu';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { SearchInput } from '@kampus-gratis/components/atoms';
 import { useRecoilState } from 'recoil';
 import { navSearchKeyword } from './store';
@@ -29,6 +29,7 @@ export const TopNav: FC<TNavbarProps> = ({
   ...props
 }): ReactElement => {
   const router = useRouter();
+  const pathname = usePathname();
   const { data: session } = useSession();
 
   const [getSearchingKeyword, setSearchingKeyword] =
@@ -49,13 +50,7 @@ export const TopNav: FC<TNavbarProps> = ({
             priority
           />
         </Link>
-        {/* {session && props?.bottomNavRules?.includes(router.pathname) && (
-          <NavMenuDropDown
-            bottomNavItems={props.bottomNavItems}
-            bottomNavItemStyle={props.bottomNavItemStyle}
-          />
-        )} */}
-        {session && (
+        {session && props?.bottomNavRules?.includes(pathname) && (
           <NavMenuDropDown
             bottomNavItems={props.bottomNavItems}
             bottomNavItemStyle={props.bottomNavItemStyle}

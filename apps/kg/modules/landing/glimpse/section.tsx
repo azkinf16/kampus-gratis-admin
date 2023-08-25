@@ -1,4 +1,5 @@
 import { Button } from '@kampus-gratis/components/atoms';
+import Image from 'next/image';
 import React from 'react';
 
 const GlimpseSection = () => {
@@ -24,7 +25,10 @@ const GlimpseSection = () => {
               </div>
       </div>
       <div className="w-full lg:w-1/2 flex justify-center ">
-        <img src="images/glimpse-image.png" alt="" />
+        <Image
+        width={500}
+        height={500}
+        src="/images/glimpse-image.png" alt="" className='lg:w-[500px] lg:h-[540px]' />
       </div>
     </section>
   );

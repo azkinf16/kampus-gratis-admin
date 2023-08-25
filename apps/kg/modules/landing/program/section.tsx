@@ -15,18 +15,18 @@ import { Button } from '@kampus-gratis/components/atoms';
 import Image from 'next/image';
 
 const ProgramSection = () => {
-  const [screenWidth, setScreenWidth] = useState('');
+  const [screenWidth, setScreenWidth] = useState(1);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
 
       if (width < 640) {
-        setScreenWidth('sm');
+        setScreenWidth(1);
       } else if (width >= 640 && width < 1028) {
-        setScreenWidth('md');
+        setScreenWidth(2);
       } else {
-        setScreenWidth('lg');
+        setScreenWidth(3);
       }
     };
 
@@ -49,60 +49,22 @@ const ProgramSection = () => {
       </h1>
 
       <div className="sm:flex justify-center items-center lg:w-full relative w-full">
-        {screenWidth === 'sm' && (
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            modules={[Autoplay]}
-            className="flex justify-center gap-3 mt-6 items-center min-h-fit"
-          >
-            {ContentCardProgram.map((card, key) => (
-              <SwiperSlide key={key} className="flex justify-center">
-                <ChoiceProgramCard key={key} {...card} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-        {screenWidth === 'md' && (
-          <Swiper
-            slidesPerView={2}
-            spaceBetween={30}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            modules={[Autoplay]}
-            className="flex justify-center gap-3 mt-6 items-center min-h-fit"
-          >
-            {ContentCardProgram.map((card, key) => (
-              <SwiperSlide key={key} className="flex justify-center">
-                <ChoiceProgramCard key={key} {...card} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-        {screenWidth === 'lg' && (
-          <Swiper
-            slidesPerView={3}
-            spaceBetween={30}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            modules={[Autoplay]}
-            className="flex justify-center gap-3 mt-6 items-center min-h-fit"
-          >
-            {ContentCardProgram.map((card, key) => (
-              <SwiperSlide key={key} className="flex justify-center">
-                <ChoiceProgramCard key={key} {...card} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
+        <Swiper
+          slidesPerView={screenWidth}
+          spaceBetween={30}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          className="flex justify-center gap-3 mt-6 items-center min-h-fit"
+        >
+          {ContentCardProgram.map((card, key) => (
+            <SwiperSlide key={key} className="flex justify-center">
+              <ChoiceProgramCard {...card} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
       <div className="flex justify-center">
         <Button
@@ -114,7 +76,7 @@ const ProgramSection = () => {
             width={6}
             height={6}
             src="icons/right-arrow-white.svg"
-            alt="arrow"
+            alt=""
             className="pl-2 w-6"
           />{' '}
         </Button>

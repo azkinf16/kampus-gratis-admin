@@ -1,9 +1,11 @@
+'use client';
+
 import { FC, ReactElement } from 'react';
 import { useRecoilState } from 'recoil';
 import { MobileNavbarState } from './store';
 import { TMobileMenuProps } from './typed';
 import Image from 'next/image';
-// import Avatar from "react-avatar";
+import Avatar from 'react-avatar';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useSession } from 'next-auth/react';
@@ -61,13 +63,22 @@ export const NavbarMobileMenu: FC<TMobileMenuProps> = ({
       </section>
       {session ? (
         <section className="w-full pb-4 mb-4 px-1  flex items-center gap-3 border-b-[1px] border-neutral-200">
-          <Image
-            src={userData.avatar}
-            alt={'user avatar'}
-            width={36}
-            height={36}
-            className="bg-white  flex text-neutral-600 items-center justify-center font-[700]"
-          />
+          {userData?.avatar ? (
+            <Image
+              src={userData.avatar}
+              alt={'user avatar'}
+              width={36}
+              height={36}
+              className="bg-white  flex text-neutral-600 items-center justify-center font-[700]"
+            />
+          ) : (
+            <Avatar
+              name={userData?.full_name}
+              color="#F26800"
+              className=" w-[36px] rounded-md h-[36px]"
+              size="36"
+            />
+          )}
 
           <section>
             <h1 className="text-sm text-neutral-900 ">{userData?.full_name}</h1>

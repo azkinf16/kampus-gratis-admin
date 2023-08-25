@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Mousewheel, Pagination } from 'swiper/modules';
+import { Autoplay, Mousewheel, Pagination } from 'swiper/modules';
 
 export const TestimonySection: FC = (): ReactElement => {
   const [screenWidth, setScreenWidth] = useState(1);
@@ -61,15 +61,26 @@ export const TestimonySection: FC = (): ReactElement => {
             className="rounded-tr-lg md:block rounded-br-lg"
           />
         </div>
-        <div className="absolute left-0 bottom-0 lg:pt-[250px]">
-          <Image
-            src="/images/testimony-wind.png"
-            width={637}
-            height={382}
-            alt={'Banner 1'}
-            loading="lazy"
-            className="rounded-tr-lg md:block rounded-br-lg"
-          />
+        <div className="flex flex-col lg:w-1/2 cursor-default z-10">
+          <Swiper
+            direction={'vertical'}
+            slidesPerView={screenWidth}
+            spaceBetween={40}
+            mousewheel={true}
+            centeredSlides={false}
+            autoplay={{
+              delay: 500,
+              disableOnInteraction: false,
+            }}
+            modules={[Mousewheel, Autoplay]}
+            className="justify-center h-screen px-4"
+          >
+            {ContentCardTestimony.map((card, key) => (
+              <SwiperSlide className="flex items-center" key={key}>
+                <TestimonyCard {...card} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
       <div className="flex flex-col lg:w-1/2 cursor-default z-10">

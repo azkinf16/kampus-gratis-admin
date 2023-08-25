@@ -1,25 +1,27 @@
 'use client';
 
+// import { logoutRequest } from "../../../auth/logout/api";
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { TBaseLayoutProps } from '../../../types/layouts';
-import { FC } from 'react';
-import Head from 'next/head';
-import { Navbar } from '@kampus-gratis/components/molecules';
-import { MdDashboard, MdLogout } from 'react-icons/md';
+import { FC, Fragment, ReactElement } from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { FcDocument } from 'react-icons/fc';
-import { logoutRequest } from '../../../hooks/authentications/request';
-import { useSession } from 'next-auth/react';
-import { CareerPlanIcon } from '../../../assets/icons/ic-career-plan';
-import { ConsultationIcon } from '../../../assets/icons/ic-consultation';
-import { WorkOpportunityIcon } from '../../../assets/icons/ic-work';
-import { DiscussionRoomIcon } from '../../../assets/icons/ic-disccussion-room';
-import Logo from '../../../assets/icons/logo.svg';
+import { MdDashboard, MdLogout } from 'react-icons/md';
+
+import { TBaseLayoutProps } from './types';
+import Head from 'next/head';
+import { DiscussionRoomIcon } from './assets/icons/ic-disccussion-room';
+import { CareerPlanIcon } from './assets/icons/ic-career-plan';
+import { ConsultationIcon } from './assets/icons/ic-consultation';
+import { WorkOpportunityIcon } from './assets/icons/ic-work';
+// import { useProfile } from "../../../../modules/profile/section/edit-profile";
+import Logo from './logo.svg';
+
 import { TbCategory2 } from 'react-icons/tb';
-import { useProfile } from '../../../hooks/profile/hook';
+import { Navbar } from '@kampus-gratis/components/molecules';
 import { Button } from '@kampus-gratis/components/atoms';
 
-const AuthButton: FC = () => (
+const AuthButton: FC = (): ReactElement => (
   <div className="flex gap-4">
     <Button
       href="/auth/login"
@@ -42,7 +44,7 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
   children,
   title,
   addSearch,
-}) => {
+}): ReactElement => {
   const router = useRouter();
   const { data } = useSession();
 
@@ -62,15 +64,15 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
       icon: <FcDocument size={20} className="text-success-base" />,
       onClick: () => router.push('/administrasi'),
     },
-    {
-      name: 'Logout',
-      icon: <MdLogout size={20} className="text-error-base" />,
-      onClick: async () => {
-        await logoutRequest({
-          refresh_token: data?.user?.token?.refresh_token as string,
-        });
-      },
-    },
+    // {
+    //   name: "Logout",
+    //   icon: <MdLogout size={20} className="text-error-base" />,
+    //   onClick: async () => {
+    //     await logoutRequest({
+    //       refresh_token: data?.user?.token?.refresh_token as string,
+    //     });
+    //   },
+    // },
   ];
 
   const _bottom_nav_items = [
@@ -127,6 +129,13 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
     '/nilai-dan-sertifikat',
   ];
 
+  // const { data: profileData } = useProfile();
+  // const _profile_user = {
+  //   email: profileData?.data?.user?.email as string,
+  //   full_name: profileData?.data?.user?.full_name as string,
+  //   avatar: profileData?.data.user.avatar as string,
+  // };
+
   const _mobile_menu_item = [
     {
       name: 'Semua Fitur',
@@ -135,28 +144,18 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
     },
   ];
 
-  const { data: profileData } = useProfile();
-  const _profile_user = {
-    // email: profileData?.data?.user?.email as string,
-    // full_name: profileData?.data?.user?.full_name as string,
-    // avatar: profileData?.data.user.avatar as string,
-    email: 'azarnuzy@gmail.com',
-    full_name: 'Muhammad Azar Nuzy',
-    avatar: 'https://avatars.githubusercontent.com/u/43161019?v=4',
-  };
-
   return (
-    <>
+    <Fragment>
       {/* <Head>
         <title>Kampus Gratis - {title}</title>
-        </Head> */}
+      </Head> */}
       <Navbar
         mobileMenuItems={_mobile_menu_item}
         items={_pop_up_menu}
         features={_features}
         logo={Logo}
         logoStyle="w-auto h-auto"
-        userData={_profile_user}
+        userData={Logo}
         bottomNavItems={_bottom_nav_items}
         bottomNavRules={_nav_rules}
         bottomNavItemStyle={`w-auto h-auto p-3 text-[14px] rounded-lg bg-primary-500 text-white font-reguler`}
@@ -164,6 +163,6 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
         withSearch={addSearch}
       />
       <section className="flex flex-col h-full">{children}</section>
-    </>
+    </Fragment>
   );
 };
