@@ -10,6 +10,7 @@ import ArticleSection from './article/section'
 import { TestimonySection } from './testimony'
 import BannerSection from './banner/section'
 import InvitationSection from './invitation/section'
+import { LayoutFooter } from 'apps/kg/components/footer'
 
 
 export const LandingPageModules: FC = () => {
@@ -26,6 +27,7 @@ export const LandingPageModules: FC = () => {
     <TestimonySection/>
     <ArticleSection/>
     <InvitationSection/>
+    <LayoutFooter/>
     </>
   )
 }

@@ -14,7 +14,7 @@ export const ChoiceProgramCard: FC<TChoiceProgramCardProps> = (props): ReactElem
         height={208}
         loading={"lazy"}
         priority={false}
-        className="w-auto h-[208px] pt-4 px-4"
+        className="w-auto h-[208px] pt-4 px-4 object-cover"
       />
       <div className="flex flex-col p-[17px]">
         <div className="flex flex-col gap-y-4">

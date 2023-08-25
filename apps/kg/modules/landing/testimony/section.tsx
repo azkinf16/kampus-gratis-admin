@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Mousewheel, Pagination } from 'swiper/modules';
+import { Autoplay, Mousewheel, Pagination } from 'swiper/modules';
 
 export const TestimonySection: FC = (): ReactElement => {
   const [screenWidth, setScreenWidth] = useState(1);
@@ -75,7 +75,11 @@ export const TestimonySection: FC = (): ReactElement => {
         spaceBetween={40}
         mousewheel={true}
         centeredSlides={false}
-        modules={[Mousewheel]}
+        autoplay={{
+          delay: 500,
+          disableOnInteraction: false,
+        }}
+        modules={[Mousewheel, Autoplay]}
         className="justify-center h-screen px-4"
       >
            {ContentCardTestimony.map((card, key) => (
