@@ -7,7 +7,11 @@ import {
   LoadingSpinner,
   TextField,
 } from '@kampus-gratis/components/atoms';
-import { useOtpRequest, usePopupOtp, useRegister } from '../../../hooks';
+import {
+  useOtpRequest,
+  usePopupOtp,
+  useRegister,
+} from '../../../hooks/authentications/hook';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Suspense, useState } from 'react';

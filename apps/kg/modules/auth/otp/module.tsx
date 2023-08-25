@@ -1,7 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useOtpRequest, useOtpVerify, usePopupOtp } from '../../../hooks';
+import {
+  useOtpRequest,
+  useOtpVerify,
+  usePopupOtp,
+} from '../../../hooks/authentications/hook';
 import { TOTPProps } from '../../../types';
 import { FC, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';

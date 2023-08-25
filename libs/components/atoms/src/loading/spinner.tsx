@@ -1,4 +1,3 @@
-import React from 'react';
 import { FC, ReactElement } from 'react';
 
 export const LoadingSpinner: FC = (): ReactElement => {

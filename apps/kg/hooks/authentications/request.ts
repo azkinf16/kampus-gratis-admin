@@ -16,7 +16,7 @@ import {
   TMetaItem,
 } from '@kampus-gratis/utils';
 import { api } from '../../config';
-import axios from 'axios';
+import { signOut } from 'next-auth/react';
 
 export const registerRequest = async (
   payload: TRegisterPayload
@@ -40,7 +40,7 @@ export const otpEmailRequest = async (
 export const loginRequest = async (
   payload?: TLoginPayload
 ): Promise<TLoginResponse> => {
-  const { data } = await axios.post<TLoginResponse>(LOGIN, payload);
+  const { data } = await api.post<TLoginResponse>(LOGIN, payload);
   return data;
 };
 
@@ -62,4 +62,13 @@ export const forgotPasswordRequest = async (
     payload
   );
   return data;
+};
+
+export const logoutRequest = async ({
+  refresh_token,
+}: {
+  refresh_token: string;
+}) => {
+  await api.post('/auth/logout', { refresh_token });
+  signOut();
 };

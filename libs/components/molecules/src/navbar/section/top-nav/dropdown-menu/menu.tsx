@@ -1,9 +1,9 @@
-import { FC, Fragment, ReactElement } from "react";
-import { Listbox, Transition } from "@headlessui/react";
-import { TBottomNavProps } from "../../bottom-nav";
-import { MdOutlineNavigateNext } from "react-icons/md";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { FC, Fragment, ReactElement } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
+import { TBottomNavProps } from '../../bottom-nav';
+import { MdOutlineNavigateNext } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export const NavMenuDropDown: FC<TBottomNavProps> = ({
   bottomNavItems,
@@ -38,7 +38,9 @@ export const NavMenuDropDown: FC<TBottomNavProps> = ({
                 <Link href={item.link}>
                   <span
                     className={`block py-3 px-3  mx-2 text-neutral-600 ${
-                      router.pathname === item.link ? bottomNavItemStyle : "hover:text-version3-500"
+                      router.pathname === item.link
+                        ? bottomNavItemStyle
+                        : 'hover:text-version3-500'
                     }`}
                   >
                     {item.name}

@@ -1,16 +1,8 @@
-"use client"
+'use client';
 
-import {
-  FC,
-  ReactElement,
-  useEffect,
-  useState,
-  useRef,
-  Fragment,
-  Suspense,
-} from 'react';
+import { FC, ReactElement, useState } from 'react';
 import Image from 'next/image';
-// import { TAuthLayoutProps } from './types';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -18,9 +10,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import './index.css';
 
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { TAuthLayoutProps } from '../../../types';
+import Link from 'next/link';
 
 const slides = [
   {
@@ -44,17 +38,16 @@ const slides = [
 ];
 
 const SliderLayout: FC = () => {
-  const [slider, setSlider] = useState(0);
-
   return (
-    <div className="sm:flex hidden justify-center items-center lg:w-1/2 lg:h-screen relative w-full">
-      <Image
-        src={'/images/logo_nav.svg'}
-        width={120}
-        height={120}
-        alt="Logo"
-        className="absolute top-10 left-12"
-      />
+    <div className="sm:flex hidden justify-center items-center lg:w-1/2  relative w-full">
+      <Link href={'/'} className="absolute top-10 left-12">
+        <Image
+          src={'/images/logo_nav.svg'}
+          width={120}
+          height={120}
+          alt="Logo"
+        />
+      </Link>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -110,19 +103,21 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
   return (
     <section
       className={`w-full bg-neutral-100 flex-row justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 ${
-        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen items-center'
+        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen'
       }`}
     >
-      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg flex-col  lg:flex-row">
+      <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg flex-col  lg:flex-row mx-auto">
         <SliderLayout />
         <div className="flex-col md:gap-y-[57px] gap-y-6 items-center justify-center p-6 flex h-full w-full lg:w-1/2">
-          <Image
-            src={'/images/logo_nav.svg'}
-            width={120}
-            height={120}
-            alt="Logo"
-            className="sm:hidden absolute top-2 left-6"
-          />
+          <Link href={'/'} className="sm:hidden">
+            <Image
+              src={'/images/logo_nav.svg'}
+              width={120}
+              height={120}
+              alt="Logo"
+              className="sm:hidden absolute top-2 left-6"
+            />
+          </Link>
           <div
             className="flex flex-col
            w-full justify-center pt-[47px] items-center md:items-start md:justify-start gap-y-1"

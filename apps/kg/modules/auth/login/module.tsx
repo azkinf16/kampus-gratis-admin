@@ -13,12 +13,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { lazily } from 'react-lazily';
 import { ErrorBoundary } from 'react-error-boundary';
 import { validationSchemaLogin } from '../../../config';
-import { usePopupForgotPass } from '../../../hooks';
+import { usePopupForgotPass } from '../../../hooks/authentications/hook';
 import { ForgotModule } from '../forgot';
 
 const { AuthLayout } = lazily(() => import('../../../components'));
@@ -30,6 +30,8 @@ export const LoginModule: FC = () => {
   const [loading, setLoading] = useState(false);
   const { setPopupStatus } = usePopupForgotPass();
   const [getError, setError] = useState<string | undefined | null>(undefined);
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
 
   const {
     control,
@@ -46,13 +48,13 @@ export const LoginModule: FC = () => {
   });
 
   const onSubmit = handleSubmit(async (data, e) => {
+    setLoading(true);
     try {
       const response = await signIn('login', {
         email: data.email,
         password: data.password,
         redirect: false,
       });
-
       if (response?.ok) {
         router.push('/dashboard');
       } else {

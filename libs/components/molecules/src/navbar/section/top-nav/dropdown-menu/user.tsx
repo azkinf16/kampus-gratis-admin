@@ -1,10 +1,13 @@
-import { FC, ReactElement } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { TNavbarUserProps } from "./typed";
-import Avatar from "react-avatar";
-import Image from "next/image";
+import { FC, ReactElement } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { TNavbarUserProps } from './typed';
+import Avatar from 'react-avatar';
+import Image from 'next/image';
 
-export const NavbarUserMenu: FC<TNavbarUserProps> = ({ items, userData }): ReactElement => {
+export const NavbarUserMenu: FC<TNavbarUserProps> = ({
+  items,
+  userData,
+}): ReactElement => {
   return (
     <Menu as="div" className="hidden lg:inline-block h-9 w-9 z-50">
       <Menu.Button>
@@ -12,7 +15,7 @@ export const NavbarUserMenu: FC<TNavbarUserProps> = ({ items, userData }): React
           {userData?.avatar ? (
             <Image
               src={userData.avatar}
-              alt={"user avatar"}
+              alt={'user avatar'}
               width={36}
               height={36}
               className="bg-white h-9 w-9  flex text-neutral-600 items-center justify-center font-[700]"
@@ -44,7 +47,7 @@ export const NavbarUserMenu: FC<TNavbarUserProps> = ({ items, userData }): React
               <figure className="h-9 w-9 bg-neutral-200 overflow-hidden">
                 <Image
                   src={userData.avatar}
-                  alt={"user avatar"}
+                  alt={'user avatar'}
                   width={36}
                   height={36}
                   className="bg-white w-full  flex text-neutral-600 items-center justify-center font-[700]"
@@ -63,7 +66,9 @@ export const NavbarUserMenu: FC<TNavbarUserProps> = ({ items, userData }): React
               <h1 className="text-sm text-neutral-900 dark:text-neubg-neutral-100">
                 {userData?.full_name}
               </h1>
-              <p className="text-xs text-neutral-500 dark:text-neutral-300">{userData?.email}</p>
+              <p className="text-xs text-neutral-500 dark:text-neutral-300">
+                {userData?.email}
+              </p>
             </section>
           </div>
 
@@ -72,7 +77,7 @@ export const NavbarUserMenu: FC<TNavbarUserProps> = ({ items, userData }): React
               key={index}
               as="div"
               className={
-                "flex gap-3 items-center px-4 py-3 cursor-pointer hover:bg-neutral-200 transition-all duration-300 ease-in-out"
+                'flex gap-3 items-center px-4 py-3 cursor-pointer hover:bg-neutral-200 transition-all duration-300 ease-in-out'
               }
             >
               {icon}
