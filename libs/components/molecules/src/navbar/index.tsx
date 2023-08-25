@@ -14,10 +14,12 @@ export const Navbar: FC<TNavbarProps> = (props): ReactElement => {
   const pathname = usePathname();
   return (
     <Fragment>
-      <header className="bg-white  sticky w-full top-0 z-50 py-[14px] md:py-[16px] lg:py-[18px] px-6 md:px-14 lg:px-16 flex justify-between  transition-all ease-in-out duration-300 flex-col">
-        <Suspense fallback={<LTopNav />}>
-          <TopNav {...props} />
-        </Suspense>
+      <header className="bg-white  sticky   w-full top-0 z-50 py-[14px] md:py-[16px] lg:py-[18px] px-6 md:px-14 lg:px-16 ">
+        <div className="max-w-[1440px] mx-auto flex justify-between  transition-all ease-in-out duration-300 flex-col">
+          <Suspense fallback={<LTopNav />}>
+            <TopNav {...props} />
+          </Suspense>
+        </div>
       </header>
       {session && props.bottomNavRules?.includes(pathname) && (
         <Suspense fallback={<LBottomNav />}>
