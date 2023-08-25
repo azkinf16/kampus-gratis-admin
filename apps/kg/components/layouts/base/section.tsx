@@ -19,6 +19,7 @@ import Logo from './logo.svg';
 import { TbCategory2 } from 'react-icons/tb';
 import { Navbar } from '@kampus-gratis/components/molecules';
 import { Button } from '@kampus-gratis/components/atoms';
+import { useProfile } from 'apps/kg/hooks/profile/hook';
 
 const AuthButton: FC = (): ReactElement => (
   <div className="flex gap-4">
@@ -128,12 +129,12 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
     '/nilai-dan-sertifikat',
   ];
 
-  // const { data: profileData } = useProfile();
-  // const _profile_user = {
-  //   email: profileData?.data?.user?.email as string,
-  //   full_name: profileData?.data?.user?.full_name as string,
-  //   avatar: profileData?.data.user.avatar as string,
-  // };
+  const { data: profileData } = useProfile();
+  const _profile_user = {
+    email: profileData?.data?.user?.email as string,
+    full_name: profileData?.data?.user?.full_name as string,
+    avatar: profileData?.data.user.avatar as string,
+  };
 
   const _mobile_menu_item = [
     {
@@ -154,7 +155,7 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
         features={_features}
         logo={Logo}
         logoStyle="w-auto h-auto"
-        userData={Logo}
+        userData={_profile_user}
         bottomNavItems={_bottom_nav_items}
         bottomNavRules={_nav_rules}
         bottomNavItemStyle={`w-auto h-auto p-3 text-[14px] rounded-lg bg-primary-500 text-white font-reguler`}
