@@ -3,7 +3,7 @@ import { api } from '../../config/api/apiConfig';
 import {
   TAvatarPayload,
   TAvatarResponse,
-  TProfileCompletePayload,
+  TUserCompletePayload,
   TProfilePayload,
   TUserDetailResponse,
 } from '../../types/profile';
@@ -14,7 +14,7 @@ export const profileRequest = async (): Promise<TUserDetailResponse> => {
 };
 
 export const profileCompleteRequest =
-  async (): Promise<TProfileCompletePayload> => {
+  async (): Promise<TUserCompletePayload> => {
     const { data } = await api.get(USER_PROFILE_COMPLETE);
     return data;
   };

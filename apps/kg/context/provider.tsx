@@ -5,7 +5,13 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { RecoilEnv, RecoilRoot } from 'recoil';
 import { LoadingSpinner } from '@kampus-gratis/components/atoms';
 import { SessionProvider } from 'next-auth/react';
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function Provider({ children }: { children: React.ReactNode }) {
   RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;

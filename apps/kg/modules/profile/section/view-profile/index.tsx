@@ -1,4 +1,4 @@
-import { useProfile } from '../../../../hooks/profile/hook';
+import { useProfile, useProfileComplete } from '../../../../hooks/profile/hook';
 import { FC, ReactElement } from 'react';
 import { AiTwotoneCopy, AiTwotoneLike } from 'react-icons/ai';
 import {
@@ -11,8 +11,8 @@ import {
 
 export const ViewProfileModule: FC = (): ReactElement => {
   const { data } = useProfile();
+  const { data: completeData } = useProfileComplete();
   const userData = data?.data?.user;
-  //   console.log(userData);
 
   return (
     <main className="bg-neutral-50 px-8 pt-8 pb-14 rounded-md shadow-sm min-h-[80vh]">
@@ -45,7 +45,11 @@ export const ViewProfileModule: FC = (): ReactElement => {
             FK. Teknologi Ekonomi Digital
           </h1>
           <BsDot className="text-2xl text-version2-400" />
-          <h1 className="text-base text-neutral-600">Blokchain</h1>
+          <h1 className="text-base text-neutral-600">
+            {completeData?.data?.major === 'UNENROLLED'
+              ? 'xxxxxxx xxxx'
+              : completeData?.data?.major}
+          </h1>
         </footer>
       </section>
       {/* Profile Stats */}
@@ -54,28 +58,28 @@ export const ViewProfileModule: FC = (): ReactElement => {
           <AiTwotoneLike className="text-4xl" />
           <section className="flex flex-col gap-1">
             <h1>Jumlah like yang didapat</h1>
-            <p>0</p>
+            <p>{completeData?.data?.discussion_likes}</p>
           </section>
         </section>
         <section className="flex items-center gap-5 bg-[#FEF6D0] rounded-md px-6 py-4 shadow-sm text-[#FAB317] font-bold">
           <BsFillChatLeftFill className="text-4xl" />
           <section className="flex flex-col gap-1">
             <h1>Jumlah Diskusi</h1>
-            <p>-1998</p>
+            <p>{completeData?.data?.discussion_posted}</p>
           </section>
         </section>
         <section className="flex items-center gap-5 bg-[#E3FBDA] rounded-md px-6 py-4 shadow-sm text-[#3EB449] font-bold">
           <BsClockFill className="text-4xl" />
           <section className="flex flex-col gap-1">
             <h1>IPK</h1>
-            <p>0.6</p>
+            <p>{completeData?.data?.ipk}</p>
           </section>
         </section>
         <section className="flex items-center gap-5 bg-[#FEDBD7] rounded-md px-6 py-4 shadow-sm text-[#ED3768] font-bold">
           <BsBuildingsFill className="text-4xl" />
           <section className="flex flex-col gap-1">
             <h1>Sertifikat</h1>
-            <p>1</p>
+            <p>{completeData?.data?.total_certificates}</p>
           </section>
         </section>
       </main>
