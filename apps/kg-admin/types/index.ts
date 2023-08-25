@@ -54,3 +54,7 @@ export interface TModal {
   isVisible: boolean;
   children: ReactNode;
 }
+
+export interface TDropdown {
+  dataOptions: string[];
+}
