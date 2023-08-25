@@ -1,7 +1,7 @@
 'use client';
 
 import { usePopupForgotPass } from '../../../hooks/authentications/hook';
-import { validationSchemaForgot } from '../../../config';
+import { validationSchemaForgot } from '../../../config/validation/authentications/forgot';
 import { FC } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';

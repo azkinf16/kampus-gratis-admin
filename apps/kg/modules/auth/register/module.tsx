@@ -23,14 +23,14 @@ import { validationSchemaRegister } from '../../../config';
 import { OtpModule } from '../otp';
 import { signIn } from 'next-auth/react';
 
-const { AuthLayout } = lazily(() => import('../../../components'));
+const { AuthLayout } = lazily(() => import('../../../components/layouts/auth'));
 
 type ValidationSchema = z.infer<typeof validationSchemaRegister>;
 
 export const RegisterModule: FC = () => {
   // const router = useRouter();
   const [error, setError] = useState<string | null>('');
-  const { setPopupOtp, getPopupOtp } = usePopupOtp();
+  const { setPopupOtp } = usePopupOtp();
 
   const {
     control,

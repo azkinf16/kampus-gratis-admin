@@ -13,7 +13,7 @@ import 'swiper/css/navigation';
 import './index.css';
 
 import { Autoplay, Pagination } from 'swiper/modules';
-import { TAuthLayoutProps } from '../../../types';
+import { TAuthLayoutProps } from '../../../types/layouts';
 import Link from 'next/link';
 
 const slides = [
