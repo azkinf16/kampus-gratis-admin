@@ -1,5 +1,6 @@
 import { Button } from '@kampus-gratis/components/atoms'
 import { url } from 'inspector'
+import Image from 'next/image'
 import React, { FC } from 'react'
 
 const HeroSection: FC = () => {
@@ -19,7 +20,10 @@ const HeroSection: FC = () => {
               </div>
             </div>
             <div className="w-full md:w-full md:flex md:justify-center lg:w-1/2">
-              <img src="images/hero-image.png" alt="" />
+              <Image
+              width={500}
+              height={500}
+              src="/images/hero-image.png" alt="" />
             </div>
           </div>
         </div>

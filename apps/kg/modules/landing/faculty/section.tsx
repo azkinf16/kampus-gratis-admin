@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { ContentCardFaculty } from './constant'
-import { ChoiceFacultyCard } from 'apps/kg/components'
+import { ChoiceFacultyCard } from '../../../components/landing-page/card-faculty'
 import Image from 'next/image'
 
 const FacultySection:FC = () => {

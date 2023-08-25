@@ -1,3 +1,5 @@
+"use client"
+
 import React, { FC } from 'react'
 import HeroSection from './hero/section'
 import FeatureSection from './feature/section'
