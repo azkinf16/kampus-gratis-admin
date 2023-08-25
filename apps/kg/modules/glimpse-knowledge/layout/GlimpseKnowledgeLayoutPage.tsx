@@ -5,7 +5,7 @@ import { GlimpseKnowledgeLayoutMain } from "./Main/GlimpseKnowledgeLayoutMain";
 import { BreadCrumb } from "@kampus-gratis/components/atoms";
 
 const GlimpseKnowledgeLayoutPage: FC = (): ReactElement => {
-  const route = useRouter();
+  
 
   const GlimpseKnowledgeBreadcumbs = [
     {
