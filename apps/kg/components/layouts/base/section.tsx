@@ -13,13 +13,12 @@ import { DiscussionRoomIcon } from './assets/icons/ic-disccussion-room';
 import { CareerPlanIcon } from './assets/icons/ic-career-plan';
 import { ConsultationIcon } from './assets/icons/ic-consultation';
 import { WorkOpportunityIcon } from './assets/icons/ic-work';
-// import { useProfile } from "../../../../modules/profile/section/edit-profile";
 import Logo from './logo.svg';
 
 import { TbCategory2 } from 'react-icons/tb';
 import { Navbar } from '@kampus-gratis/components/molecules';
 import { Button } from '@kampus-gratis/components/atoms';
-import { useProfile } from 'apps/kg/hooks/profile/hook';
+import { useProfile } from '../../../hooks/profile/hook';
 
 const AuthButton: FC = (): ReactElement => (
   <div className="flex gap-4">

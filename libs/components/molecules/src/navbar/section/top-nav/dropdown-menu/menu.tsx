@@ -9,10 +9,16 @@ export const NavMenuDropDown: FC<TBottomNavProps> = ({
   bottomNavItems,
   bottomNavItemStyle,
 }): ReactElement => {
+<<<<<<< HEAD
   // const router = useRouter();
   const pathname = usePathname();
 
   const currentPage = bottomNavItems?.filter((item) => {
+=======
+  const pathname = usePathname();
+
+  const currentPage = bottomNavItems.filter((item) => {
+>>>>>>> b3975c23bc7fdd02a009c5739d94ef50ae081eeb
     return pathname.includes(item.link);
   });
 

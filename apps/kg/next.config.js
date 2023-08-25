@@ -13,7 +13,11 @@ const nextConfig = {
     svgr: false,
   },
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    domains: [
+      'avatars.githubusercontent.com',
+      'www.gravatar.com',
+      'res.cloudinary.com',
+    ],
   },
 };
 

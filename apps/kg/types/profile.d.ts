@@ -33,3 +33,23 @@ export type TProfilePayload = {
 
 export type TUserDetailResponse = TMetaResponseSingle<TUser>;
 export type TAvatarResponse = TMetaResponseSingle<TAvatarItem>;
+
+export type TUserCompletePayload = {
+  data: {
+    avatar: any;
+    poin: number;
+    user_name: string;
+    discussion_likes: number;
+    discussion_posted: number;
+    full_name: string;
+    semester: number;
+    ipk: string;
+    major: string;
+    role: string;
+    total_certificates: number;
+    current_subjects: number;
+    finished_subjects: number;
+  };
+};
+
+export type TUserCompleteResponse = TMetaResponseSingle<TUserCompletePayload>;
