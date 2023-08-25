@@ -61,27 +61,6 @@ export const TestimonySection: FC = (): ReactElement => {
             className="rounded-tr-lg md:block rounded-br-lg"
           />
         </div>
-        <div className="flex flex-col lg:w-1/2 cursor-default z-10">
-          <Swiper
-            direction={'vertical'}
-            slidesPerView={screenWidth}
-            spaceBetween={40}
-            mousewheel={true}
-            centeredSlides={false}
-            autoplay={{
-              delay: 500,
-              disableOnInteraction: false,
-            }}
-            modules={[Mousewheel, Autoplay]}
-            className="justify-center h-screen px-4"
-          >
-            {ContentCardTestimony.map((card, key) => (
-              <SwiperSlide className="flex items-center" key={key}>
-                <TestimonyCard {...card} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
       </div>
       <div className="flex flex-col lg:w-1/2 cursor-default z-10">
         <Swiper

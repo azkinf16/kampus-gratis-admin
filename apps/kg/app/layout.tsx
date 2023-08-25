@@ -1,5 +1,3 @@
-'use client';
-
 // import { getServerSession } from 'next-auth';
 import Provider from '../context/provider';
 import './global.css';
