@@ -34,7 +34,7 @@ export const ViewProfileModule: FC = (): ReactElement => {
             />
           ) : (
             <Avatar
-              name={userData?.full_name}
+              name={userData?.full_name || 'a'}
               color="#F26800"
               className="min-w-[120px] min-h-[120px]"
               round
@@ -83,6 +83,7 @@ export const ViewProfileModule: FC = (): ReactElement => {
           <BsFillChatLeftFill className="text-4xl" />
           <section className="flex flex-col gap-1">
             <h1>Jumlah Diskusi</h1>
+
             <p>{completeData?.data?.discussion_posted}</p>
           </section>
         </section>

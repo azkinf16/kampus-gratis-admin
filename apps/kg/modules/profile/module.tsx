@@ -6,6 +6,7 @@ import { BreadCrumb } from '@kampus-gratis/components/atoms';
 import { ProfileSidebar } from './sidebar';
 import { ViewProfileBreadCumbs } from '../../utils/constantProfile';
 import { ViewProfileModule } from './section/view-profile';
+import { EditProfileSection } from './section/edit-profile';
 
 export const ProfileModule: FC = (): ReactElement => {
   const router = useRouter();
@@ -37,8 +38,8 @@ export const ProfileModule: FC = (): ReactElement => {
           <ProfileSidebar />
           <section className="col-span-2">
             {pathname === '/profile' && <ViewProfileModule />}
-            {/* {pathname === '/profile/edit-profile' && <EditProfileSection />}
-          {pathname === '/profile/cv-portofolio' && <CVPortofolioModule />}
+            {pathname === '/profile/edit-profile' && <EditProfileSection />}
+            {/* {pathname === '/profile/cv-portofolio' && <CVPortofolioModule />}
           {pathname === '/profile/ubah-password' && <ChangePasswordSection />} */}
           </section>
         </section>
