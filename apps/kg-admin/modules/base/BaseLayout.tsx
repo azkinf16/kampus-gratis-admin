@@ -27,8 +27,8 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       icon: <IconPengajuan />,
     },
     {
-      title: 'Administrasi',
-      path: '/administrasi',
+      title: 'User',
+      path: '/user',
       icon: <IconAdministrasi />,
     },
     {
@@ -37,24 +37,14 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       icon: <IconRencanaStudi />,
     },
     {
-      title: 'Nilai & Sertifikat',
+      title: 'Nilai dan Sertifikat',
       path: '/nilai-sertifikat',
       icon: <IconNilaiSertifikat />,
-    },
-    {
-      title: 'Ruang Diskusi',
-      path: '/ruang-diskusi',
-      icon: <IconRuangDiskusi />,
     },
     {
       title: 'Konsultasi & Layanan',
       path: '/konsultasi-layanan',
       icon: <IconKonsulLayanan />,
-    },
-    {
-      title: 'Kalender Saya',
-      path: '/kalender',
-      icon: <IconKalender />,
     },
     {
       title: 'Sekilas Ilmu',
@@ -70,6 +60,16 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       title: 'Penyaluran Kerja',
       path: '/penyaluran-kerja',
       icon: <IconSalurKerja />,
+    },
+    {
+      title: 'Ruang Diskusi',
+      path: '/ruang-diskusi',
+      icon: <IconRuangDiskusi />,
+    },
+    {
+      title: 'Perencanaan Karir',
+      path: '/kalender',
+      icon: <IconKalender />,
     },
   ];
   return (
