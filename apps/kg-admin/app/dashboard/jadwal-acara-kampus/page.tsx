@@ -5,7 +5,7 @@ import React from 'react';
 const EventKampusPage = () => {
   return (
     <BaseLayout>
-      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+      <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <h1 className="text-center font-bold mb-7">Jadwal Acara Kampus</h1>
           <h2 className="font-semibold my-9">Selasa, 28 Februari 2023</h2>

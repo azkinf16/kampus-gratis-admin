@@ -7,7 +7,7 @@ export const Card = ({ amount, title, logo }: TCard) => {
         <span>{logo}</span>
         <p className="font-bold text-sm">{title}</p>
       </div>
-      <div className=" bg-primary rounded-b-lg py-5">
+      <div className=" bg-primary-base rounded-b-lg py-5">
         <p className="text-center font-semibold text-white text-3xl">
           {amount}
         </p>

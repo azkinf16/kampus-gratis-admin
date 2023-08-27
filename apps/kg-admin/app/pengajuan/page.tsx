@@ -36,15 +36,15 @@ export default function PengajuanPage() {
   }, []);
   return (
     <BaseLayout>
-      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+      <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
-            <Dropdown dataOptions={options}/>
+            <Dropdown dataOptions={options} />
             <div className="flex">
               <Button
                 plus="&#43;"
                 title="Buat KRS Mahasiswa"
-                buttonStyle="flex items-center justify-center bg-primary w-[200px] rounded text-white"
+                buttonStyle="flex items-center justify-center bg-primary-base w-[200px] rounded text-white"
                 onClick={() => setShowModal(true)}
               />
               <Searchbar placeholder="Cari Mahasiswa" />
@@ -65,13 +65,13 @@ export default function PengajuanPage() {
                   <Button
                     title="Ya, Hapus"
                     plus=""
-                    buttonStyle="flex items-center justify-center border-2 bg-transparent border-primary w-full h-[40px] rounded text-primary"
+                    buttonStyle="flex items-center justify-center border-2 bg-transparent border-primary-base w-full h-[40px] rounded text-primary-base"
                     onClick={() => setShowModal(false)}
                   />
                   <Button
                     title="Tidak, Terimakasih"
                     plus=""
-                    buttonStyle="flex items-center justify-center bg-primary w-full h-[40px] rounded text-white"
+                    buttonStyle="flex items-center justify-center bg-primary-base w-full h-[40px] rounded text-white"
                     onClick={() => setShowModal(false)}
                   />
                 </div>
