@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { z } from 'zod';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
 import router from 'next/router';

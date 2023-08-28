@@ -33,6 +33,7 @@ export interface UserData {
   name?: Username;
   email?: string;
   username?: string;
+  phone?: string;
 }
 
 export interface TButton {
@@ -63,4 +64,11 @@ export interface TDropdown {
   textCentre: boolean;
   shadow: boolean;
   bold: boolean;
+}
+
+export interface TPagination {
+  items: number;
+  pageSize: number;
+  currentPage: number;
+  onPageChange: (type: number) => void;
 }

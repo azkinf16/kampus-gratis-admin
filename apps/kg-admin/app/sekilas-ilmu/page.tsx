@@ -47,10 +47,10 @@ export default function SekilasIlmuPage() {
             </p>
             <div className="flex">
               <Button
+                plus="&#43;"
                 title="Artikel"
                 buttonStyle="flex items-center justify-center bg-primary w-[200px] rounded text-white"
                 onClick={handleClick}
-                plus="&#43;"
               />
               <Searchbar placeholder="Cari judul Tugas" />
             </div>

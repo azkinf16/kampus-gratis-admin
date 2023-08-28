@@ -9,6 +9,9 @@ import axios from 'axios';
 import { UserData } from '@/types';
 import Modal from '@/components/modal/Modal';
 import Image from 'next/image';
+import Pagination from '@/components/pagination/Pagination';
+import { IconAccept } from '@/components/icons/ic-accept';
+import { IconReject } from '@/components/icons/ic-reject';
 
 export default function PengajuanPage() {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +21,7 @@ export default function PengajuanPage() {
       name: { firstname: '', lastname: '' },
       email: '',
       username: '',
+      phone: '',
     },
   ]);
   const GetData = async () => {
@@ -33,6 +37,13 @@ export default function PengajuanPage() {
   useEffect(() => {
     GetData();
   }, []);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 1;
+  // https://dummyjson.com/user
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   return (
     <BaseLayout>
       <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
@@ -43,7 +54,7 @@ export default function PengajuanPage() {
               <Button
                 plus="&#43;"
                 title="Mahasiswa"
-                buttonStyle="flex items-center justify-center bg-primary w-[200px] rounded text-white"
+                buttonStyle="flex items-center justify-center bg-primary  w-[200px] rounded text-white"
                 onClick={() => setShowModal(true)}
               />
               <Searchbar placeholder="Cari Mahasiswa" />
@@ -82,9 +93,9 @@ export default function PengajuanPage() {
               <tr>
                 <th>No</th>
                 <th>Nama Mahasiswa</th>
+                <th>Program Studi</th>
                 <th>NIM</th>
                 <th>Status KRS</th>
-                <th>KRS</th>
                 <th>Action</th>
               </tr>
               {users.map((user: UserData) => (
@@ -92,13 +103,24 @@ export default function PengajuanPage() {
                   <td>{user.id}</td>
                   <td>{user.name?.firstname}</td>
                   <td>{user.name?.lastname}</td>
+                  <td>{user.phone}</td>
                   <td>{user.email}</td>
-                  <td>{user.email}</td>
-                  <td>{user.email}</td>
+                  <td>
+                    <div className="flex justify-evenly">
+                      <IconAccept />
+                      <IconReject />
+                    </div>
+                  </td>
                 </tr>
               ))}
             </Table>
           </div>
+          <Pagination
+            items={users.length}
+            pageSize={currentPage}
+            currentPage={pageSize}
+            onPageChange={onPageChange}
+          />
         </div>
       </div>
     </BaseLayout>
