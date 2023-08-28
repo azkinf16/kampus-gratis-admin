@@ -63,3 +63,11 @@ export type TusePopupForgotPass = {
 export type TRefreshTokenPayload = {
   refresh_token: string;
 };
+
+export type TRefreshTokenResponse = {
+  data: {
+    token: {
+      access_token: string;
+    };
+  };
+};

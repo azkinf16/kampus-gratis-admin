@@ -1,3 +1,4 @@
+import { refreshTokenRequest } from '../../hooks/authentications/request';
 import axios, { AxiosRequestConfig } from 'axios';
 import { getSession } from 'next-auth/react';
 
@@ -31,6 +32,28 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
+);
+
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response.status === 401) {
+      const session: Session = (await getSession()) as Session;
+      const token = session?.user?.token?.refresh_token as string;
+
+      if (token) {
+        const { data } = await refreshTokenRequest({ refresh_token: token });
+
+        const newToken = data?.token?.access_token;
+
+        api.defaults.headers.Authorization = `Bearer ${newToken}`;
+      }
+
+      return api.request(error.config);
+    }
+
+    return Promise.reject(error);
+  }
 );
 
 export { api };
