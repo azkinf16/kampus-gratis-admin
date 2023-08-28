@@ -29,7 +29,7 @@ export const ProfileSidebar: FC = (): ReactElement => {
           Edit Profile
         </h1>
       </Link>
-      <Link href={'/profile/cv-portofolio'}>
+      {/* <Link href={'/profile/cv-portofolio'}>
         <h1
           className={`px-3 py-3 text-sm  rounded-md cursor-pointer  ${
             pathname === '/profile/cv-portofolio'
@@ -39,7 +39,7 @@ export const ProfileSidebar: FC = (): ReactElement => {
         >
           CV & Portofolio
         </h1>
-      </Link>
+      </Link> */}
       <Link href={'/profile/ubah-password'}>
         <h1
           className={`px-3 py-3 text-sm  rounded-md cursor-pointer  ${

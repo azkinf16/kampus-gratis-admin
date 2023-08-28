@@ -6,6 +6,8 @@ import {
   TUserCompletePayload,
   TProfilePayload,
   TUserDetailResponse,
+  TPasswordResponse,
+  TPasswordPayload,
 } from '../../types/profile';
 
 export const profileRequest = async (): Promise<TUserDetailResponse> => {
@@ -30,5 +32,12 @@ export const UpdateAvatarProfile = async (
   payload: TAvatarPayload
 ): Promise<TAvatarResponse> => {
   const { data } = await api.post('/user/profile/avatar', payload);
+  return data;
+};
+
+export const UpdatePassword = async (
+  payload: TPasswordPayload
+): Promise<TPasswordResponse> => {
+  const { data } = await api.put('/auth/change-password', payload);
   return data;
 };

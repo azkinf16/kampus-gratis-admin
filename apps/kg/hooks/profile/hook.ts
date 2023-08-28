@@ -9,6 +9,8 @@ import {
 import {
   TAvatarPayload,
   TAvatarResponse,
+  TPasswordPayload,
+  TPasswordResponse,
   TProfilePayload,
   TUserCompletePayload,
   TUserDetailResponse,
@@ -17,6 +19,7 @@ import { useSession } from 'next-auth/react';
 import { TMetaErrorResponse } from '@kampus-gratis/utils';
 import {
   UpdateAvatarProfile,
+  UpdatePassword,
   UpdateUserProfile,
   profileCompleteRequest,
   profileRequest,
@@ -67,5 +70,17 @@ export const useUpdateAvatar = (): UseMutationResult<
   return useMutation({
     mutationKey: ['update-avatar-profile'],
     mutationFn: async (payload) => await UpdateAvatarProfile(payload),
+  });
+};
+
+export const useUpdatePassword = (): UseMutationResult<
+  TPasswordResponse,
+  TMetaErrorResponse,
+  TPasswordPayload,
+  unknown
+> => {
+  return useMutation({
+    mutationKey: ['update-password'],
+    mutationFn: async (payload) => await UpdatePassword(payload),
   });
 };

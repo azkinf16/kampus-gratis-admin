@@ -7,6 +7,7 @@ import { ProfileSidebar } from './sidebar';
 import { ViewProfileBreadCumbs } from '../../utils/constantProfile';
 import { ViewProfileModule } from './section/view-profile';
 import { EditProfileSection } from './section/edit-profile';
+import { ChangePasswordSection } from './section/change-password';
 
 export const ProfileModule: FC = (): ReactElement => {
   const router = useRouter();
@@ -17,7 +18,7 @@ export const ProfileModule: FC = (): ReactElement => {
     '/profile',
     '/profile/edit-profile',
     '/profile/ubah-password',
-    '/profile/cv-portofolio',
+    // '/profile/cv-portofolio',
   ];
 
   if (!eventPath.includes(pathname)) {
@@ -39,8 +40,8 @@ export const ProfileModule: FC = (): ReactElement => {
           <section className="col-span-2">
             {pathname === '/profile' && <ViewProfileModule />}
             {pathname === '/profile/edit-profile' && <EditProfileSection />}
-            {/* {pathname === '/profile/cv-portofolio' && <CVPortofolioModule />}
-          {pathname === '/profile/ubah-password' && <ChangePasswordSection />} */}
+            {/* {pathname === '/profile/cv-portofolio' && <CVPortofolioModule />} */}
+            {pathname === '/profile/ubah-password' && <ChangePasswordSection />}
           </section>
         </section>
       </section>
