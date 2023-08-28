@@ -43,7 +43,7 @@ export default function PengajuanPage() {
             <div className="flex">
               <Button
                 plus="&#43;"
-                title="Buat KRS Mahasiswa"
+                title="Mahasiswa"
                 buttonStyle="flex items-center justify-center bg-primary w-[200px] rounded text-white"
                 onClick={() => setShowModal(true)}
               />

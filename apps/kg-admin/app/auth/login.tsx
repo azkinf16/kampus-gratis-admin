@@ -4,6 +4,9 @@ import Image from 'next/image';
 import { z } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { signIn } from 'next-auth/react';
+import router from 'next/router';
+import Link from 'next/link';
 
 type Inputs = {
   email: string;
@@ -12,8 +15,8 @@ type Inputs = {
 
 const Login = () => {
   const userInfoSchema = z.object({
-    email: z.string().email({ message: 'Email is Requiered' }),
-    password: z.string().min(3, { message: 'Password is required' }),
+    email: z.string().email({ message: 'Masukkan Email' }),
+    password: z.string().min(3, { message: 'Masukkan password' }),
   });
 
   const {
@@ -21,16 +24,20 @@ const Login = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<Inputs>({
+    resolver: zodResolver(userInfoSchema),
+    mode: 'all',
     defaultValues: {
       email: '',
       password: '',
     },
-    resolver: zodResolver(userInfoSchema),
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
+  const onSubmit = handleSubmit(async (data) => {
+    const response = await signIn('login', {
+      email: data.email,
+      password: data.password,
+    });
+  });
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -61,7 +68,7 @@ const Login = () => {
           <h3 className="text-[13px] font-semibold mb-4 text-center">
             Silahkan masuk menggunakan email dan kata sandi yang terdaftar
           </h3>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={onSubmit}>
             <div className="mb-4">
               <label
                 htmlFor="email"

@@ -8,6 +8,7 @@ export const IconEdit: FC = (): ReactElement => {
       viewBox="0 0 44 44"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="shadow-xl rounded-full"
     >
       <rect width="44" height="44" rx="22" fill="#FAFAFA" />
       <path
