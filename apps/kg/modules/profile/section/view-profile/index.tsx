@@ -27,7 +27,7 @@ export const ViewProfileModule: FC = (): ReactElement => {
         <figure className="w-[120px] h-[120px] rounded-full bg-neutral-300 border-4 border-neutral-50 absolute -bottom-12 left-0">
           {completeData?.data?.avatar !== null ? (
             <Image
-              src={completeData?.data?.avatar}
+              src={completeData?.data?.avatar as string}
               width={120}
               height={120}
               alt="Profile"

@@ -15,6 +15,8 @@ import {
   UploadField,
 } from '@kampus-gratis/components/atoms';
 import { AiFillCamera } from 'react-icons/ai';
+import Image from 'next/image';
+import Avatar from 'react-avatar';
 
 type ValidationSchema = z.infer<typeof validationSchemaEditProfile>;
 
@@ -40,17 +42,24 @@ export const EditProfileSection = () => {
     resolver: zodResolver(validationSchemaEditProfile),
     mode: 'all',
     defaultValues: {
-      email: '',
-      full_name: '',
-      phone_number: '',
-      gender: '',
+      user_name: userData?.user_name,
+      full_name: userData?.full_name,
+      phone_number: userData?.phone_number,
     },
   });
 
   const onCancel = () => reset(userData);
 
   const onSubmit = handleSubmit(async (data) => {
-    await mutate(data);
+    const { user_name, full_name, phone_number } = data;
+    const editData = {
+      user_name,
+      full_name,
+      phone_number,
+    };
+    console.log(data);
+
+    await mutate(editData);
     await refetch();
     await onCancel();
   });
@@ -63,6 +72,21 @@ export const EditProfileSection = () => {
       <main className="w-full">
         <section className="grid w-full py-16 place-items-center">
           <figure className="bg-neutral-200 h-[140px] w-[140px] rounded-full relative">
+            {userData?.avatar !== null ? (
+              <Image
+                src={userData?.avatar as string}
+                width={140}
+                height={140}
+                alt="Profile"
+              />
+            ) : (
+              <Avatar
+                name={userData?.full_name || 'a'}
+                color="#F26800"
+                className="min-w-[140px] min-h-[140px]"
+                round
+              />
+            )}
             <section className="absolute bottom-0 right-2">
               <div
                 className="grid bg-yellow-100 rounded-full shadow-md cursor-pointer w-9 h-9 place-items-center"
@@ -93,12 +117,12 @@ export const EditProfileSection = () => {
                   }}
                 >
                   Unggah Foto
-                  <UploadField
+                  {/* <UploadField
                     variant="sm"
                     name={'avatar'}
                     control={control}
                     className="hidden"
-                  />
+                  /> */}
                 </label>
               </form>
             </section>
@@ -107,26 +131,31 @@ export const EditProfileSection = () => {
         <form className="grid grid-cols-2 gap-4" onSubmit={onSubmit}>
           <TextField
             control={control}
-            placeholder="Masukkan Email"
+            placeholder={userData?.email}
             label="Email"
             type={'email'}
             name="email"
             variant={'md'}
             disabled
           />
-          <SelectField
-            placeholder="Pilih Jenis Kelamin"
+
+          <TextField
             control={control}
-            label="Jenis Kelamin"
-            options={genders}
-            name={'gender'}
+            placeholder="Masukkan Username"
+            label="Username"
+            type={'text'}
+            value={userData?.user_name}
+            name="user_name"
             variant={'md'}
+            status={errors.user_name ? 'error' : undefined}
+            message={errors.user_name?.message}
           />
           <TextField
             control={control}
             placeholder="Masukkan Nama Lengkap"
             label="Nama Lengkap"
             type={'text'}
+            value={userData?.full_name}
             name="full_name"
             variant={'md'}
             status={errors.full_name ? 'error' : undefined}
@@ -136,7 +165,8 @@ export const EditProfileSection = () => {
             control={control}
             placeholder="Masukkan Nomor Handphone"
             label="Nomor Handphone"
-            type={'number'}
+            type={'text'}
+            value={userData?.phone_number}
             name="phone_number"
             status={errors.phone_number ? 'error' : undefined}
             variant={'md'}
