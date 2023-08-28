@@ -3,16 +3,15 @@ import Sidebar from '@/components/sidebar/Sidebar';
 import React from 'react';
 import { IconDashboard } from '@/components/icons/ic-dashboard';
 import { IconPengajuan } from '@/components/icons/ic-pengajuan';
-import { IconAdministrasi } from '@/components/icons/ic-administrasi';
+import { IconUserMenu } from '@/components/icons/ic-user-menu';
 import { IconRencanaStudi } from '@/components/icons/ic-rencana-studi';
 import { IconNilaiSertifikat } from '@/components/icons/ic-nilai-sertifikat';
 import { IconRuangDiskusi } from '@/components/icons/ic-ruang-diskusi';
 import { IconKonsulLayanan } from '@/components/icons/ic-konsul-layanan';
-import { IconKalender } from '@/components/icons/ic-kalender';
 import { IconSekilasIlmu } from '@/components/icons/ic-sekilas-ilmu';
 import { IconAcaraKampus } from '@/components/icons/ic-acara-kampus';
 import { IconSalurKerja } from '@/components/icons/ic-salur-kerja';
-import { IconAvatar } from '@/components/icons/ic-avatar';
+import Navbar from '@/components/navbar/Navbar';
 
 const BaseLayout = ({ children }: TBaseLayout) => {
   const DataSidebar = [
@@ -27,9 +26,9 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       icon: <IconPengajuan />,
     },
     {
-      title: 'Administrasi',
-      path: '/administrasi',
-      icon: <IconAdministrasi />,
+      title: 'User',
+      path: '/user',
+      icon: <IconUserMenu />,
     },
     {
       title: 'Rencana Studi',
@@ -37,24 +36,14 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       icon: <IconRencanaStudi />,
     },
     {
-      title: 'Nilai & Sertifikat',
+      title: 'Nilai dan Sertifikat',
       path: '/nilai-sertifikat',
       icon: <IconNilaiSertifikat />,
-    },
-    {
-      title: 'Ruang Diskusi',
-      path: '/ruang-diskusi',
-      icon: <IconRuangDiskusi />,
     },
     {
       title: 'Konsultasi & Layanan',
       path: '/konsultasi-layanan',
       icon: <IconKonsulLayanan />,
-    },
-    {
-      title: 'Kalender Saya',
-      path: '/kalender',
-      icon: <IconKalender />,
     },
     {
       title: 'Sekilas Ilmu',
@@ -71,16 +60,21 @@ const BaseLayout = ({ children }: TBaseLayout) => {
       path: '/penyaluran-kerja',
       icon: <IconSalurKerja />,
     },
+    {
+      title: 'Ruang Diskusi',
+      path: '/ruang-diskusi',
+      icon: <IconRuangDiskusi />,
+    },
+    {
+      title: 'Perencanaan Karir',
+      path: '/kalender',
+      icon: <IconSalurKerja />,
+    },
   ];
   return (
     <Sidebar dataSidebar={DataSidebar}>
-      <div className="flex justify-end">
-        <div className="flex flex-col justify-start font-medium">
-          <p>Welcome,</p>
-          <p className="text-sm">Admin 01</p>
-        </div>
-
-        <IconAvatar />
+      <div className='flex justify-end'>
+        <Navbar />
       </div>
       <section>{children}</section>
     </Sidebar>

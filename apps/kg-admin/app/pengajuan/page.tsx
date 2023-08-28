@@ -9,6 +9,7 @@ import axios from 'axios';
 import { UserData } from '@/types';
 import Modal from '@/components/modal/Modal';
 import Image from 'next/image';
+import Dropdown from '@/components/dropdown/Dropdown';
 export default function PengajuanPage() {
   const [showModal, setShowModal] = useState(false);
   const [users, setUsers] = useState<UserData[]>([
@@ -19,6 +20,7 @@ export default function PengajuanPage() {
       username: '',
     },
   ]);
+  const options = ['Mahasiswa', 'Dosen', 'Admin'];
   const GetData = async () => {
     try {
       const response = await axios.get('https://fakestoreapi.com/users');
@@ -34,12 +36,10 @@ export default function PengajuanPage() {
   }, []);
   return (
     <BaseLayout>
-      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+      <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
-            <p className="flex justify-center place-items-center font-semibold">
-              Program Studi Akuntansi
-            </p>
+            <Dropdown dataOptions={options} />
             <div className="flex">
               <Button
                 plus="&#43;"
@@ -65,13 +65,13 @@ export default function PengajuanPage() {
                   <Button
                     title="Ya, Hapus"
                     plus=""
-                    buttonStyle="flex items-center justify-center border-2 bg-transparent border-primary w-full h-[40px] rounded text-primary"
+                    buttonStyle="flex items-center justify-center border-2 bg-transparent border-primary-base w-full h-[40px] rounded text-primary-base"
                     onClick={() => setShowModal(false)}
                   />
                   <Button
                     title="Tidak, Terimakasih"
                     plus=""
-                    buttonStyle="flex items-center justify-center bg-primary w-full h-[40px] rounded text-white"
+                    buttonStyle="flex items-center justify-center bg-primary-base w-full h-[40px] rounded text-white"
                     onClick={() => setShowModal(false)}
                   />
                 </div>

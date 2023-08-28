@@ -11,7 +11,7 @@ import React from 'react';
 export default function DashboardPage() {
   return (
     <BaseLayout>
-      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+      <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="max-w-full mt-5 mb-16 pr-10">
           <div className="flex justify-between gap-10">
             <Card amount={2500} title="Pendaftar" logo={<IconUser />} />

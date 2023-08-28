@@ -7,15 +7,15 @@ import React from 'react';
 
 const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
   const normalLink =
-    'group flex gap-[6px] rounded-md cursor-pointer p-[8px] items-center text-neutral-600 hover:bg-primary hover:text-white';
+    'group flex gap-[6px] rounded-md cursor-pointer p-[8px] items-center text-sm text-neutral-600 hover:bg-primary-base hover:text-white';
   return (
     <div className="flex justify-normal w-full">
       <aside
         id="separator-sidebar"
-        className="fixed lg:relative top-0 left-0 z-50 lg:sm:translate-x-0 w-[250px] h-full transition-transform text-black"
+        className="fixed top-0 left-0 z-50 lg:sm:translate-x-0 w-[250px] h-screen transition-transform text-black"
         aria-label="Sidebar"
       >
-        <div className="h-screen px-3 py-4  text-black bg-white">
+        <div className="h-screen px-3 py-4 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
           <div>
             <Image
               src="/assets/ic-logo.svg"
@@ -28,7 +28,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
           <div className="py-4 font-medium w-full">
             {dataSidebar?.map((x, i) => {
               return (
-                <div key={i} className="my-[12px]">
+                <div key={i} className="my-[0.5px]">
                   <Link className={normalLink} href={x.path}>
                     <span className="p-1">{x.icon}</span>
                     <span className="text-md">{x.title}</span>
@@ -39,9 +39,7 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
           </div>
         </div>
       </aside>
-      <div className="bg-white shadow-lg w-[calc(100%-250px)] h-[72px]">
-        <div className="pr-5 pt-3">{children}</div>
-      </div>
+      <div className="w-full">{children}</div>
     </div>
   );
 };
