@@ -9,7 +9,7 @@ import axios from 'axios';
 import { UserData } from '@/types';
 import Modal from '@/components/modal/Modal';
 import Image from 'next/image';
-import Dropdown from '@/components/dropdown/Dropdown';
+
 export default function PengajuanPage() {
   const [showModal, setShowModal] = useState(false);
   const [users, setUsers] = useState<UserData[]>([
@@ -20,7 +20,6 @@ export default function PengajuanPage() {
       username: '',
     },
   ]);
-  const options = ['Mahasiswa', 'Dosen', 'Admin'];
   const GetData = async () => {
     try {
       const response = await axios.get('https://fakestoreapi.com/users');
@@ -39,7 +38,7 @@ export default function PengajuanPage() {
       <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
-            <Dropdown dataOptions={options} />
+            {/* <Dropdown dataOptions={options} /> */}
             <div className="flex">
               <Button
                 plus="&#43;"
