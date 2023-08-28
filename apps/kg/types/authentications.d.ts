@@ -59,3 +59,7 @@ export type TusePopupForgotPass = {
   setPopupStatus: (val: boolean) => void;
   getPopupStatus: boolean;
 };
+
+export type TRefreshTokenPayload = {
+  refresh_token: string;
+};

@@ -6,6 +6,7 @@ import {
   TLoginResponse,
   TOTPPayload,
   TOTPRequestPayload,
+  TRefreshTokenPayload,
   TRegisterPayload,
 } from '../../types/authentications';
 import {
@@ -71,4 +72,11 @@ export const logoutRequest = async ({
 }) => {
   await api.post('/auth/logout', { refresh_token });
   signOut();
+};
+
+export const refreshTokenRequest = async (
+  payload?: TRefreshTokenPayload
+): Promise<TLoginResponse> => {
+  const { data } = await api.post<TLoginResponse>('/auth/refresh', payload);
+  return data;
 };

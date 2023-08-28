@@ -6,6 +6,7 @@ import {
   loginRequest,
 } from '../../../../hooks/authentications/request';
 import { TLoginData } from '../../../../types';
+
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/login',
