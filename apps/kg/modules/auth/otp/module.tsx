@@ -1,9 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
+  useForgotPasswordVerify,
   useOtpRequest,
   useOtpVerify,
+  usePopupForgotPassword,
   usePopupOtp,
 } from '../../../hooks/authentications/hook';
 import { TOTPProps } from '../../../types/authentications';
@@ -15,10 +17,13 @@ import OTPInput from 'react-otp-input';
 export const OtpModule: FC<TOTPProps> = (props) => {
   const [isError, setIsError] = useState(false);
   const { setPopupOtp, getPopupOtp } = usePopupOtp();
+
   const [otp, setOtp] = useState('');
   const { mutate: request } = useOtpRequest();
   const { mutate: verify } = useOtpVerify();
+  const { mutate: verifyForgot } = useForgotPasswordVerify();
   const { push } = useRouter();
+  const pathname = usePathname();
 
   const [timer, setTimer] = useState(60);
 
@@ -32,22 +37,36 @@ export const OtpModule: FC<TOTPProps> = (props) => {
 
   useEffect(() => {
     if (otp.length === 6) {
-      verify(
-        {
-          email: props.email,
-          otp,
-        },
-        {
-          onSuccess: () => {
-            setPopupOtp(false);
-            push('/auth/verify-success');
+      if (pathname === '/auth/login') {
+        verifyForgot(
+          {
+            email: props.email,
+            otp,
           },
-          onError: (error) => {
-            setOtp('');
-            setIsError(true);
+          {
+            onSuccess: () => {
+              setPopupOtp(false);
+            },
+          }
+        );
+      } else {
+        verify(
+          {
+            email: props.email,
+            otp,
           },
-        }
-      );
+          {
+            onSuccess: () => {
+              setPopupOtp(false);
+              push('/auth/verify-success');
+            },
+            onError: (error) => {
+              setOtp('');
+              setIsError(true);
+            },
+          }
+        );
+      }
     }
   }, [otp]);
 

@@ -18,8 +18,13 @@ import { signIn } from 'next-auth/react';
 import { lazily } from 'react-lazily';
 import { ErrorBoundary } from 'react-error-boundary';
 import { validationSchemaLogin } from '../../../config';
-import { usePopupForgotPass } from '../../../hooks/authentications/hook';
+import {
+  usePopupForgotPass,
+  usePopupForgotPassword,
+  usePopupOtp,
+} from '../../../hooks/authentications/hook';
 import { ForgotModule } from '../forgot';
+import { OtpModule } from '../otp';
 
 const { AuthLayout } = lazily(() => import('../../../components/layouts/auth'));
 
@@ -28,10 +33,10 @@ type ValidationSchema = z.infer<typeof validationSchemaLogin>;
 export const LoginModule: FC = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const { getPopupForgotPassword } = usePopupForgotPassword();
   const { setPopupStatus } = usePopupForgotPass();
   const [getError, setError] = useState<string | undefined | null>(undefined);
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
 
   const {
     control,
@@ -159,6 +164,7 @@ export const LoginModule: FC = () => {
           </form>
         </AuthLayout>
         <ForgotModule />
+        <OtpModule email={getPopupForgotPassword} />
       </Suspense>
     </ErrorBoundary>
   );

@@ -26,6 +26,11 @@ export type TOtpPopup = {
   getPopupOtp: boolean;
 };
 
+export type TForgotPasswordPopup = {
+  setPopupForgotPassword: (val: string) => void;
+  getPopupForgotPassword: string;
+};
+
 export type TLoginPayload = {
   email?: string;
   password?: string;
@@ -70,4 +75,9 @@ export type TRefreshTokenResponse = {
       access_token: string;
     };
   };
+};
+
+export type TResetPasswordPayload = {
+  password: string;
+  password_confirmation: string;
 };

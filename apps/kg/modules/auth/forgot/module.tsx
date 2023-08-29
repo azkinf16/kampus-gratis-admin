@@ -1,6 +1,12 @@
 'use client';
 
-import { usePopupForgotPass } from '../../../hooks/authentications/hook';
+import {
+  useForgot,
+  useForgotPasswordVerify,
+  usePopupForgotPass,
+  usePopupForgotPassword,
+  usePopupOtp,
+} from '../../../hooks/authentications/hook';
 import { validationSchemaForgot } from '../../../config/validation/authentications/forgot';
 import { FC } from 'react';
 import { z } from 'zod';
@@ -13,16 +19,37 @@ import Link from 'next/link';
 type ValidationSchema = z.infer<typeof validationSchemaForgot>;
 
 export const ForgotModule: FC = () => {
+  const { setPopupOtp } = usePopupOtp();
   const { setPopupStatus, getPopupStatus } = usePopupForgotPass();
+
+  const { setPopupForgotPassword } = usePopupForgotPassword();
+
   const {
     control,
     formState: { isValid, errors },
+    handleSubmit,
   } = useForm<ValidationSchema>({
     resolver: zodResolver(validationSchemaForgot),
     mode: 'all',
     defaultValues: {
       email: '',
     },
+  });
+
+  const { mutate, isLoading } = useForgot();
+
+  const onSubmit = handleSubmit((data) => {
+    mutate(data, {
+      onSuccess: () => {
+        setPopupForgotPassword(data?.email);
+        setPopupStatus(false);
+        setPopupOtp(true);
+      },
+      onError: (e) => {
+        console.log(e.response?.data.message);
+        // setError(e.response?.data.message as string);
+      },
+    });
   });
 
   return (
@@ -38,7 +65,7 @@ export const ForgotModule: FC = () => {
         mengirimkan kode OTP untuk dapat mengatur ulang kata sandi Anda.
       </div>
 
-      <form className="flex flex-col w-full !justify-end">
+      <form className="flex flex-col w-full !justify-end" onSubmit={onSubmit}>
         <label className="text-start font-[500] text-[16px] mb-1">
           Email
           <TextField
@@ -53,15 +80,14 @@ export const ForgotModule: FC = () => {
         </label>
 
         <div className="flex justify-center text-center w-full">
-          <Link href={'/auth/otp'}>
-            <Button
-              type="submit"
-              disabled={!isValid}
-              className=" w-fit px-8 py-3 disabled:bg-neutral-400 h-auto text-[16px] text-white rounded-lg border-2 border-neutral-200 appearance-none bg-primary-600 font-[600] tracking-wide"
-            >
-              Kirim
-            </Button>
-          </Link>
+          <Button
+            type="submit"
+            disabled={!isValid}
+            className=" w-fit px-8 py-3 disabled:bg-neutral-400 h-auto text-[16px] text-white rounded-lg border-2 border-neutral-200 appearance-none bg-primary-600 font-[600] tracking-wide"
+            loading={isLoading ? 'Sedang Memuat...' : ''}
+          >
+            Kirim
+          </Button>
         </div>
       </form>
     </PopupModal>

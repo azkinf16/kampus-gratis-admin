@@ -9,12 +9,14 @@ import {
   TRefreshTokenPayload,
   TRefreshTokenResponse,
   TRegisterPayload,
+  TResetPasswordPayload,
 } from '../../types/authentications';
 import {
   EMAIL_VERIFICATION_REQUEST,
   EMAIL_VERIFICATION_VERIFY,
   LOGIN,
   REGISTER,
+  RESET_PASSWORD_VERIFY,
   TMetaItem,
 } from '@kampus-gratis/utils';
 import { api } from '../../config/api/apiConfig';
@@ -66,6 +68,14 @@ export const forgotPasswordRequest = async (
   return data;
 };
 
+export const forgotPasswordVerifyRequest = async (
+  payload: TOTPPayload
+): Promise<TMetaItem> => {
+  const { data } = await api.post(RESET_PASSWORD_VERIFY, payload);
+
+  return data;
+};
+
 export const logoutRequest = async ({
   refresh_token,
 }: {
@@ -82,5 +92,12 @@ export const refreshTokenRequest = async (
     '/auth/refresh',
     payload
   );
+  return data;
+};
+
+export const resetPasswordRequest = async (
+  payload: TResetPasswordPayload
+): Promise<TMetaItem> => {
+  const { data } = await api.post('/auth/reset-password', payload);
   return data;
 };

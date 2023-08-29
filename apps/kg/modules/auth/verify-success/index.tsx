@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 export const VerifySuccessModule: FC = () => {
   return (
-    <div className="h-screen bg-primary-500 w-full flex items-center rounded-lg">
+    <div className="h-screen bg-primary-500 w-full flex items-center">
       <div className="max-w-[1280px] mx-auto w-full bg-white rounded-md p-8 flex justify-between flex-col sm:flex-row">
         <div className="relative flex items-center">
           <Link href={'/'}>

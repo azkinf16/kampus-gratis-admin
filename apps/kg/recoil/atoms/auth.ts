@@ -11,3 +11,8 @@ export const PopupModalForgotPass = atom({
   key: 'modal-popup-forgot-password',
   default: false,
 });
+
+export const forgotPasswordState = atom({
+  key: 'email-forgot-password',
+  default: '',
+});
