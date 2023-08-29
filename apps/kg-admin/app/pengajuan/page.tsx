@@ -26,7 +26,7 @@ export default function PengajuanPage() {
   ]);
   const GetData = async () => {
     try {
-      const response = await axios.get('https://fakestoreapi.com/users');
+      const response = await axios.get('http://localhost:3000/users');
 
       setUsers(response.data);
       console.log(response.data);
@@ -39,17 +39,17 @@ export default function PengajuanPage() {
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 1;
+  const pageSize = 10;
   // https://dummyjson.com/user
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
+
   return (
     <BaseLayout>
       <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
-            {/* <Dropdown dataOptions={options} /> */}
             <div className="flex">
               <Button
                 plus="&#43;"
@@ -116,10 +116,9 @@ export default function PengajuanPage() {
             </Table>
           </div>
           <Pagination
-            items={users.length}
-            pageSize={currentPage}
-            currentPage={pageSize}
+            currentPage={currentPage}
             onPageChange={onPageChange}
+            totalPages={pageSize}
           />
         </div>
       </div>

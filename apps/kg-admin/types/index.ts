@@ -67,8 +67,7 @@ export interface TDropdown {
 }
 
 export interface TPagination {
-  items: number;
-  pageSize: number;
   currentPage: number;
+  totalPages: number;
   onPageChange: (type: number) => void;
 }
