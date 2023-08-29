@@ -40,7 +40,7 @@ export const OtpModule: FC<TOTPProps> = (props) => {
         {
           onSuccess: () => {
             setPopupOtp(false);
-            push('/auth/login');
+            push('/auth/verify-success');
           },
           onError: (error) => {
             setOtp('');
