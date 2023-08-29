@@ -31,13 +31,19 @@ export const ResetModule: FC = () => {
     defaultValues: {
       password: '',
       password_confirmation: '',
+      email: '',
     },
   });
 
   const { mutate, isLoading } = useResetPassword();
 
   const onSubmit = handleSubmit(async (data) => {
-    mutate(data, {
+    const { email, password } = data;
+    const payload = {
+      email,
+      password,
+    };
+    mutate(payload, {
       onSuccess: () => router.push('/auth/email-sent'),
       onError: (e) => setError(e.response?.data?.message),
     });
@@ -64,7 +70,7 @@ export const ResetModule: FC = () => {
               variant="lg"
               control={control}
               name={'password'}
-              placeholder="********"
+              placeholder="Masukkan Kata Sandi"
               label="Kata sandi"
               status={errors.password ? 'error' : 'none'}
               message={errors.password?.message}
@@ -74,12 +80,23 @@ export const ResetModule: FC = () => {
               variant="lg"
               control={control}
               name={'password_confirmation'}
-              placeholder="*********"
-              label="Konfirmasi Kata sandi"
+              placeholder="Masukkan Konfirmasi Kata Sandi"
+              label="Konfirmasi Kata Sandi"
               status={errors.password_confirmation ? 'error' : 'none'}
               message={errors.password_confirmation?.message}
             />
-
+            <hr className="my-3" />
+            <TextField
+              type="email"
+              variant="lg"
+              control={control}
+              name={'email'}
+              placeholder="Masukkan Email"
+              label="Email"
+              status={errors.email ? 'error' : 'none'}
+              message={errors.email?.message}
+              required
+            />
             <div className="flex flex-col my-4">
               <Button
                 type="submit"

@@ -79,5 +79,5 @@ export type TRefreshTokenResponse = {
 
 export type TResetPasswordPayload = {
   password: string;
-  password_confirmation: string;
+  email: string;
 };
