@@ -15,7 +15,7 @@ const BaseLayout = ({ children }: TBaseLayout) => {
     },
     {
       title: 'User',
-      path: '/user',
+      path: 'user',
       icon: <IconUserMenu />,
     },
     {

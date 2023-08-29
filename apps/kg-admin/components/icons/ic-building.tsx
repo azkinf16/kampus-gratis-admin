@@ -9,7 +9,7 @@ export const IconBuilding: FC = (): ReactElement => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_10215_86148)">
+      <g clipPath="url(#clip0_10215_86148)">
         <rect x="0.25" width="58" height="58" rx="29" fill="#E9F6FD" />
         <path
           fillRule="evenodd"
