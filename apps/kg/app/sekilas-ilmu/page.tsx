@@ -1,6 +1,6 @@
 "use client"
 
-import { GlimpseKnowledgeModule } from "apps/kg/modules/glimpse-knowledge";
+import { GlimpseKnowledgeModule } from "apps/kg/modules/sekilas-ilmu";
 import { NextPage } from "next";
 import { ReactElement } from "react";
 
