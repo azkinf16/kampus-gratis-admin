@@ -1,21 +1,31 @@
 'use client';
 
+import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import Button from '@/components/button/Button';
 import Searchbar from '@/components/searchbar/Searchbar';
 import BaseLayout from '@/modules/base/BaseLayout';
-import { usePathname } from 'next/navigation';
+
 import React from 'react';
 
 const UserMahasiswaPage = () => {
-  const Pathname = usePathname();
 
-  console.log(Pathname);
+  const mahasiswaPageBC = [
+    {
+      name: 'User',
+      link: 'not-routing',
+    },
+    {
+      name: 'Mahasiswa',
+      link: '/user/mahasiswa',
+    },
+  ];
+
   return (
     <BaseLayout>
       <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="max-w-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
-            <div className="flex">{/* <p>halo : {parameterName}</p> */}</div>
+            <Breadcrumb items={mahasiswaPageBC} />
             <div className="flex">
               <Button
                 plus="&#43;"
