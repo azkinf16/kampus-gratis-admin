@@ -41,7 +41,8 @@ export const TestimonySection: FC = (): ReactElement => {
   }, []);
 
   return (
-    <section className="lg:flex overflow-y-hidden bg-primary-500 rounded-md  h-[580px] lg:h-[544px] mx-[8] lg:mx-[72px] justify-start px-8  items-center my-20 relative">
+    <section className="lg:flex overflow-y-hidden bg-primary-500 rounded-md  h-[580px] lg:h-[544px]  max-w-[1440px] mx-auto justify-start px-8  items-center my-20 relative">
+      {/* <div className=""></div> */}
       <div className="flex flex-col text-white text-left w-full lg:w-1/2 py-10 z-10">
         <p className="text-sm tracking-wide">Testimoni</p>
         <h1 className="text-2xl lg:text-4xl font-bold font-700 py-5">
@@ -68,13 +69,13 @@ export const TestimonySection: FC = (): ReactElement => {
           slidesPerView={screenWidth}
           spaceBetween={40}
           autoplay={{
-            delay: 500,
+            delay: 2500,
             disableOnInteraction: false,
           }}
           mousewheel={true}
           centeredSlides={false}
           modules={[Mousewheel, Autoplay]}
-          className="justify-center h-screen px-4"
+          className="flex items-center h-screen pb-20 px-4"
         >
           {ContentCardTestimony.map((card, key) => (
             <SwiperSlide className="flex items-center" key={key}>
