@@ -56,11 +56,13 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account }) {
+      console.log(account);
       if (account?.provider === 'google' && account) {
         try {
           const { data } = await loginByGoogleRequest({
             credential: account.id_token as string,
           });
+
           account.access_token = data?.token?.access_token;
           account.refresh_token = data?.token?.refresh_token;
         } catch (error: any) {
