@@ -5,8 +5,16 @@ import React from 'react'
 import { ContentCardArticle } from './constant'
 import { Button } from '@kampus-gratis/components/atoms'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const ArticleSection = () => {
+  const router = useRouter()
+
+  const handleClick = () => {
+    router.push('/sekilas-ilmu')
+  }
+
+
   return (
       <section className="lg:flex flex-col gap-y-[20px] px-8">
         <div className='py-10 relative'>
@@ -33,9 +41,9 @@ const ArticleSection = () => {
         <div className="flex w-full justify-center items-center pt-8">
           <Button
             type="button"
-            href="/"
             className="bg-blue-base text-white font-semibold p-3 rounded-lg w-[328px]"
-          >
+            onClick={handleClick}
+         >
             Lihat Semua
           </Button>
         </div>

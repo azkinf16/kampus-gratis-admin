@@ -24,10 +24,10 @@ const GlimpseSection = () => {
                 <Button type="button" onClick={() => (setIsHidden(!isHidden))} className='text-white bg-transparent py-3 px-12 text-lg rounded-lg'>Lihat Semua</Button>
               </div>
       </div>
-      <div className="w-full lg:w-1/2 flex justify-center ">
+      <div className="w-full lg:w-1/2 flex justify-center items-center ">
         <Image
         width={500}
-        height={500}
+        height={540}
         src="/images/glimpse-image.png" alt="" className='lg:w-[500px] lg:h-[540px]' />
       </div>
     </section>

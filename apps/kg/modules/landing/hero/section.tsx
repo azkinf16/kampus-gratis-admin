@@ -8,7 +8,7 @@ const HeroSection: FC = () => {
     <>
       <section
         className="z-0 left-0 top-0 bg-white w-full h-full bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url('images/hero-background.svg')` }}
+        style={{ backgroundImage: `url('images/hero-background.svg')`, width: 'auto', height: 'auto' }}
       >
         <div className="max-w-[1440px] mx-auto">
           <div className="pt-12 px-6">

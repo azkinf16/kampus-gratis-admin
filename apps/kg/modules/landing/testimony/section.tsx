@@ -67,9 +67,13 @@ export const TestimonySection: FC = (): ReactElement => {
           direction={'vertical'}
           slidesPerView={screenWidth}
           spaceBetween={40}
+          autoplay={{
+            delay: 500,
+            disableOnInteraction: false,
+          }}
           mousewheel={true}
           centeredSlides={false}
-          modules={[Mousewheel]}
+          modules={[Mousewheel, Autoplay]}
           className="justify-center h-screen px-4"
         >
           {ContentCardTestimony.map((card, key) => (

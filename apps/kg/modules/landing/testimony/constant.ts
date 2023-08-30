@@ -21,5 +21,17 @@ export const ContentCardTestimony: Array<TChoiceTestimonyCardProps> = [
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime quia sequi eos maiores veniam possimus est distinctio exercitationem quas reiciendis. Voluptate fuga vitae a, aperiam temporibus asperiores quidem adipisci sed?",
     src: Testimony1,
   },
+  {
+    name: "Fakhri Haromain",
+    job: "Backend Developer",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime quia sequi eos maiores veniam possimus est distinctio exercitationem quas reiciendis. Voluptate fuga vitae a, aperiam temporibus asperiores quidem adipisci sed?",
+    src: Testimony1,
+  },
+  {
+    name: "Daffa Reyhan",
+    job: "Backend Developer",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime quia sequi eos maiores veniam possimus est distinctio exercitationem quas reiciendis. Voluptate fuga vitae a, aperiam temporibus asperiores quidem adipisci sed?",
+    src: Testimony1,
+  },
 ];
 

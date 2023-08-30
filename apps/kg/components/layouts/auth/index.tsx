@@ -103,7 +103,7 @@ export const AuthLayout: FC<TAuthLayoutProps> = ({
   return (
     <section
       className={`w-full bg-neutral-100 flex-row justify-center  lg:py-10 lg:px-14 md:p-8 sm:p-6 ${
-        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen'
+        h === 'full' ? 'h-full items-stretch' : 'lg:h-screen lg:min-h-[768px]'
       }`}
     >
       <section className="flex bg-white max-w-7xl w-full h-full rounded-lg shadow-lg flex-col  lg:flex-row mx-auto">
