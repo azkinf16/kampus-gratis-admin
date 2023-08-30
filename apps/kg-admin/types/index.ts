@@ -28,13 +28,25 @@ interface Username {
   firstname: string;
   lastname: string;
 }
-export interface UserData {
-  id?: number;
-  name?: Username;
-  email?: string;
-  username?: string;
-  phone?: string;
+
+export interface author {
+  full_name: string;
 }
+export type TArticleResponse = {
+  data: {
+    id: string;
+    title: string;
+    content: string;
+    thumbnail: string;
+    slug: string;
+    views: number;
+    created_at: string;
+    author: author;
+    category: string;
+    tags: string[];
+    is_favorite: boolean;
+  };
+};
 
 export interface TButton {
   title: string;

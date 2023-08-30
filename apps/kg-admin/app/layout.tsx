@@ -1,5 +1,7 @@
+'use client';
 import './global.css';
 import { Montserrat } from 'next/font/google';
+import { Provider } from './utils/Provider';
 
 export const metadata = {
   title: 'Welcome to kg-admin',
@@ -16,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={Monst.className}>
-      <body>{children}</body>
-    </html>
+    <Provider>
+      <html lang="en" className={Monst.className}>
+        <body>{children}</body>
+      </html>
+    </Provider>
   );
 }
