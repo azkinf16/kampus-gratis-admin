@@ -40,7 +40,7 @@ export interface TButton {
   title: string;
   buttonStyle: string;
   plus: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export interface TSearchbar {
