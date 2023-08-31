@@ -18,7 +18,14 @@ import Link from 'next/link';
 
 type ValidationSchema = z.infer<typeof validationSchemaResetPassword>;
 
-export const ResetModule: FC = () => {
+type Params = {
+  params: {
+    token: string;
+  };
+};
+
+export const ResetModule: FC<Params> = ({ params }) => {
+  const { token } = params;
   const router = useRouter();
   const [getError, setError] = useState<string | undefined>(undefined);
   const {
@@ -31,18 +38,18 @@ export const ResetModule: FC = () => {
     defaultValues: {
       password: '',
       password_confirmation: '',
-      email: '',
     },
   });
 
   const { mutate, isLoading } = useResetPassword();
 
   const onSubmit = handleSubmit(async (data) => {
-    const { email, password } = data;
+    const { password } = data;
     const payload = {
-      email,
+      token,
       password,
     };
+
     mutate(payload, {
       onSuccess: () => router.push('/auth/email-sent'),
       onError: (e) => setError(e.response?.data?.message),
@@ -85,18 +92,6 @@ export const ResetModule: FC = () => {
               status={errors.password_confirmation ? 'error' : 'none'}
               message={errors.password_confirmation?.message}
             />
-            <hr className="my-3" />
-            <TextField
-              type="email"
-              variant="lg"
-              control={control}
-              name={'email'}
-              placeholder="Masukkan Email"
-              label="Email"
-              status={errors.email ? 'error' : 'none'}
-              message={errors.email?.message}
-              required
-            />
             <div className="flex flex-col my-4">
               <Button
                 type="submit"
@@ -109,7 +104,7 @@ export const ResetModule: FC = () => {
 
               <div className="flex w-full items-center justify-center my-4 gap-x-4 mb-4 font-[500] text-[18px] text-neutral-500">
                 <span>Sudah Ingat Password nya?</span>
-                <Link className="text-primary-600" href={'/auth/register'}>
+                <Link className="text-primary-600" href={'/auth/login'}>
                   Masuk Disini
                 </Link>
               </div>

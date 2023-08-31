@@ -20,7 +20,7 @@ export const OtpModule: FC<TOTPProps> = (props) => {
 
   const [otp, setOtp] = useState('');
   const { mutate: request } = useOtpRequest();
-  const { mutate: verify } = useOtpVerify();
+  const { mutate: verifyRegister } = useOtpVerify();
   const { mutate: verifyForgot } = useForgotPasswordVerify();
   const { push } = useRouter();
   const pathname = usePathname();
@@ -44,13 +44,14 @@ export const OtpModule: FC<TOTPProps> = (props) => {
             otp,
           },
           {
-            onSuccess: () => {
+            onSuccess: (data) => {
               setPopupOtp(false);
+              push(`/auth/reset-password/${data?.data?.token}`);
             },
           }
         );
       } else {
-        verify(
+        verifyRegister(
           {
             email: props.email,
             otp,

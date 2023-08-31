@@ -10,6 +10,7 @@ import {
   TRefreshTokenResponse,
   TRegisterPayload,
   TResetPasswordPayload,
+  TResetPasswordVerifyResponse,
 } from '../../types/authentications';
 import {
   EMAIL_VERIFICATION_REQUEST,
@@ -70,7 +71,7 @@ export const forgotPasswordRequest = async (
 
 export const forgotPasswordVerifyRequest = async (
   payload: TOTPPayload
-): Promise<TMetaItem> => {
+): Promise<TResetPasswordVerifyResponse> => {
   const { data } = await api.post(RESET_PASSWORD_VERIFY, payload);
 
   return data;

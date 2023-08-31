@@ -1,4 +1,4 @@
-import { TMetaResponseSingle } from '@kampus-gratis/utils';
+import { TMetaItem, TMetaResponseSingle } from '@kampus-gratis/utils';
 import { User } from 'next-auth';
 
 export type TRegisterPayload = {
@@ -77,7 +77,14 @@ export type TRefreshTokenResponse = {
   };
 };
 
+export type TResetPasswordVerifyResponse = {
+  data: {
+    email: string;
+    token: string;
+  } & TMetaItem;
+};
+
 export type TResetPasswordPayload = {
   password: string;
-  email: string;
+  token: string;
 };

@@ -10,6 +10,7 @@ import {
   TOtpPopup,
   TRegisterPayload,
   TResetPasswordPayload,
+  TResetPasswordVerifyResponse,
   TusePopupForgotPass,
 } from '../../types/authentications';
 import { TMetaErrorResponse, TMetaItem } from '@kampus-gratis/utils';
@@ -109,7 +110,7 @@ export const usePopupForgotPass = (): TusePopupForgotPass => {
 };
 
 export const useForgotPasswordVerify = (): UseMutationResult<
-  TMetaItem,
+  TResetPasswordVerifyResponse,
   TMetaErrorResponse,
   TOTPPayload
 > =>
