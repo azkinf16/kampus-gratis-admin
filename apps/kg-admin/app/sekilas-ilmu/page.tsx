@@ -2,15 +2,14 @@
 import BaseLayout from '@/modules/base/BaseLayout';
 import { useRouter, useSearchParams } from 'next/navigation';
 // import useArticle from '@/modules/lib/useArticle';
-import { useQuery } from '@tanstack/react-query';
-import AxiosInstance from '@/modules/lib/Axios';
-import { Provider } from '../../app/utils/Provider';
 import Pagination from '@/components/pagination/Pagination';
 import Table from '@/components/table/Table';
-import { IconAccept } from '@/components/icons/ic-accept';
-import { IconReject } from '@/components/icons/ic-reject';
 import { useEffect, useState } from 'react';
 import { useArticle, useArticleData } from '@/modules/lib/useArticle';
+import { IconEdit } from '@/components/icons/ic-edit';
+import { IconDelete } from '@/components/icons/ic-delete';
+import Button from '@/components/button/Button';
+import Searchbar from '@/components/searchbar/Searchbar';
 
 export default function SekilasIlmuPage() {
   // const router = useRouter();
@@ -37,39 +36,51 @@ export default function SekilasIlmuPage() {
     router.push(`/sekilas-ilmu?page=${page}`);
   };
 
-  // console.log(getArticleData);
+  const addArtikel = () => {
+    router.push('/sekilas-ilmu/tambah-artikel');
+  };
 
   return (
     <BaseLayout>
       <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
-        <div className="w-max-full mt-5 mb-16 pr-10">
-          <div className="flex justify-between">
-            <Table>
-              <tr>
-                <th>No</th>
-                <th>Judul Artikel</th>
-                <th>Tanggal Upload</th>
-                <th>Disimpan</th>
-                <th>Tags</th>
-                <th>Action</th>
-              </tr>
-              {getArticleData?.data?.data.map((article: any, i: number) => (
-                <tr key={article.id}>
-                  <td>{i + (Number(page) - 1) * 10 + 1}</td>
-                  <td>{article.title}3 </td>
-                  <td>{article.created_at}</td>
-                  <td>test</td>
-                  <td>{article.tags}</td>
-                  <td>
-                    <div className="flex justify-evenly">
-                      <IconAccept />
-                      <IconReject />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </Table>
+        <div className="flex justify-between pr-[50px]">
+          <p>Sekilas Ilmu</p>
+          <div className="flex">
+            <Button
+              plus="&#43;"
+              title="Artikel"
+              buttonStyle="flex items-center justify-center bg-primary-base w-[200px] rounded text-white"
+              onClick={addArtikel}
+            />
+            <Searchbar placeholder="Cari Mahasiswa" />
           </div>
+        </div>
+        <div className="w-full mt-5 mb-16 pr-10">
+          <Table>
+            <tr>
+              <th>No</th>
+              <th>Judul Artikel</th>
+              <th>Tanggal Upload</th>
+              <th>Disimpan</th>
+              <th>Tags</th>
+              <th>Action</th>
+            </tr>
+            {getArticleData?.data?.data.map((article: any, i: number) => (
+              <tr key={article.id}>
+                <td>{i + (Number(page) - 1) * 10 + 1}</td>
+                <td>{article.title}</td>
+                <td>{article.created_at}</td>
+                <td>{article.views}</td>
+                <td>{article.tags}</td>
+                <td>
+                  <div className="flex justify-evenly">
+                    <IconEdit />
+                    <IconDelete />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </Table>
           <Pagination
             onPageChange={handlePageChange}
             totalPages={getArticleData?.data?.total_data}

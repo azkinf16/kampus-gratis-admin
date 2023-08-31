@@ -5,7 +5,7 @@ import React from 'react';
 export default function TambahArtikelPage() {
   return (
     <BaseLayout>
-      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
+      <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <div className="flex justify-between mb-10">
             <p className="flex justify-center place-items-center font-semibold">
