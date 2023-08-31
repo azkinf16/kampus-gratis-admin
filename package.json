@@ -6,7 +6,7 @@
     "kg:serve": "yarn nx serve kg",
     "kg:build": "yarn nx build kg",
     "kg:lint": "yarn nx lint kg",
-    "kg-admin:serve": "yarn nx serve kg-admin",
+    "kg-admin:serve": "yarn nx serve kg-admin --port 3000",
     "kg-admin:build": "yarn nx build kg-admin",
     "kg-admin:lint": "yarn nx lint kg-admin"
   },

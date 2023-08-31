@@ -17,8 +17,8 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'www.gravatar.com',
       'res.cloudinary.com',
-
       'lh3.googleusercontent.com',
+      'picsum.photos',
     ],
   },
 };
