@@ -9,13 +9,13 @@ import { IconMedalSecond } from '@/components/icons/ic-medal-2';
 import { IconMedalThird } from '@/components/icons/ic-medal-3';
 import { IconMultiUser } from '@/components/icons/ic-multiuser';
 import { IconUser } from '@/components/icons/ic-user';
-import { JadwalMkHor } from '@/components/jadwal-mk-horizontal/Jadwalmk-hor';
+import { JadwalMk } from '@/components/jadwal-mk/JadwalMk';
 import Matakuliah from '@/components/mk/Matakuliah';
 import Table from '@/components/table/Table';
 import BaseLayout from '@/modules/base/BaseLayout';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default function DashboardPage() {
   const options1 = [
@@ -25,6 +25,33 @@ export default function DashboardPage() {
     'Mahasiswa dengan IPS tertinggi',
   ];
   const options2 = ['Global', 'Fakultas', 'Prodi', 'Semester'];
+
+  const acaraKampusData = [
+    {
+      image: '/assets/pic-jmk.png',
+      title: 'Webinar Cyber Security',
+      dateEven: 'Selasa, 28 Februari 2023',
+      time: 'Pukul 19:00 WIB',
+    },
+    {
+      image: '/assets/pic-jmk.png',
+      title: 'Webinar Cyber Security',
+      dateEven: 'Selasa, 28 Februari 2023',
+      time: 'Pukul 19:00 WIB',
+    },
+    {
+      image: '/assets/pic-jmk.png',
+      title: 'Webinar Cyber Security',
+      dateEven: 'Selasa, 28 Februari 2023',
+      time: 'Pukul 19:00 WIB',
+    },
+    {
+      image: '/assets/pic-jmk.png',
+      title: 'Webinar Cyber Security',
+      dateEven: 'Selasa, 28 Februari 2023',
+      time: 'Pukul 19:00 WIB',
+    },
+  ];
 
   //datadummy for table
   const generateNumbers = (): number[] => {
@@ -120,7 +147,7 @@ export default function DashboardPage() {
                               ) : item === 3 ? (
                                 <IconMedalThird />
                               ) : (
-                                <p className='pr-3'>{item}</p>
+                                <p className="pr-3">{item}</p>
                               )}
                             </div>
                           </td>
@@ -142,10 +169,17 @@ export default function DashboardPage() {
               <h1 className="font-bold text-lg mb-3">Jadwal Acara Kampus</h1>
               <div className="relative bg-white h-full rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                 <div className="grid grid-cols-1 p-5 gap-5">
-                  <JadwalMkHor />
-                  <JadwalMkHor />
-                  <JadwalMkHor />
-                  <JadwalMkHor />
+                  {acaraKampusData.map((even, i) => (
+                    <Fragment key={i}>
+                      <JadwalMk
+                        image={even.image}
+                        title={even.title}
+                        dateEven={even.dateEven}
+                        time={even.time}
+                        position='hor'
+                      />
+                    </Fragment>
+                  ))}
                 </div>
 
                 <div className="absolute bottom-0 right-0 pb-5 pr-8 font-bold">

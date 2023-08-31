@@ -3,8 +3,8 @@ import { FC, ReactElement } from 'react';
 export const IconBuilding: FC = (): ReactElement => {
   return (
     <svg
-      width="78"
-      height="78"
+      width="60"
+      height="60"
       viewBox="0 0 59 58"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -21,8 +21,12 @@ export type TCard = {
   logo: React.ReactElement;
 };
 
-export type TJadwalMK = {
-  containerStyle: string;
+export type TJadwalMk = {
+  image: string;
+  title: string;
+  dateEven: string;
+  time: string;
+  position: 'vert' | 'hor';
 };
 interface Username {
   firstname: string;
@@ -81,4 +85,9 @@ export type TBreadCrumbProps = {
   textColor?: string;
   bgColor?: string;
   items: TCrumbItem[];
+};
+
+export type TPopover = {
+  title: string;
+  menus: string[];
 };
