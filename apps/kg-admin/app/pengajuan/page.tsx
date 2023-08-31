@@ -25,7 +25,7 @@ export default function PengajuanPage() {
   ]);
   const GetData = async () => {
     try {
-      const response = await axios.get('https://fakestoreapi.com/users');
+      const response = await axios.get('http://localhost:3000/users');
 
       setUsers(response.data);
       console.log(response.data);

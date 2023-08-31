@@ -73,7 +73,7 @@ export default function SekilasIlmuPage() {
                 <td>{article.views}</td>
                 <td>{article.tags}</td>
                 <td>
-                  <div className="flex justify-evenly">
+                  <div className="flex justify-between">
                     <IconEdit />
                     <IconDelete />
                   </div>

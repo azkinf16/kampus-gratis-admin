@@ -83,3 +83,20 @@ export interface TPagination {
   totalPages: number;
   onPageChange: (type: number) => void;
 }
+
+export interface TPagination {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (type: number) => void;
+}
+
+type TCrumbItem = {
+  link: string;
+  name: string;
+};
+
+export type TBreadCrumbProps = {
+  textColor?: string;
+  bgColor?: string;
+  items: TCrumbItem[];
+};

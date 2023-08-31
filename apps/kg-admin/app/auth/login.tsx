@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn } from 'next-auth/react';
 import router from 'next/router';
 import Link from 'next/link';
 
@@ -32,12 +31,12 @@ const Login = () => {
     },
   });
 
-  const onSubmit = handleSubmit(async (data) => {
-    const response = await signIn('login', {
-      email: data.email,
-      password: data.password,
-    });
-  });
+  // const onSubmit = handleSubmit(async (data) => {
+  //   const response = await signIn('login', {
+  //     email: data.email,
+  //     password: data.password,
+  //   });
+  // });
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -68,7 +67,7 @@ const Login = () => {
           <h3 className="text-[13px] font-semibold mb-4 text-center">
             Silahkan masuk menggunakan email dan kata sandi yang terdaftar
           </h3>
-          <form onSubmit={onSubmit}>
+          <form>
             <div className="mb-4">
               <label
                 htmlFor="email"
