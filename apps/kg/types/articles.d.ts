@@ -11,19 +11,24 @@ export type TChoiceArticleCardProps = {
   src: string | StaticImageData;
 };
 
-export type TArticleItem = {
+export type TArticleResponse = {
   data: {
-        id: string;
-        title: string;
-        content: string;
-        thumbnail: string;
-        slug: string;
-        views: number;
-        category_id: string;
-        author_id: string;
-        created_at: string;
-        tags: [];
-      }
+    data: TArticleItem[];
+    page_size: number;
+    total_data: number;
+    current_page: number;
+    max_page: number;
+  };
 };
 
-export type TArticleResponse = TMetaResponse<TArticleItem>;
+export type TArticleItem = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  slug: string;
+  author: Author;
+  category: string;
+  tags: string[];
+};
+
+// export type TArticleResponse2 = TMetaResponse<TArticleItem>;
