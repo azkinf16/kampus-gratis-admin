@@ -28,17 +28,26 @@ export type TJadwalMk = {
   time: string;
   position: 'vert' | 'hor';
 };
-interface Username {
-  firstname: string;
-  lastname: string;
+
+export interface author {
+  full_name: string;
 }
-export interface UserData {
-  id?: number;
-  name?: Username;
-  email?: string;
-  username?: string;
-  phone?: string;
-}
+
+export type TArticleResponse = {
+  data: {
+    id: string;
+    title: string;
+    content: string;
+    thumbnail: string;
+    slug: string;
+    views: number;
+    created_at: string;
+    author: author;
+    category: string;
+    tags: string[];
+    is_favorite: boolean;
+  };
+};
 
 export interface TButton {
   title: string;
@@ -76,6 +85,12 @@ export interface TPagination {
   onPageChange: (type: number) => void;
 }
 
+export interface TPagination {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (type: number) => void;
+}
+
 type TCrumbItem = {
   link: string;
   name: string;
@@ -91,3 +106,4 @@ export type TPopover = {
   title: string;
   menus: string[];
 };
+

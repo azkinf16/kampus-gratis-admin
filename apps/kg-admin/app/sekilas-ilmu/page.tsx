@@ -1,85 +1,91 @@
 'use client';
-import Table from '@/components/table/Table';
 import BaseLayout from '@/modules/base/BaseLayout';
-import { UserData } from '@/types';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import Button from '@/components/button/Button';
-import Searchbar from '@/components/searchbar/Searchbar';
+import { useRouter, useSearchParams } from 'next/navigation';
+// import useArticle from '@/modules/lib/useArticle';
+import Pagination from '@/components/pagination/Pagination';
+import Table from '@/components/table/Table';
+import { useEffect, useState } from 'react';
+import { useArticle, useArticleData } from '@/modules/lib/useArticle';
 import { IconEdit } from '@/components/icons/ic-edit';
 import { IconDelete } from '@/components/icons/ic-delete';
-import { useRouter } from 'next/navigation';
+import Button from '@/components/button/Button';
+import Searchbar from '@/components/searchbar/Searchbar';
 
 export default function SekilasIlmuPage() {
+  // const router = useRouter();
+  const { setArticleData, getArticleData } = useArticleData();
+
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const [users, setUsers] = useState<UserData[]>([
-    {
-      id: 0,
-      name: { firstname: '', lastname: '' },
-      email: '',
-      username: '',
-    },
-  ]);
-  const GetData = async () => {
-    try {
-      const response = await axios.get('https://fakestoreapi.com/users');
 
-      setUsers(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const page = searchParams.get('page') || '1';
+
+  console.log(page);
+
+  const { data, refetch } = useArticle(page);
+
   useEffect(() => {
-    GetData();
-  }, []);
+    setArticleData(data);
+  }, [data, setArticleData]);
 
-  const handleClick = () => {
-    router.push('sekilas-ilmu/tambah-artikel');
+  const handlePageChange = async (page: string) => {
+    window.scrollTo(0, 0);
+    const { data } = await refetch();
+    console.log(data);
+
+    router.push(`/sekilas-ilmu?page=${page}`);
   };
+
+  const addArtikel = () => {
+    router.push('/sekilas-ilmu/tambah-artikel');
+  };
+
   return (
     <BaseLayout>
-      <div className="absolute w-[calc(100%-300px)] top-[15%] ml-10">
-        <div className="w-max-full mt-5 mb-16 pr-10">
-          <div className="flex justify-between mb-10">
-            <p className="flex justify-center place-items-center font-semibold">
-              Sekilas Ilmu
-            </p>
-            <div className="flex">
-              <Button
-                plus="&#43;"
-                title="Artikel"
-                buttonStyle="flex items-center justify-center bg-primary w-[200px] rounded text-white"
-                onClick={handleClick}
-              />
-              <Searchbar placeholder="Cari judul Tugas" />
-            </div>
+      <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
+        <div className="flex justify-between pr-[50px]">
+          <p>Sekilas Ilmu</p>
+          <div className="flex">
+            <Button
+              plus="&#43;"
+              title="Artikel"
+              buttonStyle="flex items-center justify-center bg-primary-base w-[200px] rounded text-white"
+              onClick={addArtikel}
+            />
+            <Searchbar placeholder="Cari Mahasiswa" />
           </div>
-          <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3">
-            <Table>
-              <tr>
-                <th>No</th>
-                <th>Judul Artikel</th>
-                <th>Tanggal Upload</th>
-                <th>Tags</th>
-                <th>Action</th>
+        </div>
+        <div className="w-full mt-5 mb-16 pr-10">
+          <Table>
+            <tr>
+              <th>No</th>
+              <th>Judul Artikel</th>
+              <th>Tanggal Upload</th>
+              <th>Disimpan</th>
+              <th>Tags</th>
+              <th>Action</th>
+            </tr>
+            {getArticleData?.data?.data.map((article: any, i: number) => (
+              <tr key={article.id}>
+                <td>{i + (Number(page) - 1) * 10 + 1}</td>
+                <td>{article.title}</td>
+                <td>{article.created_at}</td>
+                <td>{article.views}</td>
+                <td>{article.tags}</td>
+                <td>
+                  <div className="flex justify-between">
+                    <IconEdit />
+                    <IconDelete />
+                  </div>
+                </td>
               </tr>
-              {users.map((user: UserData) => (
-                <tr key={user.id} className="bg-white">
-                  <td>{user.id}</td>
-                  <td>{user.name?.firstname}</td>
-                  <td>{user.name?.lastname}</td>
-                  <td>{user.email}</td>
-                  <td>
-                    <div className="flex justify-center gap-3">
-                      <IconEdit />
-                      <IconDelete />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </Table>
-          </div>
+            ))}
+          </Table>
+          <Pagination
+            onPageChange={handlePageChange}
+            totalPages={getArticleData?.data?.total_data}
+            currentPage={page}
+          />
         </div>
       </div>
     </BaseLayout>

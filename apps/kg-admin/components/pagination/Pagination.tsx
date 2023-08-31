@@ -2,7 +2,7 @@ import React from 'react';
 import { TPagination } from '@/types';
 import { IconArrowLeft } from '../icons/ic-arrow-left';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }: TPagination) => {
+const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
   const handlePrevClick = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -58,7 +58,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: TPagination) => {
           className={`px-2 sm:px-4 py-1 sm:py-2 sm:mx-2 mx-1 border rounded-md text-sm ${
             page === currentPage
               ? 'bg-primary-base text-white'
-              : 'hover:bg-gray-200'
+              : 'hover:bg-primary-400'
           }`}
           onClick={() => {
             if (typeof page === 'number') {
@@ -71,7 +71,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: TPagination) => {
       ))}
 
       <button
-        className=" px-2 sm:px-4  py-1 sm:py-2 ml-2 border text-sm rounded-md hover:bg-gray-200"
+        className=" px-2 sm:px-4  py-1 sm:py-2 ml-2 border text-sm rounded-md hover:bg-primary-400"
         onClick={handleNextClick}
         disabled={currentPage === totalPages}
       >

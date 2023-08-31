@@ -6,7 +6,6 @@ import Table from '../../components/table/Table';
 import Button from '@/components/button/Button';
 import Searchbar from '@/components/searchbar/Searchbar';
 import axios from 'axios';
-import { UserData } from '@/types';
 import Modal from '@/components/modal/Modal';
 import Image from 'next/image';
 import Pagination from '@/components/pagination/Pagination';
@@ -15,7 +14,7 @@ import { IconReject } from '@/components/icons/ic-reject';
 
 export default function PengajuanPage() {
   const [showModal, setShowModal] = useState(false);
-  const [users, setUsers] = useState<UserData[]>([
+  const [users, setUsers] = useState([
     {
       id: 0,
       name: { firstname: '', lastname: '' },
@@ -98,7 +97,7 @@ export default function PengajuanPage() {
                 <th>Status KRS</th>
                 <th>Action</th>
               </tr>
-              {users.map((user: UserData) => (
+              {users.map((user: any) => (
                 <tr key={user.id} className="bg-white">
                   <td>{user.id}</td>
                   <td>{user.name?.firstname}</td>
