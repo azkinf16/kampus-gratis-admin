@@ -1,4 +1,7 @@
+'use client';
+
 import { Card } from '@/components/card/Card';
+import { RequestChart } from '@/components/chart-user/ChartUser';
 import Dropdown from '@/components/dropdown/Dropdown';
 import { IconArrowCircleDown } from '@/components/icons/ic-arrowcircle-down';
 import { IconBoard } from '@/components/icons/ic-board';
@@ -164,12 +167,8 @@ export default function DashboardPage() {
           <div className="grid grid-cols-2 gap-y-20 gap-x-7 mt-7 mb-20">
             <div className="h-full w-full">
               <h1 className="font-bold text-lg mb-3">Grafik Pengguna</h1>
-              <div className="relative bg-white h-full rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                <div className="flex justify-center items-center h-full">
-                  <h1 className="font-bold text-3xl text-primary-base">
-                    SOON!
-                  </h1>
-                </div>
+              <div className="flex w-full justify-center items-center bg-white h-full rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                  <RequestChart />
               </div>
             </div>
 

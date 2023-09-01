@@ -33,7 +33,7 @@ const Dropdown = ({
       </button>
       {isOpen && (
         <div className="z-50 absolute mt-2 py-2 w-full bg-white rounded-[3px] shadow-lg">
-          {dataOptions.map((option, index) => (
+          {dataOptions?.map((option, index) => (
             <button
               key={index}
               onClick={() => handleOptionSelect(option)}

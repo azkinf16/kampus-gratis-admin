@@ -70,19 +70,13 @@ export interface TModal {
 }
 
 export interface TDropdown {
-  dataOptions: string[];
+  dataOptions?: string[];
   placeholder: string;
   icons: React.ReactElement;
   reverse: boolean;
   textCentre: boolean;
   shadow: boolean;
   bold: boolean;
-}
-
-export interface TPagination {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (type: number) => void;
 }
 
 export interface TPagination {
