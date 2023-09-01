@@ -24,8 +24,8 @@ const UserAdminPage = () => {
             <div className="flex">
               <Button
                 plus="&#43;"
-                title="Buat KRS Mahasiswa"
-                buttonStyle="flex items-center justify-center bg-primary-base w-[200px] rounded text-white"
+                title="Pengguna"
+                buttonStyle="flex items-center justify-center bg-primary-base w-full px-3 rounded text-white"
                 onClick={undefined}
               />
               <Searchbar placeholder="Cari Mahasiswa" />
