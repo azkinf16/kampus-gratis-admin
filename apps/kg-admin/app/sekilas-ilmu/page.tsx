@@ -67,7 +67,7 @@ export default function SekilasIlmuPage() {
             </tr>
             {getArticleData?.data?.data.map((article: any, i: number) => (
               <tr key={article.id}>
-                <td>{i + (Number(page) - 1) * 10 + 1}</td>
+                <td>{i + (Number(page) - 1) * 5 + 1}</td>
                 <td>{article.title}</td>
                 <td>{article.created_at}</td>
                 <td>{article.views}</td>
@@ -83,7 +83,7 @@ export default function SekilasIlmuPage() {
           </Table>
           <Pagination
             onPageChange={handlePageChange}
-            totalPages={getArticleData?.data?.total_data}
+            totalPages={getArticleData?.data?.max_page}
             currentPage={page}
           />
         </div>
