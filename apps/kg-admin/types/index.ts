@@ -107,3 +107,9 @@ export type TPopover = {
   menus: string[];
 };
 
+export type TMatakuliah = {
+  image: string;
+  total_student: number;
+  title: string;
+  desc: string;
+};

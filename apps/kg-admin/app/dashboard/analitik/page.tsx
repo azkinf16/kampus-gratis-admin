@@ -70,7 +70,7 @@ const AnalitikPage = () => {
       <div className="right-0 absolute w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="w-max-full mt-5 mb-16 pr-10">
           <Breadcrumb items={analitikPageBC} />
-          <div className="grid grid-cols-4 justify-between gap-10 mt-10">
+          <div className="grid grid-cols-4 gap-10 mt-10">
             {cardItems.map((card, i) => (
               <Card amount={card.amount} title={card.title} logo={card.icon} key={i}/>
             ))}
