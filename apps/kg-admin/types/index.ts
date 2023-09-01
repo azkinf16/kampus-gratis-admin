@@ -107,3 +107,14 @@ export type TPopover = {
   menus: string[];
 };
 
+export type TextInput = {
+  placeholder: string;
+  id: string;
+  title: string;
+};
+
+export type JPGInput = {
+  id: string;
+  title: string;
+  htmlfor: string;
+};

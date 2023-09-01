@@ -1,6 +1,7 @@
-import Searchbar from '@/components/searchbar/Searchbar';
+'use client';
+import InputJPG from '@/components/input/jpg/InputJPG';
+import InputText from '@/components/input/text/InputText';
 import BaseLayout from '@/modules/base/BaseLayout';
-import React from 'react';
 
 export default function TambahArtikelPage() {
   return (
@@ -11,9 +12,6 @@ export default function TambahArtikelPage() {
             <p className="flex justify-center place-items-center font-semibold">
               Sekilas Ilmu
             </p>
-            <div className="flex">
-              <Searchbar placeholder="Cari judul Tugas" />
-            </div>
           </div>
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3">
             <div className="inline-block w-full">
@@ -22,28 +20,22 @@ export default function TambahArtikelPage() {
                 type="text"
                 id="judul-artikel"
                 className="w-full pl-2 border-2 border-[#e5e5e5] py-2 rounded-md"
+                placeholder="Masukkan Judul Artikel"
               />
-              <div className="flex justify-center w-full">
-                <div className="inline-block">
-                  <label htmlFor="tags">
-                    Tags<span style={{ color: 'red' }}>*</span>
-                  </label>
-                  <input
-                    type="text"
+              <div className="flex justify-evenly w-full pt-4 space-x-4">
+                <div className="inline-block w-full">
+                  <InputText placeholder="ex : #tags1" id="tags" title="Tags" />
+                </div>
+                <div className="inline-block w-full">
+                  <InputText
+                    placeholder="Masukkan judul artikel"
+                    title="Penulis"
                     id="tags"
-                    className="w-full pl-2 border-2 border-[#e5e5e5] py-2 rounded-md"
                   />
                 </div>
-                <div className="inline-block">
-                  <label htmlFor="penulis">
-                    Penulis<span style={{ color: 'red' }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="penulis"
-                    className="w-full pl-2 border-2 border-[#e5e5e5] py-2 rounded-md"
-                  />
-                </div>
+              </div>
+              <div className="rounded-lg">
+                <InputJPG id="img" title="Blog Image" htmlfor="tags" />
               </div>
             </div>
           </div>
