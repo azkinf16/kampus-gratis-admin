@@ -9,6 +9,7 @@ import { useArticle, useArticleData } from '@/modules/lib/useArticle';
 import { IconEdit } from '@/components/icons/ic-edit';
 import { IconDelete } from '@/components/icons/ic-delete';
 import Button from '@/components/button/Button';
+import Link from 'next/link';
 import Searchbar from '@/components/searchbar/Searchbar';
 
 export default function SekilasIlmuPage() {
@@ -74,8 +75,12 @@ export default function SekilasIlmuPage() {
                 <td>{article.tags}</td>
                 <td>
                   <div className="flex justify-between">
-                    <IconEdit />
-                    <IconDelete />
+                    <Link href={'/sekilas-ilmu'}>
+                      <IconEdit />
+                    </Link>
+                    <Link href={'/sekilas-ilmu'}>
+                      <IconDelete />
+                    </Link>
                   </div>
                 </td>
               </tr>
