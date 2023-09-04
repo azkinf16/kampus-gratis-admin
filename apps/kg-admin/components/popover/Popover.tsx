@@ -4,7 +4,7 @@ import React from 'react';
 
 const Popover = ({ title, menus }: TPopover) => {
   return (
-    <div className="flex flex-col absolute bg-white right-0 translate-x-[9.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3 rounded-md z-50">
+    <div className="w-max flex flex-col absolute bg-white left-64 shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-3 rounded-md z-50">
       <svg
         className="absolute left-0 -ml-2 bottom-0 top-0 h-full -translate-y-9 -translate-x-1"
         width="15px"
@@ -41,10 +41,10 @@ const Popover = ({ title, menus }: TPopover) => {
         </g>
       </svg>
       <h1 className="text-md font-bold">{title}</h1>
-      <div className="border border-neutral-300 w-24 mt-2 mb-3"></div>
+      <div className="border border-neutral-300 w-full mt-2 mb-3"></div>
       <div className="flex flex-col gap-1">
         {menus?.map((menu, i) => (
-          <Link href={`/${title.toLowerCase()}/${menu.toLowerCase()}`} key={i}>
+          <Link href={`/${title.toLowerCase().replace(/\s+/g, "-")}/${menu.toLowerCase().replace(/\s+/g, "-")}`} key={i}>
             <p className="text-sm text-neutral-600 hover:text-primary-base">
               {menu}
             </p>

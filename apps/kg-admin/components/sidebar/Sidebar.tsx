@@ -9,9 +9,15 @@ import Popover from '@/components/popover/Popover';
 
 const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [openUser, setOpenUser] = useState(false);
+  const [openRencanaStudi, setOpenRencanaStudi] = useState(false);
+  const [openNilaiSertif, setOpenNilaiSertif] = useState(false);
+  const [openKonsulLayanan, setOpenKonsulLayanan] = useState(false);
 
-  const menuPopover = ['Mahasiswa', 'Admin'];
+  const menuUserPopover = ['Mahasiswa', 'Admin'];
+  const menuRencanaStudiPopover = ['Fakultas', 'Program Studi', 'Mata Kuliah'];
+  const menuNilaiSertifPopover = ['Nilai', 'Sertifikat'];
+  const menuKonsulLayananPopover = ['Konsultasi', 'Layanan'];
   const activeLink =
     'flex rounded-md cursor-pointer gap-2 p-2 items-center bg-white text-neutral-600 shadow-[0_8px_30px_rgb(0,0,0,0.12)]';
   const normalLink =
@@ -35,22 +41,80 @@ const Sidebar = ({ children, dataSidebar }: TSidebarProp) => {
           </div>
           <div className="py-4 font-medium w-full">
             {dataSidebar?.map((x, i) => {
-              const isActive = pathname === x.path;
+              const isActive =
+                pathname === x.path || pathname.startsWith(`${x.path}/`);
               const handleClick = () => {
-                if (x.path === 'user') setOpen(!open);
+                if (x.path === '/user') {
+                  setOpenUser(!openUser);
+                  setOpenRencanaStudi(false)
+                  setOpenNilaiSertif(false)
+                  setOpenKonsulLayanan(false)
+                } else if (x.path === '/rencana-studi') {
+                  setOpenRencanaStudi(!openRencanaStudi);
+                  setOpenUser(false)
+                  setOpenNilaiSertif(false)
+                  setOpenKonsulLayanan(false)
+                } else if (x.path === '/nilai-sertifikat') {
+                  setOpenNilaiSertif(!openNilaiSertif);
+                  setOpenRencanaStudi(false)
+                  setOpenUser(false)
+                  setOpenKonsulLayanan(false)
+                } else if (x.path === '/konsultasi-layanan') {
+                  setOpenKonsulLayanan(!openKonsulLayanan);
+                  setOpenRencanaStudi(false)
+                  setOpenNilaiSertif(false)
+                  setOpenUser(false)
+                }
               };
               return (
                 <div key={i} className="relative my-[0.5px]">
-                  {x.path?.includes('user') && (
+                  {x.title?.includes('User') && (
                     <>
-                      {open && (
-                        <Popover title="User" menus={menuPopover} />
+                      {openUser && (
+                        <Popover title="User" menus={menuUserPopover} />
+                      )}
+                    </>
+                  )}
+                  {x.title?.includes('Rencana Studi') && (
+                    <>
+                      {openRencanaStudi && (
+                        <Popover
+                          title="Rencana Studi"
+                          menus={menuRencanaStudiPopover}
+                        />
+                      )}
+                    </>
+                  )}
+                  {x.title?.includes('Nilai dan Sertifikat') && (
+                    <>
+                      {openNilaiSertif && (
+                        <Popover
+                          title="Nilai & Sertifikat"
+                          menus={menuNilaiSertifPopover}
+                        />
+                      )}
+                    </>
+                  )}
+                  {x.title?.includes('Konsultasi & Layanan') && (
+                    <>
+                      {openKonsulLayanan && (
+                        <Popover
+                          title="Konsultasi & Layanan"
+                          menus={menuKonsulLayananPopover}
+                        />
                       )}
                     </>
                   )}
                   <Link
                     className={isActive ? activeLink : normalLink}
-                    href={x.path === 'user' ? pathname : x.path}
+                    href={
+                      x.path === '/user' ||
+                      x.path === '/rencana-studi' ||
+                      x.path === '/nilai-sertifikat' ||
+                      x.path === '/konsultasi-layanan'
+                        ? pathname
+                        : x.path
+                    }
                     onClick={handleClick}
                   >
                     <span className="p-1">{x.icon}</span>
