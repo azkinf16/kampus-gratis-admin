@@ -1,7 +1,6 @@
 'use client';
 import BaseLayout from '@/modules/base/BaseLayout';
 import { useRouter, useSearchParams } from 'next/navigation';
-// import useArticle from '@/modules/lib/useArticle';
 import Pagination from '@/components/pagination/Pagination';
 import Table from '@/components/table/Table';
 import { useEffect, useState } from 'react';
@@ -28,7 +27,7 @@ export default function SekilasIlmuPage() {
     setArticleData(data);
   }, [data, setArticleData]);
 
-  const handlePageChange = async (page: string) => {
+  const handlePageChange = async (page: number) => {
     window.scrollTo(0, 0);
     const { data } = await refetch();
     console.log(data);
@@ -44,7 +43,7 @@ export default function SekilasIlmuPage() {
     <BaseLayout>
       <div className="absolute right-0 w-[calc(100%-300px)] top-[15%] ml-10">
         <div className="flex justify-between pr-[50px]">
-          <p>Sekilas Ilmu</p>
+          <p className='font-bold'>Sekilas Ilmu</p>
           <div className="flex">
             <Button
               plus="&#43;"
@@ -69,11 +68,11 @@ export default function SekilasIlmuPage() {
               <tr key={article.id}>
                 <td>{i + (Number(page) - 1) * 5 + 1}</td>
                 <td>{article.title}</td>
-                <td>{article.created_at}</td>
+                <td>{article.created_at.slice(0, 10)}</td>
                 <td>{article.views}</td>
-                <td>{article.tags}</td>
+                <td>#{article.tags}</td>
                 <td>
-                  <div className="flex justify-between">
+                  <div className="flex justify-evenly">
                     <IconEdit />
                     <IconDelete />
                   </div>
@@ -83,8 +82,8 @@ export default function SekilasIlmuPage() {
           </Table>
           <Pagination
             onPageChange={handlePageChange}
-            totalPages={getArticleData?.data?.max_page}
-            currentPage={page}
+            totalPages={Number(getArticleData?.data?.max_page)}
+            currentPage={Number(page)}
           />
         </div>
       </div>

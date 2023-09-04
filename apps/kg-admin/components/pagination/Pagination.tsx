@@ -1,8 +1,7 @@
 import React from 'react';
 import { TPagination } from '@/types';
-import { IconArrowLeft } from '../icons/ic-arrow-left';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
+const Pagination = ({ currentPage, totalPages, onPageChange }: TPagination) => {
   const handlePrevClick = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -11,7 +10,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: any) => {
 
   const handleNextClick = () => {
     if (currentPage < totalPages) {
-      // console.log(currentPage + 1)
       onPageChange(currentPage + 1);
     }
   };

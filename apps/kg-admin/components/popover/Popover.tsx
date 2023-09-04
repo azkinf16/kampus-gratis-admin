@@ -44,7 +44,15 @@ const Popover = ({ title, menus }: TPopover) => {
       <div className="border border-neutral-300 w-full mt-2 mb-3"></div>
       <div className="flex flex-col gap-1">
         {menus?.map((menu, i) => (
-          <Link href={`/${title.toLowerCase().replace(/\s+/g, "-")}/${menu.toLowerCase().replace(/\s+/g, "-")}`} key={i}>
+          <Link
+            href={`/${title
+              .toLowerCase()
+              .replace('&', '')
+              .replace(/\s+/g, '-')}/${menu
+              .toLowerCase()
+              .replace(/\s+/g, '-')}`}
+            key={i}
+          >
             <p className="text-sm text-neutral-600 hover:text-primary-base">
               {menu}
             </p>

@@ -82,7 +82,7 @@ export interface TDropdown {
 export interface TPagination {
   currentPage: number;
   totalPages: number;
-  onPageChange: (type: number) => void;
+  onPageChange: (page: number) => void;
 }
 
 type TCrumbItem = {
