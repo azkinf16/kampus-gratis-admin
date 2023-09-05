@@ -1,4 +1,5 @@
 'use client';
+import Button from '@/components/button/Button';
 import InputJPG from '@/components/input/jpg/InputJPG';
 import InputText from '@/components/input/text/InputText';
 import BaseLayout from '@/modules/base/BaseLayout';
