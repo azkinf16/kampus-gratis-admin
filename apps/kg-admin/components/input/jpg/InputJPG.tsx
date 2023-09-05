@@ -7,6 +7,9 @@ const InputJPG = ({ id, title, htmlfor }: JPGInput) => {
     const file = event.target.files[0];
     if (file) {
       const fileType = file.type.toLowerCase();
+      const typeOfFile = fileType;
+      console.log(typeOfFile);
+
       if (fileType === 'image/jpeg' || fileType === 'image/jpg') {
         // Valid JPG file selected
         setSelectedFile(file);
@@ -17,6 +20,7 @@ const InputJPG = ({ id, title, htmlfor }: JPGInput) => {
       }
     }
   };
+
   return (
     <div>
       <label htmlFor={htmlfor}>

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { User } from 'next-auth';
 
 type dataSidebar = {
   title: string;
@@ -111,10 +112,15 @@ export type JPGInput = {
   id: string;
   title: string;
   htmlfor: string;
-}
+};
 export type TMatakuliah = {
   image: string;
   total_student: number;
   title: string;
   desc: string;
 };
+
+export type TLoginData = {
+  access_token: string;
+  refresh_token: string;
+} & User;

@@ -11,7 +11,8 @@ export const IconArrowRight: FC = (): ReactElement => {
     >
       <path
         d="M9.08984 16.59L13.6698 12L9.08984 7.41L10.4998 6L16.4998 12L10.4998 18L9.08984 16.59Z"
-        fill="#9CA3AF"
+        fill="currentColor"
+        className="fill-current text-neutral-500 group-hover:text-white group-disabled:text-neutral-300"
       />
     </svg>
   );

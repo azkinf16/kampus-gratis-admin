@@ -8,6 +8,7 @@ import { useArticle, useArticleData } from '@/modules/lib/useArticle';
 import { IconEdit } from '@/components/icons/ic-edit';
 import { IconDelete } from '@/components/icons/ic-delete';
 import Button from '@/components/button/Button';
+import Link from 'next/link';
 import Searchbar from '@/components/searchbar/Searchbar';
 
 export default function SekilasIlmuPage() {
