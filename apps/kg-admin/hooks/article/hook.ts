@@ -1,17 +1,7 @@
-import { TArticleResponse } from '@/types';
-import axios from 'axios';
-import AxiosInstance from './Axios';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
+import { articleDataState } from 'recoil/atoms/article';
 import { useRecoilState } from 'recoil';
-import { articleDataState } from 'recoil/article';
-
-const articleRequest = async (page: string): Promise<TArticleResponse> => {
-  const { data } = await AxiosInstance.get(
-    `/article/filter?page=${page}&limit=5`
-  );
-
-  return data;
-};
+import { articleRequest } from './request';
 
 export const useArticle = (page: string): UseQueryResult => {
   return useQuery({

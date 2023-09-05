@@ -4,12 +4,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Pagination from '@/components/pagination/Pagination';
 import Table from '@/components/table/Table';
 import { useEffect, useState } from 'react';
-import { useArticle, useArticleData } from '@/modules/lib/useArticle';
 import { IconEdit } from '@/components/icons/ic-edit';
 import { IconDelete } from '@/components/icons/ic-delete';
 import Button from '@/components/button/Button';
 import Link from 'next/link';
 import Searchbar from '@/components/searchbar/Searchbar';
+import { useArticle, useArticleData } from 'hooks/article/hook';
 
 export default function SekilasIlmuPage() {
   // const router = useRouter();
