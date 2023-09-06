@@ -9,8 +9,8 @@ import { useSession } from 'next-auth/react';
 import React from 'react';
 
 const UserAdminPage = () => {
-  const {getUserAdminData} = useUserAdminData()
-  console.log(getUserAdminData)
+  const {data} = useUserAdmin()
+  // console.log(data)
   const { data: session, status } = useSession();
   console.log('session', session, status);
   const userAdminPageBC = [

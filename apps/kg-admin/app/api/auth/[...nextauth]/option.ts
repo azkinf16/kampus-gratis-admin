@@ -49,8 +49,8 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user, account }) {
       const currentUser = user as unknown as TLoginData;
       if (account?.provider === 'login' && currentUser) {
-        token.access_token = currentUser.access_token;
-        token.refresh_token = currentUser.refresh_token;
+        token.access_token = currentUser.data.access_token;
+        token.refresh_token = currentUser.data.refresh_token;
         currentUser.name = user.name;
         currentUser.email = user.email;
       }

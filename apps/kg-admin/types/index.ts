@@ -121,8 +121,10 @@ export type TMatakuliah = {
 };
 
 export type TLoginData = {
-  access_token: string;
-  refresh_token: string;
+  data: {
+    access_token: string;
+    refresh_token: string;
+  };
 } & User;
 
 export type TLoginPayload = {
