@@ -1,10 +1,18 @@
+'use client';
+
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import Button from '@/components/button/Button';
 import Searchbar from '@/components/searchbar/Searchbar';
 import BaseLayout from '@/modules/base/BaseLayout';
+import { useUserAdmin, useUserAdminData } from 'hooks/userAdmin/hook';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 
 const UserAdminPage = () => {
+  const {getUserAdminData} = useUserAdminData()
+  console.log(getUserAdminData)
+  const { data: session, status } = useSession();
+  console.log('session', session, status);
   const userAdminPageBC = [
     {
       name: 'User',

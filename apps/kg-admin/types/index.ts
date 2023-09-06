@@ -143,3 +143,23 @@ export type TRefreshTokenResponse = {
     };
   };
 };
+
+export type TUserAdminData = {
+  id: string;
+  full_name: string
+  user_name:string
+  avatar?: string
+  Roles: RoleAdmin[]
+};
+
+type RoleAdmin = {
+  id: string
+  name: string
+  UserRole: UserRoleAdmin[]
+}
+
+type UserRoleAdmin = {
+  id: string
+  user_id: string
+  role_id: string
+}
