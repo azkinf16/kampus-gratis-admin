@@ -4,9 +4,10 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { userAdminRequest } from './request';
 import { useRecoilState } from 'recoil';
 import { userAdminDataState } from 'recoil/atoms/userAdmin';
-import { TUserAdminData } from '@/types';
+import { TUserAdminData, TUserAdminDataResponse } from '@/types';
+import { TMetaErrorResponse } from 'types/Meta';
 
-export const useUserAdmin = (): UseQueryResult<TUserAdminData> => {
+export const useUserAdmin = (): UseQueryResult<TUserAdminDataResponse, TMetaErrorResponse> => {
   return useQuery({
     queryKey: ['get-userAdmin'],
     queryFn: async () => await userAdminRequest(),

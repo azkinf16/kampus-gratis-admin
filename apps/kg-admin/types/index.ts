@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { User } from 'next-auth';
+import { TMetaResponse} from './Meta';
 
 type dataSidebar = {
   title: string;
@@ -165,3 +166,5 @@ type UserRoleAdmin = {
   user_id: string
   role_id: string
 }
+
+export type TUserAdminDataResponse = TMetaResponse<TUserAdminData>;
