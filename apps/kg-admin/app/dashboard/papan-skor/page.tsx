@@ -84,8 +84,8 @@ const PapanSkorPage = () => {
                             height={50}
                             className="rounded-full w-10 h-10"
                           />
-                          <div className="flex flex-col">
-                            <p className="text-sm font-bold">Asu Kelor</p>
+                          <div className="flex flex-col items-start">
+                            <p className="text-sm font-bold">MKnows Jaya!</p>
                             <p className="text-sm text-primary-base">
                               7000 Poin
                             </p>
