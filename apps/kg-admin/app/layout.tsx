@@ -1,3 +1,5 @@
+'use client';
+
 import './global.css';
 import { Montserrat } from 'next/font/google';
 import { Provider } from './utils/Provider';
